@@ -1,6 +1,6 @@
 export type SourceFormat = 'json' | 'markdown' | 'yaml' | 'toml' | 'ini' | 'text'
 
-export type ViewMode = 'tree' | 'raw' | 'cards' | 'graph'
+export type ViewMode = 'tree' | 'raw' | 'cards' | 'diff' | 'graph'
 
 export type ExportFormat = 'json' | 'yaml' | 'toml' | 'markdown'
 

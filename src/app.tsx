@@ -1,5 +1,6 @@
 import { signal } from '@preact/signals'
-import { useEffect, useMemo, useRef, useState, useCallback } from 'preact/hooks'
+import { memo } from 'preact/compat'
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, useCallback } from 'preact/hooks'
 
 import './app.css'
 
@@ -24,6 +25,7 @@ import { applyTheme, loadPreferredTheme, themes } from './lib/theme'
 import type {
   ExportFormat,
   ExportResponse,
+  FlatNode,
   ParsedDocument,
   ParseResponse,
   ThemeId,
@@ -35,24 +37,34 @@ import { useVirtualWindow } from './lib/virtualize'
 import { buildNodeIndex, searchNodes, detectReferences, type NodeIndex, type SearchHit, type ReferenceEdge } from './lib/index'
 import { scheduleIdleTask } from './lib/scheduler'
 import { diffDocuments, type DiffEntry } from './lib/diff'
+import { canParseInline, parseInline } from './lib/parse-inline'
 
 const themeSignal = signal<ThemeId>('vapor-dark')
 const viewSignal = signal<ViewMode>('tree')
 
 const FALLBACK_SAMPLE_DOCUMENT = `{
-  "fabric": {
+  "kata": {
     "name": "Kata",
-    "surface": "local-first parser",
-    "runtime": {
-      "startupMsTarget": 100,
-      "mainThreadBudgetMs": 8,
-      "workers": ["parse", "export", "layout", "index"]
+    "version": "0.1.0-alpha",
+    "description": "Local-first structured text parser and visualizer",
+    "copyright": "Copyright © 2026 Corderro Artz / Vaporsoft",
+    "license": "MIT"
+  },
+  "performance": {
+    "budgets": {
+      "firstRenderMs": { "target": 100 },
+      "viewSwitchMs": { "target": 50 },
+      "expandCollapseMs": { "target": 16 },
+      "longTasks": { "target": 0 }
     }
   },
-  "views": ["raw", "tree", "cards"],
-  "roadmap": {
-    "alpha": true,
-    "next": ["graph engine", "search index", "diff mode"]
+  "stack": {
+    "framework": "Preact 10",
+    "bundler": "Vite 7",
+    "language": "TypeScript 5.9",
+    "workers": ["parse", "export"],
+    "views": ["tree", "raw", "cards"],
+    "themes": 6
   }
 }`
 
@@ -92,18 +104,25 @@ export function App() {
     applyTheme(activeTheme)
   }, [activeTheme])
 
-  useEffect(() => {
-    const parseWorker = new Worker(new URL('./workers/parse.worker.ts', import.meta.url), {
-      type: 'module',
-    })
-    const exportWorker = new Worker(new URL('./workers/export.worker.ts', import.meta.url), {
-      type: 'module',
-    })
+  function getOrCreateParseWorker(): Worker {
+    if (!parseWorkerRef.current) {
+      const w = new Worker(new URL('./workers/parse.worker.ts', import.meta.url), { type: 'module' })
+      w.onmessage = handleParseMessage
+      parseWorkerRef.current = w
+    }
+    return parseWorkerRef.current
+  }
 
-    parseWorkerRef.current = parseWorker
-    exportWorkerRef.current = exportWorker
+  function getOrCreateExportWorker(): Worker {
+    if (!exportWorkerRef.current) {
+      const w = new Worker(new URL('./workers/export.worker.ts', import.meta.url), { type: 'module' })
+      w.onmessage = handleExportMessage
+      exportWorkerRef.current = w
+    }
+    return exportWorkerRef.current
+  }
 
-    parseWorker.onmessage = (event: MessageEvent<ParseResponse>) => {
+  function handleParseMessage(event: MessageEvent<ParseResponse>) {
       if (event.data.type === 'progress') {
         setParseProgress(event.data)
         setStatus(
@@ -130,65 +149,45 @@ export function App() {
       setParseProgress(null)
     }
 
-    exportWorker.onmessage = (event: MessageEvent<ExportResponse>) => {
+  function handleExportMessage(event: MessageEvent<ExportResponse>) {
       if (event.data.type === 'exported') {
         setExportText(event.data.text)
         return
       }
 
       setErrorMessage(event.data.message)
-    }
+  }
 
-    setStatus('Ready')
+  useEffect(() => {
+    scheduleIdleTask(() => {
+      getOrCreateParseWorker()
+      getOrCreateExportWorker()
+    })
 
     return () => {
-      parseWorker.terminate()
-      exportWorker.terminate()
+      parseWorkerRef.current?.terminate()
+      exportWorkerRef.current?.terminate()
     }
   }, [])
 
   useEffect(() => {
-    if (!documentState || !exportWorkerRef.current) {
+    if (!documentState) {
       return
     }
 
-    exportWorkerRef.current.postMessage({
+    getOrCreateExportWorker().postMessage({
       type: 'export',
       format: exportFormat,
       document: documentState,
     })
   }, [documentState, exportFormat])
 
-  useEffect(() => {
-    let firstFrame = 0
-    let secondFrame = 0
-
-    firstFrame = window.requestAnimationFrame(() => {
-      secondFrame = window.requestAnimationFrame(() => {
-        flushViewSwitch(activeView)
-      })
-    })
-
-    return () => {
-      window.cancelAnimationFrame(firstFrame)
-      window.cancelAnimationFrame(secondFrame)
-    }
+  useLayoutEffect(() => {
+    flushViewSwitch(activeView)
   }, [activeView])
 
-  useEffect(() => {
-    let firstFrame = 0
-    let secondFrame = 0
-
-    firstFrame = window.requestAnimationFrame(() => {
-      secondFrame = window.requestAnimationFrame(() => {
-        flushTreeToggle()
-      })
-    })
-
-    return () => {
-      window.cancelAnimationFrame(firstFrame)
-      window.cancelAnimationFrame(secondFrame)
-    }
+  useLayoutEffect(() => {
+    flushTreeToggle()
   }, [expandedNodes])
 
   useEffect(() => {
@@ -234,25 +233,13 @@ export function App() {
     }
   }, [searchQuery, nodeIndex, documentState])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!documentState || initialReadyRef.current) {
       return
     }
 
-    let firstFrame = 0
-    let secondFrame = 0
-
-    firstFrame = window.requestAnimationFrame(() => {
-      secondFrame = window.requestAnimationFrame(() => {
-        initialReadyRef.current = true
-        markInitialReady()
-      })
-    })
-
-    return () => {
-      window.cancelAnimationFrame(firstFrame)
-      window.cancelAnimationFrame(secondFrame)
-    }
+    initialReadyRef.current = true
+    markInitialReady()
   }, [documentState])
 
 
@@ -292,16 +279,12 @@ export function App() {
   const previewText = parseProgress?.type === 'progress' ? parseProgress.previewText : documentState?.previewText ?? ''
 
   async function loadFile(file: File, workspaceEntry?: WorkspaceFileEntry) {
-    if (!parseWorkerRef.current) {
-      return
-    }
-
     setStatus(`Queued ${file.name}`)
     setErrorMessage(null)
     setParseProgress(null)
     setCurrentWorkspaceFile(workspaceEntry ?? null)
 
-    parseWorkerRef.current.postMessage({
+    getOrCreateParseWorker().postMessage({
       type: 'parse-file',
       file,
       sourceName: workspaceEntry?.path ?? file.name,
@@ -310,10 +293,25 @@ export function App() {
   }
 
   async function handleLoadSample() {
-    if (!parseWorkerRef.current) { return }
     setStatus('Loading sample…')
-    const sample = await loadDefaultSampleDocument()
-    parseWorkerRef.current.postMessage({
+
+    const cached = getCachedSample()
+    const sample = cached ?? await loadDefaultSampleDocument()
+
+    if (canParseInline(sample.text, 'json')) {
+      try {
+        const doc = parseInline(sample.text, sample.sourceName)
+        recordParsedDocument(doc.stats)
+        setDocumentState(doc)
+        setExpandedNodes(seedExpandedNodes(doc))
+        setExportFormat(recommendedExportFormat(doc.format))
+        setStatus(`Loaded ${doc.sourceName}`)
+        setErrorMessage(null)
+        return
+      } catch { /* fall through to worker */ }
+    }
+
+    getOrCreateParseWorker().postMessage({
       type: 'parse-text',
       text: sample.text,
       sourceName: sample.sourceName,
@@ -385,7 +383,7 @@ export function App() {
     }
   }
 
-  function toggleNode(nodeId: number) {
+  const toggleNode = useCallback((nodeId: number) => {
     beginTreeToggle()
     setExpandedNodes((current) => {
       const next = new Set(current)
@@ -396,7 +394,7 @@ export function App() {
       }
       return next
     })
-  }
+  }, [])
 
   function handleExpandAll() {
     if (!documentState) return
@@ -648,10 +646,10 @@ export function App() {
                 {diffBase ? (
                   <button
                     type="button"
-                    class={`tab ${activeView === 'diff' as string ? 'is-active' : ''}`}
+                    class={`tab ${activeView === 'diff' ? 'is-active' : ''}`}
                     onClick={() => {
-                      if (activeView !== 'diff' as ViewMode) { beginViewSwitch() }
-                      viewSignal.value = 'diff' as ViewMode
+                      if (activeView !== 'diff') { beginViewSwitch() }
+                      viewSignal.value = 'diff'
                     }}
                   >
                     Diff
@@ -722,11 +720,11 @@ export function App() {
               <CardView documentState={documentState} expandedNodes={expandedNodes} onToggle={toggleNode} matchedNodeIds={matchedNodeIds} />
             ) : null}
 
-            {(activeView as string) === 'diff' && diffEntries.length > 0 ? (
+            {activeView === 'diff' && diffEntries.length > 0 ? (
               <DiffView entries={diffEntries} />
             ) : null}
 
-            {(activeView as string) === 'diff' && diffEntries.length === 0 && diffBase ? (
+            {activeView === 'diff' && diffEntries.length === 0 && diffBase ? (
               <div class="viewer__empty">
                 <span>No differences found</span>
               </div>
@@ -780,11 +778,29 @@ export function App() {
   )
 }
 
-async function loadDefaultSampleDocument(): Promise<{ text: string; sourceName: string }> {
-  try {
-    const response = await fetch('/samples/latest-profile.json', {
-      cache: 'no-store',
+let samplePromise: Promise<{ text: string; sourceName: string }> | null = null
+let sampleCache: { text: string; sourceName: string } | null = null
+
+// Start preloading immediately at module evaluation
+loadDefaultSampleDocument()
+
+function loadDefaultSampleDocument(): Promise<{ text: string; sourceName: string }> {
+  if (!samplePromise) {
+    samplePromise = fetchSampleDocument().then(result => {
+      sampleCache = result
+      return result
     })
+  }
+  return samplePromise
+}
+
+function getCachedSample(): { text: string; sourceName: string } | null {
+  return sampleCache
+}
+
+async function fetchSampleDocument(): Promise<{ text: string; sourceName: string }> {
+  try {
+    const response = await fetch('/samples/latest-profile.json')
 
     if (!response.ok) {
       throw new Error(`Sample fetch failed with status ${response.status}`)
@@ -806,6 +822,47 @@ async function loadDefaultSampleDocument(): Promise<{ text: string; sourceName: 
     }
   }
 }
+
+const TreeRow = memo(function TreeRow({
+  node,
+  depth,
+  isExpanded,
+  isMatch,
+  isLinked,
+  onToggle,
+}: {
+  node: FlatNode
+  depth: number
+  isExpanded: boolean
+  isMatch: boolean
+  isLinked: boolean
+  onToggle: (nodeId: number) => void
+}) {
+  const childCount = node.childEnd - node.childStart
+
+  return (
+    <div class={`tree-row ${isMatch ? 'tree-row--match' : ''}`} style={{ paddingInlineStart: `${depth * 18 + 18}px` }}>
+      <button
+        type="button"
+        class={`tree-toggle ${childCount === 0 ? 'is-empty' : ''}`}
+        data-kata-tree-toggle="true"
+        data-kata-node-id={String(node.id)}
+        data-kata-empty={childCount === 0 ? 'true' : 'false'}
+        onClick={() => {
+          if (childCount > 0) {
+            onToggle(node.id)
+          }
+        }}
+      >
+        {childCount > 0 ? (isExpanded ? '−' : '+') : '·'}
+      </button>
+      <span class="tree-key">{node.label}</span>
+      <span class={`tree-kind tree-kind--${node.kind}`}>{node.kind}</span>
+      {isLinked ? <span class="tree-ref-badge">ref</span> : null}
+      <span class="tree-value">{node.value}</span>
+    </div>
+  )
+})
 
 function TreeView({
   documentState,
@@ -831,34 +888,17 @@ function TreeView({
     <div ref={virtual.containerRef} class="viewport" onScroll={virtual.onScroll}>
       <div style={{ height: `${virtual.totalHeight}px` }}>
         <div style={{ transform: `translateY(${virtual.offsetTop}px)` }}>
-          {windowRows.map((row) => {
-            const node = documentState.nodes[row.nodeId]
-            const childCount = node.childEnd - node.childStart
-            const isExpanded = expandedNodes.has(node.id)
-
-            return (
-              <div key={node.id} class={`tree-row ${matchedNodeIds.has(node.id) ? 'tree-row--match' : ''}`} style={{ paddingInlineStart: `${row.depth * 18 + 18}px` }}>
-                <button
-                  type="button"
-                  class={`tree-toggle ${childCount === 0 ? 'is-empty' : ''}`}
-                  data-kata-tree-toggle="true"
-                  data-kata-node-id={String(node.id)}
-                  data-kata-empty={childCount === 0 ? 'true' : 'false'}
-                  onClick={() => {
-                    if (childCount > 0) {
-                      onToggle(node.id)
-                    }
-                  }}
-                >
-                  {childCount > 0 ? (isExpanded ? '−' : '+') : '·'}
-                </button>
-                <span class="tree-key">{node.label}</span>
-                <span class={`tree-kind tree-kind--${node.kind}`}>{node.kind}</span>
-                {linkedNodeIds.has(node.id) ? <span class="tree-ref-badge">ref</span> : null}
-                <span class="tree-value">{node.value}</span>
-              </div>
-            )
-          })}
+          {windowRows.map((row) => (
+            <TreeRow
+              key={documentState.nodes[row.nodeId].id}
+              node={documentState.nodes[row.nodeId]}
+              depth={row.depth}
+              isExpanded={expandedNodes.has(row.nodeId)}
+              isMatch={matchedNodeIds.has(row.nodeId)}
+              isLinked={linkedNodeIds.has(row.nodeId)}
+              onToggle={onToggle}
+            />
+          ))}
         </div>
       </div>
     </div>
@@ -1053,11 +1093,9 @@ function buildNodePath(doc: ParsedDocument, nodeId: number): string {
   let current = nodeId
   while (current !== doc.rootId) {
     segments.unshift(doc.nodes[current].label)
-    const parent = doc.nodes.findIndex(
-      (n) => current >= n.childStart && current < n.childEnd && doc.childIds.slice(n.childStart, n.childEnd).includes(current),
-    )
-    if (parent === -1) break
-    current = parent
+    const parentId = doc.nodes[current].parentId
+    if (parentId < 0) break
+    current = parentId
   }
   return segments.length > 0 ? segments.join('.') : doc.nodes[nodeId]?.label ?? ''
 }

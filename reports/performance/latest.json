@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-03-27T08:47:40.357Z",
+  "generatedAt": "2026-03-28T06:32:47.119Z",
   "version": "0.1.0-alpha",
   "git": {
-    "commit": "unavailable",
-    "branch": "unavailable"
+    "commit": "3e3bf0dc5c490a2609ceaeccacc8b7dfa25e15d3",
+    "branch": "main"
   },
   "environment": {
     "node": "v24.14.0",
@@ -12,28 +12,28 @@
     "chromePath": "unknown"
   },
   "build": {
-    "durationMs": 6541.06
+    "durationMs": 4740.47
   },
   "bundle": {
     "initial": {
-      "rawBytes": 209274,
-      "gzipBytes": 86128,
+      "rawBytes": 74421,
+      "gzipBytes": 24672,
       "files": [
         {
-          "path": "assets/index-B8_85NTQ.js",
-          "rawBytes": 46213,
-          "gzipBytes": 16945
+          "path": "assets/index-3pxZ8k4h.js",
+          "rawBytes": 61135,
+          "gzipBytes": 21420
         },
         {
-          "path": "assets/index-vcNfDUt5.css",
-          "rawBytes": 163061,
-          "gzipBytes": 69183
+          "path": "assets/index-C1GVT9U6.css",
+          "rawBytes": 13286,
+          "gzipBytes": 3252
         }
       ]
     },
     "total": {
-      "rawBytes": 4024732,
-      "gzipBytes": 3598781,
+      "rawBytes": 561610,
+      "gzipBytes": 271177,
       "files": [
         {
           "path": "assets/export.worker-BrODth_E.js",
@@ -46,9 +46,14 @@
           "gzipBytes": 5564
         },
         {
-          "path": "assets/index-B8_85NTQ.js",
-          "rawBytes": 46213,
-          "gzipBytes": 16945
+          "path": "assets/index-3pxZ8k4h.js",
+          "rawBytes": 61135,
+          "gzipBytes": 21420
+        },
+        {
+          "path": "assets/index-C1GVT9U6.css",
+          "rawBytes": 13286,
+          "gzipBytes": 3252
         },
         {
           "path": "assets/index-CQw9CwB_.js",
@@ -61,54 +66,9 @@
           "gzipBytes": 32336
         },
         {
-          "path": "assets/index-vcNfDUt5.css",
-          "rawBytes": 163061,
-          "gzipBytes": 69183
-        },
-        {
           "path": "assets/ini-CjiWLe_B.js",
           "rawBytes": 3459,
           "gzipBytes": 1636
-        },
-        {
-          "path": "assets/manrope-cyrillic-400-normal-BMzJvInZ.woff2",
-          "rawBytes": 7840,
-          "gzipBytes": 7863
-        },
-        {
-          "path": "assets/manrope-cyrillic-400-normal-Dvx59UGC.woff",
-          "rawBytes": 10032,
-          "gzipBytes": 10028
-        },
-        {
-          "path": "assets/manrope-cyrillic-600-normal-DvRl3Mj-.woff2",
-          "rawBytes": 7872,
-          "gzipBytes": 7895
-        },
-        {
-          "path": "assets/manrope-cyrillic-600-normal-It4mZcQk.woff",
-          "rawBytes": 10060,
-          "gzipBytes": 10048
-        },
-        {
-          "path": "assets/manrope-greek-400-normal-CM4qok81.woff2",
-          "rawBytes": 5280,
-          "gzipBytes": 5303
-        },
-        {
-          "path": "assets/manrope-greek-400-normal-DuX9RsAR.woff",
-          "rawBytes": 6772,
-          "gzipBytes": 6764
-        },
-        {
-          "path": "assets/manrope-greek-600-normal-BoRV6lzK.woff2",
-          "rawBytes": 5232,
-          "gzipBytes": 5255
-        },
-        {
-          "path": "assets/manrope-greek-600-normal-CF2i9ZRY.woff",
-          "rawBytes": 6740,
-          "gzipBytes": 6738
         },
         {
           "path": "assets/manrope-latin-400-normal-8tf8FM3T.woff",
@@ -129,46 +89,6 @@
           "path": "assets/manrope-latin-600-normal-BqgrALkZ.woff",
           "rawBytes": 18384,
           "gzipBytes": 18378
-        },
-        {
-          "path": "assets/manrope-latin-ext-400-normal-C-X6QNXX.woff",
-          "rawBytes": 11316,
-          "gzipBytes": 11316
-        },
-        {
-          "path": "assets/manrope-latin-ext-400-normal-CMDvPJRp.woff2",
-          "rawBytes": 8292,
-          "gzipBytes": 8315
-        },
-        {
-          "path": "assets/manrope-latin-ext-600-normal-u5Pl7hTU.woff",
-          "rawBytes": 11248,
-          "gzipBytes": 11245
-        },
-        {
-          "path": "assets/manrope-latin-ext-600-normal-_gBojHdJ.woff2",
-          "rawBytes": 8304,
-          "gzipBytes": 8327
-        },
-        {
-          "path": "assets/manrope-vietnamese-400-normal-D7E_mLGF.woff",
-          "rawBytes": 6108,
-          "gzipBytes": 6094
-        },
-        {
-          "path": "assets/manrope-vietnamese-400-normal-DHb3EETF.woff2",
-          "rawBytes": 4464,
-          "gzipBytes": 4487
-        },
-        {
-          "path": "assets/manrope-vietnamese-600-normal-C1J5PCl_.woff2",
-          "rawBytes": 4468,
-          "gzipBytes": 4491
-        },
-        {
-          "path": "assets/manrope-vietnamese-600-normal-lA7a_7Ok.woff",
-          "rawBytes": 6140,
-          "gzipBytes": 6120
         },
         {
           "path": "assets/parse.worker-DvxJecFY.js",
@@ -196,1199 +116,49 @@
           "gzipBytes": 13030
         },
         {
-          "path": "assets/syncopate-latin-ext-400-normal-CP6VANWM.woff",
-          "rawBytes": 8084,
-          "gzipBytes": 8094
-        },
-        {
-          "path": "assets/syncopate-latin-ext-400-normal-DVROQn0L.woff2",
-          "rawBytes": 17992,
-          "gzipBytes": 18020
-        },
-        {
-          "path": "assets/syncopate-latin-ext-700-normal-bvnP3szv.woff",
-          "rawBytes": 7784,
-          "gzipBytes": 7781
-        },
-        {
-          "path": "assets/syncopate-latin-ext-700-normal-DIzsNXDw.woff2",
-          "rawBytes": 10336,
-          "gzipBytes": 10359
-        },
-        {
           "path": "assets/workbox-window.prod.es5-BIl4cyR9.js",
           "rawBytes": 5761,
           "gzipBytes": 2366
         },
         {
-          "path": "assets/zen-kaku-gothic-new-10-500-normal-BfUTfL9B.woff",
-          "rawBytes": 23636,
-          "gzipBytes": 23641
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-10-500-normal-DQ6GpuCq.woff2",
-          "rawBytes": 19624,
-          "gzipBytes": 19652
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-100-500-normal-CsM0y_UO.woff2",
-          "rawBytes": 10044,
-          "gzipBytes": 10067
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-100-500-normal-DLjcqT10.woff",
-          "rawBytes": 12160,
-          "gzipBytes": 12126
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-101-500-normal-CT6arkO4.woff2",
-          "rawBytes": 8280,
-          "gzipBytes": 8303
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-101-500-normal-D1YVK9sk.woff",
-          "rawBytes": 10192,
-          "gzipBytes": 10153
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-102-500-normal-Dxg-MZ97.woff",
-          "rawBytes": 11000,
-          "gzipBytes": 10962
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-102-500-normal-jWnHTfRO.woff2",
-          "rawBytes": 9072,
-          "gzipBytes": 9095
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-103-500-normal-BVVjGmdu.woff2",
-          "rawBytes": 9296,
-          "gzipBytes": 9319
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-103-500-normal-D9X9hh91.woff",
-          "rawBytes": 11240,
-          "gzipBytes": 11204
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-104-500-normal-C_zBQL6f.woff2",
-          "rawBytes": 9252,
-          "gzipBytes": 9275
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-104-500-normal-DUgg8BdV.woff",
-          "rawBytes": 11264,
-          "gzipBytes": 11226
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-105-500-normal-B7iBGipw.woff2",
-          "rawBytes": 9268,
-          "gzipBytes": 9291
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-105-500-normal-BAQW4SxD.woff",
-          "rawBytes": 11348,
-          "gzipBytes": 11316
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-106-500-normal-DM5hcIpt.woff",
-          "rawBytes": 12192,
-          "gzipBytes": 12162
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-106-500-normal-QYtLewrG.woff2",
-          "rawBytes": 10064,
-          "gzipBytes": 10087
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-107-500-normal-CV1dQ6_Q.woff2",
-          "rawBytes": 8816,
-          "gzipBytes": 8839
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-107-500-normal-DPOSDUlk.woff",
-          "rawBytes": 10788,
-          "gzipBytes": 10750
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-108-500-normal-b1fKIKgx.woff2",
-          "rawBytes": 9876,
-          "gzipBytes": 9899
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-108-500-normal-vSkeEJC6.woff",
-          "rawBytes": 12000,
-          "gzipBytes": 11964
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-109-500-normal-B8dDxjXJ.woff2",
-          "rawBytes": 8412,
-          "gzipBytes": 8435
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-109-500-normal-Dv5KWfjC.woff",
-          "rawBytes": 10236,
-          "gzipBytes": 10201
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-11-500-normal-Bpf3NC_S.woff2",
-          "rawBytes": 19432,
-          "gzipBytes": 19460
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-11-500-normal-sAsrtvKB.woff",
-          "rawBytes": 23460,
-          "gzipBytes": 23467
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-110-500-normal-C1x9BJBk.woff",
-          "rawBytes": 10076,
-          "gzipBytes": 10037
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-110-500-normal-Cri6du1Z.woff2",
-          "rawBytes": 8132,
-          "gzipBytes": 8155
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-111-500-normal-CrXizbbk.woff2",
-          "rawBytes": 9072,
-          "gzipBytes": 9095
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-111-500-normal-snVuW0-6.woff",
-          "rawBytes": 11196,
-          "gzipBytes": 11170
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-112-500-normal-D55g0QWq.woff",
-          "rawBytes": 10308,
-          "gzipBytes": 10272
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-112-500-normal-ZLSUlONm.woff2",
-          "rawBytes": 8356,
-          "gzipBytes": 8379
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-113-500-normal-C1KDzIFo.woff2",
-          "rawBytes": 7684,
-          "gzipBytes": 7707
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-113-500-normal-PLIvQkyP.woff",
-          "rawBytes": 9580,
-          "gzipBytes": 9558
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-114-500-normal-BkS7Nx7B.woff2",
-          "rawBytes": 7864,
-          "gzipBytes": 7887
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-114-500-normal-Dp6d4-a0.woff",
-          "rawBytes": 9596,
-          "gzipBytes": 9559
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-115-500-normal-BVm3Fvdv.woff2",
-          "rawBytes": 8212,
-          "gzipBytes": 8235
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-115-500-normal-tDQG94Aw.woff",
-          "rawBytes": 10072,
-          "gzipBytes": 10035
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-116-500-normal-CvQEMyXA.woff",
-          "rawBytes": 10172,
-          "gzipBytes": 10143
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-116-500-normal-DDphGczd.woff2",
-          "rawBytes": 8344,
-          "gzipBytes": 8367
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-117-500-normal-JC_7u2dv.woff2",
-          "rawBytes": 6152,
-          "gzipBytes": 6175
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-117-500-normal-QpZHLsGb.woff",
-          "rawBytes": 7796,
-          "gzipBytes": 7758
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-118-500-normal-BPvnosqn.woff",
-          "rawBytes": 8904,
-          "gzipBytes": 8888
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-118-500-normal-RslETQiE.woff2",
-          "rawBytes": 6812,
-          "gzipBytes": 6835
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-119-500-normal-BYioqAnc.woff2",
-          "rawBytes": 18352,
-          "gzipBytes": 18380
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-119-500-normal-DGFQ0G0O.woff",
-          "rawBytes": 22836,
-          "gzipBytes": 22774
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-12-500-normal-BeXJ2QEH.woff",
-          "rawBytes": 19432,
-          "gzipBytes": 19432
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-12-500-normal-ejRxsBx6.woff2",
-          "rawBytes": 15920,
-          "gzipBytes": 15943
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-13-500-normal-9FYTBLE2.woff",
-          "rawBytes": 19280,
-          "gzipBytes": 19281
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-13-500-normal-DzxE3OsG.woff2",
-          "rawBytes": 15988,
-          "gzipBytes": 16011
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-14-500-normal-B6B6O0z1.woff",
-          "rawBytes": 20460,
-          "gzipBytes": 20472
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-14-500-normal-DPxY7iE3.woff2",
-          "rawBytes": 16996,
-          "gzipBytes": 17024
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-15-500-normal-BbHX2MWs.woff",
-          "rawBytes": 23916,
-          "gzipBytes": 23923
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-15-500-normal-C9YIK0en.woff2",
-          "rawBytes": 20036,
-          "gzipBytes": 20064
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-16-500-normal-3U2wy_o2.woff",
-          "rawBytes": 19116,
-          "gzipBytes": 19124
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-16-500-normal-B413LXF6.woff2",
-          "rawBytes": 15928,
-          "gzipBytes": 15951
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-17-500-normal-BKR4V6uX.woff2",
-          "rawBytes": 18400,
-          "gzipBytes": 18428
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-17-500-normal-DZ5hNQv4.woff",
-          "rawBytes": 22280,
-          "gzipBytes": 22285
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-18-500-normal-Bw-eN-kp.woff2",
-          "rawBytes": 16860,
-          "gzipBytes": 16888
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-18-500-normal-C2pQA8h7.woff",
-          "rawBytes": 20156,
-          "gzipBytes": 20162
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-19-500-normal-DWGxmCLn.woff2",
-          "rawBytes": 18536,
-          "gzipBytes": 18564
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-19-500-normal-dWUgmgp_.woff",
-          "rawBytes": 22344,
-          "gzipBytes": 22353
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-20-500-normal-B-wEhWQV.woff2",
-          "rawBytes": 14900,
-          "gzipBytes": 14923
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-20-500-normal-Boj3DGxL.woff",
-          "rawBytes": 18120,
-          "gzipBytes": 18121
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-21-500-normal-BOdPB5MU.woff2",
-          "rawBytes": 17452,
-          "gzipBytes": 17480
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-21-500-normal-BOV8VG12.woff",
-          "rawBytes": 20940,
-          "gzipBytes": 20946
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-22-500-normal-AC-Jb9zV.woff2",
-          "rawBytes": 17228,
-          "gzipBytes": 17256
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-22-500-normal-eI1m6KFU.woff",
-          "rawBytes": 20736,
-          "gzipBytes": 20744
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-23-500-normal-c84D9HUi.woff2",
-          "rawBytes": 23620,
-          "gzipBytes": 23648
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-23-500-normal-D95Ayn2-.woff",
-          "rawBytes": 28316,
-          "gzipBytes": 28323
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-24-500-normal-CQZnPdP9.woff",
-          "rawBytes": 24716,
-          "gzipBytes": 24720
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-24-500-normal-Dk1BgFSL.woff2",
-          "rawBytes": 20624,
-          "gzipBytes": 20652
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-25-500-normal-gkghzOm8.woff",
-          "rawBytes": 23752,
-          "gzipBytes": 23749
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-25-500-normal-gmPTPWYs.woff2",
-          "rawBytes": 19636,
-          "gzipBytes": 19664
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-26-500-normal-CSy9tXlJ.woff",
-          "rawBytes": 17648,
-          "gzipBytes": 17656
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-26-500-normal-CVJYR5_Q.woff2",
-          "rawBytes": 14564,
-          "gzipBytes": 14587
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-27-500-normal-BHWonAaH.woff2",
-          "rawBytes": 13768,
-          "gzipBytes": 13791
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-27-500-normal-BKSOj4gC.woff",
-          "rawBytes": 16660,
-          "gzipBytes": 16645
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-28-500-normal-CsMoUf5t.woff",
-          "rawBytes": 21076,
-          "gzipBytes": 21083
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-28-500-normal-Dm2L6UxT.woff2",
-          "rawBytes": 17572,
-          "gzipBytes": 17600
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-29-500-normal-BTEtd_ef.woff2",
-          "rawBytes": 15080,
-          "gzipBytes": 15103
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-29-500-normal-TW4Sas-8.woff",
-          "rawBytes": 18000,
-          "gzipBytes": 18002
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-3-500-normal-43ZCjH0J.woff",
-          "rawBytes": 9620,
-          "gzipBytes": 9594
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-3-500-normal-BctPH16X.woff2",
-          "rawBytes": 7668,
-          "gzipBytes": 7691
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-30-500-normal-DggkbxfS.woff2",
-          "rawBytes": 19324,
-          "gzipBytes": 19352
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-30-500-normal-hH4I9jsu.woff",
-          "rawBytes": 23180,
-          "gzipBytes": 23182
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-31-500-normal-Do2HtApR.woff",
-          "rawBytes": 24248,
-          "gzipBytes": 24255
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-31-500-normal-YJIXaoHh.woff2",
-          "rawBytes": 20008,
-          "gzipBytes": 20036
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-32-500-normal-D-i1Feb3.woff2",
-          "rawBytes": 18164,
-          "gzipBytes": 18192
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-32-500-normal-LPhY_Fx1.woff",
-          "rawBytes": 22212,
-          "gzipBytes": 22216
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-33-500-normal-Bv62VtxF.woff",
-          "rawBytes": 17248,
-          "gzipBytes": 17235
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-33-500-normal-CXYD2mkV.woff2",
-          "rawBytes": 14088,
-          "gzipBytes": 14111
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-34-500-normal-Cedf2Htb.woff",
-          "rawBytes": 23876,
-          "gzipBytes": 23886
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-34-500-normal-Cnd0ACt2.woff2",
-          "rawBytes": 19908,
-          "gzipBytes": 19936
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-35-500-normal-DI7o71NT.woff",
-          "rawBytes": 21264,
-          "gzipBytes": 21272
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-35-500-normal-NKeNm87A.woff2",
-          "rawBytes": 17420,
-          "gzipBytes": 17448
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-36-500-normal-CzzCsSfE.woff2",
-          "rawBytes": 14224,
-          "gzipBytes": 14247
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-36-500-normal-kMB6w1DR.woff",
-          "rawBytes": 17508,
-          "gzipBytes": 17510
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-37-500-normal-nprGeJUG.woff",
-          "rawBytes": 21508,
-          "gzipBytes": 21516
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-37-500-normal-T5g4oMAb.woff2",
-          "rawBytes": 17844,
-          "gzipBytes": 17872
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-38-500-normal-B22d519O.woff2",
-          "rawBytes": 13692,
-          "gzipBytes": 13715
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-38-500-normal-CUVFBOJ3.woff",
-          "rawBytes": 16408,
-          "gzipBytes": 16388
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-39-500-normal-DD5PSTs6.woff",
-          "rawBytes": 24796,
-          "gzipBytes": 24799
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-39-500-normal-D_Y4HQRA.woff2",
-          "rawBytes": 20564,
-          "gzipBytes": 20592
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-40-500-normal-CyH3X6VM.woff2",
-          "rawBytes": 17024,
-          "gzipBytes": 17052
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-40-500-normal-ZwrTPSpp.woff",
-          "rawBytes": 20848,
-          "gzipBytes": 20856
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-41-500-normal-B-v97_mZ.woff",
-          "rawBytes": 22236,
-          "gzipBytes": 22235
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-41-500-normal-DqtdHL-0.woff2",
-          "rawBytes": 18564,
-          "gzipBytes": 18592
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-42-500-normal-BArvvuhy.woff2",
-          "rawBytes": 15120,
-          "gzipBytes": 15143
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-42-500-normal-D3MbQnYI.woff",
-          "rawBytes": 18536,
-          "gzipBytes": 18542
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-43-500-normal-BoUi5LKq.woff2",
-          "rawBytes": 14832,
-          "gzipBytes": 14855
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-43-500-normal-WJLXR095.woff",
-          "rawBytes": 17892,
-          "gzipBytes": 17898
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-44-500-normal-6JDauJmr.woff2",
-          "rawBytes": 16212,
-          "gzipBytes": 16235
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-44-500-normal-TuYcy67w.woff",
-          "rawBytes": 19552,
-          "gzipBytes": 19563
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-45-500-normal-BZxKlWMv.woff2",
-          "rawBytes": 12408,
-          "gzipBytes": 12431
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-45-500-normal-Cbgl9AvI.woff",
-          "rawBytes": 15140,
-          "gzipBytes": 15119
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-46-500-normal-BJboihzq.woff",
-          "rawBytes": 15024,
-          "gzipBytes": 15005
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-46-500-normal-Czvc-npF.woff2",
-          "rawBytes": 12128,
-          "gzipBytes": 12151
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-47-500-normal-BAX5pvu6.woff",
-          "rawBytes": 17496,
-          "gzipBytes": 17494
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-47-500-normal-jfCda3QO.woff2",
-          "rawBytes": 14364,
-          "gzipBytes": 14387
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-48-500-normal-Bz5XXpsc.woff",
-          "rawBytes": 18716,
-          "gzipBytes": 18719
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-48-500-normal-CisW2H3O.woff2",
-          "rawBytes": 15416,
-          "gzipBytes": 15439
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-49-500-normal-BqwmuuRE.woff",
-          "rawBytes": 17436,
-          "gzipBytes": 17431
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-49-500-normal-CNQ-uMD9.woff2",
-          "rawBytes": 14344,
-          "gzipBytes": 14367
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-5-500-normal-BiatFd13.woff2",
-          "rawBytes": 16092,
-          "gzipBytes": 16115
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-5-500-normal-fDz3aW7Q.woff",
-          "rawBytes": 19256,
-          "gzipBytes": 19258
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-50-500-normal-Bt3FXcKz.woff2",
-          "rawBytes": 6756,
-          "gzipBytes": 6779
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-50-500-normal-CIY27X_I.woff",
-          "rawBytes": 8508,
-          "gzipBytes": 8480
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-52-500-normal-CfqwMN0c.woff2",
-          "rawBytes": 9384,
-          "gzipBytes": 9407
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-52-500-normal-DUjjiyQp.woff",
-          "rawBytes": 11476,
-          "gzipBytes": 11438
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-53-500-normal-32uHewO2.woff",
-          "rawBytes": 6804,
-          "gzipBytes": 6767
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-53-500-normal-BSY-7RzD.woff2",
-          "rawBytes": 5588,
-          "gzipBytes": 5611
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-56-500-normal-dDCO-DNe.woff2",
-          "rawBytes": 4180,
-          "gzipBytes": 4203
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-56-500-normal-DZVMvw40.woff",
-          "rawBytes": 4800,
-          "gzipBytes": 4743
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-58-500-normal-C_uftcEV.woff",
-          "rawBytes": 8452,
-          "gzipBytes": 8405
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-58-500-normal-Dfc-4WMP.woff2",
-          "rawBytes": 6680,
-          "gzipBytes": 6703
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-59-500-normal-CvQUbgTv.woff2",
-          "rawBytes": 4620,
-          "gzipBytes": 4643
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-59-500-normal-G8454kzh.woff",
-          "rawBytes": 6088,
-          "gzipBytes": 6049
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-6-500-normal-Dzkngd-4.woff2",
-          "rawBytes": 18716,
-          "gzipBytes": 18744
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-6-500-normal-X9U3G_In.woff",
-          "rawBytes": 22736,
-          "gzipBytes": 22745
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-60-500-normal-n9Hwqe_m.woff2",
-          "rawBytes": 10784,
-          "gzipBytes": 10807
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-60-500-normal-wkJELOxS.woff",
-          "rawBytes": 12876,
-          "gzipBytes": 12849
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-61-500-normal-Bc1K9Id8.woff2",
-          "rawBytes": 10680,
-          "gzipBytes": 10703
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-61-500-normal-UJp-a96y.woff",
-          "rawBytes": 12744,
-          "gzipBytes": 12718
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-62-500-normal-BOE41vQY.woff",
-          "rawBytes": 11964,
-          "gzipBytes": 11930
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-62-500-normal-BVza2iI9.woff2",
-          "rawBytes": 9904,
-          "gzipBytes": 9927
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-63-500-normal-ULVxvkgm.woff",
-          "rawBytes": 10920,
-          "gzipBytes": 10882
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-63-500-normal-xwGhxXxe.woff2",
-          "rawBytes": 9040,
-          "gzipBytes": 9063
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-64-500-normal-BC74byhV.woff",
-          "rawBytes": 13636,
-          "gzipBytes": 13599
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-64-500-normal-CNE2B-fm.woff2",
-          "rawBytes": 11392,
-          "gzipBytes": 11415
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-65-500-normal-BTDiX0zz.woff2",
-          "rawBytes": 10644,
-          "gzipBytes": 10667
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-65-500-normal-DAX2h1l8.woff",
-          "rawBytes": 12856,
-          "gzipBytes": 12821
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-66-500-normal-CLxVpw6r.woff2",
-          "rawBytes": 9428,
-          "gzipBytes": 9451
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-66-500-normal-cszwUQIT.woff",
-          "rawBytes": 11372,
-          "gzipBytes": 11343
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-67-500-normal-Bym7AaCV.woff2",
-          "rawBytes": 9264,
-          "gzipBytes": 9287
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-67-500-normal-woOnhsj5.woff",
-          "rawBytes": 11280,
-          "gzipBytes": 11247
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-68-500-normal-BFduLpua.woff2",
-          "rawBytes": 10532,
-          "gzipBytes": 10555
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-68-500-normal-C-3Pugjc.woff",
-          "rawBytes": 12608,
-          "gzipBytes": 12574
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-69-500-normal-DhmIHuTQ.woff2",
-          "rawBytes": 10024,
-          "gzipBytes": 10047
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-69-500-normal-jJkjsdZd.woff",
-          "rawBytes": 12156,
-          "gzipBytes": 12117
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-7-500-normal-Bg93F7kB.woff",
-          "rawBytes": 24780,
-          "gzipBytes": 24783
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-7-500-normal-DW82qDlD.woff2",
-          "rawBytes": 20508,
-          "gzipBytes": 20536
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-70-500-normal-DKPm5_JE.woff2",
-          "rawBytes": 9876,
-          "gzipBytes": 9899
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-70-500-normal-vUhXdWdD.woff",
-          "rawBytes": 11896,
-          "gzipBytes": 11868
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-71-500-normal-BSpM0qu0.woff",
-          "rawBytes": 11308,
-          "gzipBytes": 11269
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-71-500-normal-cAJRICYx.woff2",
-          "rawBytes": 9300,
-          "gzipBytes": 9323
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-72-500-normal-Clmcq5wA.woff",
-          "rawBytes": 13164,
-          "gzipBytes": 13130
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-72-500-normal-CPpw8Rk2.woff2",
-          "rawBytes": 11020,
-          "gzipBytes": 11043
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-73-500-normal-B-4NIKt2.woff2",
-          "rawBytes": 9888,
-          "gzipBytes": 9911
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-73-500-normal-BN7GSzNx.woff",
-          "rawBytes": 11876,
-          "gzipBytes": 11840
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-74-500-normal-CzvvRdnj.woff",
-          "rawBytes": 11112,
-          "gzipBytes": 11084
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-74-500-normal-DE1RzNNr.woff2",
-          "rawBytes": 9104,
-          "gzipBytes": 9127
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-75-500-normal-BEpDCEuu.woff2",
-          "rawBytes": 9460,
-          "gzipBytes": 9483
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-75-500-normal-DY_WQn7n.woff",
-          "rawBytes": 11428,
-          "gzipBytes": 11396
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-76-500-normal-BYOEEkgt.woff2",
-          "rawBytes": 9368,
-          "gzipBytes": 9391
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-76-500-normal-D7zoGQkq.woff",
-          "rawBytes": 11388,
-          "gzipBytes": 11363
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-77-500-normal-5VEtu6G_.woff",
-          "rawBytes": 12152,
-          "gzipBytes": 12111
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-77-500-normal-BM1-rRcv.woff2",
-          "rawBytes": 10048,
-          "gzipBytes": 10071
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-78-500-normal-BhPouapT.woff",
-          "rawBytes": 12500,
-          "gzipBytes": 12470
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-78-500-normal-D7kp2uCr.woff2",
-          "rawBytes": 10436,
-          "gzipBytes": 10459
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-79-500-normal-BDEIGhaE.woff",
-          "rawBytes": 12112,
-          "gzipBytes": 12086
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-79-500-normal-CQy8HSvF.woff2",
-          "rawBytes": 9972,
-          "gzipBytes": 9995
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-8-500-normal-BWsQRRDk.woff2",
-          "rawBytes": 18596,
-          "gzipBytes": 18624
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-8-500-normal-k4zGTKiV.woff",
-          "rawBytes": 22368,
-          "gzipBytes": 22368
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-80-500-normal-GbtKa7Ie.woff",
-          "rawBytes": 11480,
-          "gzipBytes": 11442
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-80-500-normal-THUTtjoD.woff2",
-          "rawBytes": 9464,
-          "gzipBytes": 9487
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-81-500-normal-BkdDimBk.woff2",
-          "rawBytes": 9068,
-          "gzipBytes": 9091
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-81-500-normal-BS6Q46z2.woff",
-          "rawBytes": 11108,
-          "gzipBytes": 11081
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-82-500-normal-BK9YtqHX.woff2",
-          "rawBytes": 9756,
-          "gzipBytes": 9779
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-82-500-normal-WQkbPjJS.woff",
-          "rawBytes": 11984,
-          "gzipBytes": 11942
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-83-500-normal-BIvQ23_n.woff2",
-          "rawBytes": 9876,
-          "gzipBytes": 9899
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-83-500-normal-l6xf10ZG.woff",
-          "rawBytes": 11988,
-          "gzipBytes": 11964
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-84-500-normal-BCOKBgSE.woff",
-          "rawBytes": 11216,
-          "gzipBytes": 11189
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-84-500-normal-BK8uDVdV.woff2",
-          "rawBytes": 9140,
-          "gzipBytes": 9163
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-85-500-normal-DgNbyEzs.woff2",
-          "rawBytes": 8692,
-          "gzipBytes": 8715
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-85-500-normal-DhZC5IYL.woff",
-          "rawBytes": 10708,
-          "gzipBytes": 10673
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-86-500-normal-CaJdWx6B.woff2",
-          "rawBytes": 8716,
-          "gzipBytes": 8739
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-86-500-normal-CJibAU5C.woff",
-          "rawBytes": 10648,
-          "gzipBytes": 10612
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-87-500-normal-B579noex.woff2",
-          "rawBytes": 9780,
-          "gzipBytes": 9803
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-87-500-normal-DNTYr9NK.woff",
-          "rawBytes": 11776,
-          "gzipBytes": 11738
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-88-500-normal-CrpC1jM6.woff",
-          "rawBytes": 11084,
-          "gzipBytes": 11044
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-88-500-normal-h3koZogD.woff2",
-          "rawBytes": 8992,
-          "gzipBytes": 9015
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-89-500-normal-DrCHtAKF.woff2",
-          "rawBytes": 9268,
-          "gzipBytes": 9291
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-89-500-normal-DWWZP5XW.woff",
-          "rawBytes": 11248,
-          "gzipBytes": 11215
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-9-500-normal-ftdqwNJY.woff",
-          "rawBytes": 20736,
-          "gzipBytes": 20744
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-9-500-normal-Lgbx3ft_.woff2",
-          "rawBytes": 17308,
-          "gzipBytes": 17336
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-90-500-normal-BOs9mzoF.woff2",
-          "rawBytes": 9840,
-          "gzipBytes": 9863
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-90-500-normal-CQWGwBBS.woff",
-          "rawBytes": 11884,
-          "gzipBytes": 11848
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-91-500-normal-BcoqS9Ra.woff2",
-          "rawBytes": 9660,
-          "gzipBytes": 9683
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-91-500-normal-BjNZGlpE.woff",
-          "rawBytes": 11752,
-          "gzipBytes": 11719
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-92-500-normal-BQdrgVYZ.woff",
-          "rawBytes": 11032,
-          "gzipBytes": 10996
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-92-500-normal-mFm0gifM.woff2",
-          "rawBytes": 9060,
-          "gzipBytes": 9083
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-93-500-normal-BV1tL5bI.woff2",
-          "rawBytes": 9316,
-          "gzipBytes": 9339
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-93-500-normal-cqa2WocW.woff",
-          "rawBytes": 11380,
-          "gzipBytes": 11355
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-94-500-normal-BashDHkI.woff2",
-          "rawBytes": 9788,
-          "gzipBytes": 9811
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-94-500-normal-DRj7IpJ3.woff",
-          "rawBytes": 11792,
-          "gzipBytes": 11760
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-95-500-normal-CBd-_h-b.woff",
-          "rawBytes": 10988,
-          "gzipBytes": 10969
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-95-500-normal-CPpay3lm.woff2",
-          "rawBytes": 8996,
-          "gzipBytes": 9019
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-96-500-normal-Djsuuc0i.woff",
-          "rawBytes": 11192,
-          "gzipBytes": 11158
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-96-500-normal-DKIymfXw.woff2",
-          "rawBytes": 9164,
-          "gzipBytes": 9187
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-97-500-normal-B6aA7s-N.woff2",
-          "rawBytes": 8752,
-          "gzipBytes": 8775
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-97-500-normal-Bisz-wrA.woff",
-          "rawBytes": 10756,
-          "gzipBytes": 10714
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-98-500-normal-BJX_Pd-C.woff2",
-          "rawBytes": 9712,
-          "gzipBytes": 9735
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-98-500-normal-CtqHmyb8.woff",
-          "rawBytes": 11852,
-          "gzipBytes": 11816
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-99-500-normal-Bdkl8RTu.woff2",
-          "rawBytes": 9816,
-          "gzipBytes": 9839
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-99-500-normal-ilDrQwyS.woff",
-          "rawBytes": 11936,
-          "gzipBytes": 11903
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-cyrillic-500-normal-5Dinq4Fb.woff2",
-          "rawBytes": 4700,
-          "gzipBytes": 4723
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-cyrillic-500-normal-RUznZfXM.woff",
-          "rawBytes": 6124,
-          "gzipBytes": 6086
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-latin-500-normal-BIfs0Bhs.woff",
-          "rawBytes": 12432,
-          "gzipBytes": 12399
-        },
-        {
-          "path": "assets/zen-kaku-gothic-new-latin-500-normal-Dfjj7AIU.woff2",
-          "rawBytes": 9588,
-          "gzipBytes": 9611
-        },
-        {
-          "path": "icon.svg",
-          "rawBytes": 1127,
-          "gzipBytes": 452
-        },
-        {
           "path": "index.html",
-          "rawBytes": 699,
-          "gzipBytes": 404
+          "rawBytes": 874,
+          "gzipBytes": 465
+        },
+        {
+          "path": "kata-favicon-light.svg",
+          "rawBytes": 490,
+          "gzipBytes": 307
+        },
+        {
+          "path": "kata-favicon.svg",
+          "rawBytes": 490,
+          "gzipBytes": 308
+        },
+        {
+          "path": "kata-icon-light.svg",
+          "rawBytes": 898,
+          "gzipBytes": 413
+        },
+        {
+          "path": "kata-icon.svg",
+          "rawBytes": 898,
+          "gzipBytes": 415
         },
         {
           "path": "manifest.webmanifest",
-          "rawBytes": 786,
+          "rawBytes": 791,
           "gzipBytes": 417
         },
         {
-          "path": "mask-icon.svg",
-          "rawBytes": 226,
-          "gzipBytes": 192
-        },
-        {
           "path": "samples/latest-profile.json",
-          "rawBytes": 90800,
-          "gzipBytes": 12942
+          "rawBytes": 17161,
+          "gzipBytes": 2947
         },
         {
           "path": "sw.js",
-          "rawBytes": 1716,
-          "gzipBytes": 842
+          "rawBytes": 1879,
+          "gzipBytes": 907
         },
         {
           "path": "workbox-8c29f6e4.js",
@@ -1409,9 +179,14 @@
         "gzipBytes": 5564
       },
       {
-        "path": "assets/index-B8_85NTQ.js",
-        "rawBytes": 46213,
-        "gzipBytes": 16945
+        "path": "assets/index-3pxZ8k4h.js",
+        "rawBytes": 61135,
+        "gzipBytes": 21420
+      },
+      {
+        "path": "assets/index-C1GVT9U6.css",
+        "rawBytes": 13286,
+        "gzipBytes": 3252
       },
       {
         "path": "assets/index-CQw9CwB_.js",
@@ -1424,54 +199,9 @@
         "gzipBytes": 32336
       },
       {
-        "path": "assets/index-vcNfDUt5.css",
-        "rawBytes": 163061,
-        "gzipBytes": 69183
-      },
-      {
         "path": "assets/ini-CjiWLe_B.js",
         "rawBytes": 3459,
         "gzipBytes": 1636
-      },
-      {
-        "path": "assets/manrope-cyrillic-400-normal-BMzJvInZ.woff2",
-        "rawBytes": 7840,
-        "gzipBytes": 7863
-      },
-      {
-        "path": "assets/manrope-cyrillic-400-normal-Dvx59UGC.woff",
-        "rawBytes": 10032,
-        "gzipBytes": 10028
-      },
-      {
-        "path": "assets/manrope-cyrillic-600-normal-DvRl3Mj-.woff2",
-        "rawBytes": 7872,
-        "gzipBytes": 7895
-      },
-      {
-        "path": "assets/manrope-cyrillic-600-normal-It4mZcQk.woff",
-        "rawBytes": 10060,
-        "gzipBytes": 10048
-      },
-      {
-        "path": "assets/manrope-greek-400-normal-CM4qok81.woff2",
-        "rawBytes": 5280,
-        "gzipBytes": 5303
-      },
-      {
-        "path": "assets/manrope-greek-400-normal-DuX9RsAR.woff",
-        "rawBytes": 6772,
-        "gzipBytes": 6764
-      },
-      {
-        "path": "assets/manrope-greek-600-normal-BoRV6lzK.woff2",
-        "rawBytes": 5232,
-        "gzipBytes": 5255
-      },
-      {
-        "path": "assets/manrope-greek-600-normal-CF2i9ZRY.woff",
-        "rawBytes": 6740,
-        "gzipBytes": 6738
       },
       {
         "path": "assets/manrope-latin-400-normal-8tf8FM3T.woff",
@@ -1492,46 +222,6 @@
         "path": "assets/manrope-latin-600-normal-BqgrALkZ.woff",
         "rawBytes": 18384,
         "gzipBytes": 18378
-      },
-      {
-        "path": "assets/manrope-latin-ext-400-normal-C-X6QNXX.woff",
-        "rawBytes": 11316,
-        "gzipBytes": 11316
-      },
-      {
-        "path": "assets/manrope-latin-ext-400-normal-CMDvPJRp.woff2",
-        "rawBytes": 8292,
-        "gzipBytes": 8315
-      },
-      {
-        "path": "assets/manrope-latin-ext-600-normal-u5Pl7hTU.woff",
-        "rawBytes": 11248,
-        "gzipBytes": 11245
-      },
-      {
-        "path": "assets/manrope-latin-ext-600-normal-_gBojHdJ.woff2",
-        "rawBytes": 8304,
-        "gzipBytes": 8327
-      },
-      {
-        "path": "assets/manrope-vietnamese-400-normal-D7E_mLGF.woff",
-        "rawBytes": 6108,
-        "gzipBytes": 6094
-      },
-      {
-        "path": "assets/manrope-vietnamese-400-normal-DHb3EETF.woff2",
-        "rawBytes": 4464,
-        "gzipBytes": 4487
-      },
-      {
-        "path": "assets/manrope-vietnamese-600-normal-C1J5PCl_.woff2",
-        "rawBytes": 4468,
-        "gzipBytes": 4491
-      },
-      {
-        "path": "assets/manrope-vietnamese-600-normal-lA7a_7Ok.woff",
-        "rawBytes": 6140,
-        "gzipBytes": 6120
       },
       {
         "path": "assets/parse.worker-DvxJecFY.js",
@@ -1559,1199 +249,49 @@
         "gzipBytes": 13030
       },
       {
-        "path": "assets/syncopate-latin-ext-400-normal-CP6VANWM.woff",
-        "rawBytes": 8084,
-        "gzipBytes": 8094
-      },
-      {
-        "path": "assets/syncopate-latin-ext-400-normal-DVROQn0L.woff2",
-        "rawBytes": 17992,
-        "gzipBytes": 18020
-      },
-      {
-        "path": "assets/syncopate-latin-ext-700-normal-bvnP3szv.woff",
-        "rawBytes": 7784,
-        "gzipBytes": 7781
-      },
-      {
-        "path": "assets/syncopate-latin-ext-700-normal-DIzsNXDw.woff2",
-        "rawBytes": 10336,
-        "gzipBytes": 10359
-      },
-      {
         "path": "assets/workbox-window.prod.es5-BIl4cyR9.js",
         "rawBytes": 5761,
         "gzipBytes": 2366
       },
       {
-        "path": "assets/zen-kaku-gothic-new-10-500-normal-BfUTfL9B.woff",
-        "rawBytes": 23636,
-        "gzipBytes": 23641
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-10-500-normal-DQ6GpuCq.woff2",
-        "rawBytes": 19624,
-        "gzipBytes": 19652
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-100-500-normal-CsM0y_UO.woff2",
-        "rawBytes": 10044,
-        "gzipBytes": 10067
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-100-500-normal-DLjcqT10.woff",
-        "rawBytes": 12160,
-        "gzipBytes": 12126
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-101-500-normal-CT6arkO4.woff2",
-        "rawBytes": 8280,
-        "gzipBytes": 8303
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-101-500-normal-D1YVK9sk.woff",
-        "rawBytes": 10192,
-        "gzipBytes": 10153
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-102-500-normal-Dxg-MZ97.woff",
-        "rawBytes": 11000,
-        "gzipBytes": 10962
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-102-500-normal-jWnHTfRO.woff2",
-        "rawBytes": 9072,
-        "gzipBytes": 9095
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-103-500-normal-BVVjGmdu.woff2",
-        "rawBytes": 9296,
-        "gzipBytes": 9319
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-103-500-normal-D9X9hh91.woff",
-        "rawBytes": 11240,
-        "gzipBytes": 11204
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-104-500-normal-C_zBQL6f.woff2",
-        "rawBytes": 9252,
-        "gzipBytes": 9275
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-104-500-normal-DUgg8BdV.woff",
-        "rawBytes": 11264,
-        "gzipBytes": 11226
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-105-500-normal-B7iBGipw.woff2",
-        "rawBytes": 9268,
-        "gzipBytes": 9291
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-105-500-normal-BAQW4SxD.woff",
-        "rawBytes": 11348,
-        "gzipBytes": 11316
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-106-500-normal-DM5hcIpt.woff",
-        "rawBytes": 12192,
-        "gzipBytes": 12162
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-106-500-normal-QYtLewrG.woff2",
-        "rawBytes": 10064,
-        "gzipBytes": 10087
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-107-500-normal-CV1dQ6_Q.woff2",
-        "rawBytes": 8816,
-        "gzipBytes": 8839
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-107-500-normal-DPOSDUlk.woff",
-        "rawBytes": 10788,
-        "gzipBytes": 10750
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-108-500-normal-b1fKIKgx.woff2",
-        "rawBytes": 9876,
-        "gzipBytes": 9899
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-108-500-normal-vSkeEJC6.woff",
-        "rawBytes": 12000,
-        "gzipBytes": 11964
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-109-500-normal-B8dDxjXJ.woff2",
-        "rawBytes": 8412,
-        "gzipBytes": 8435
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-109-500-normal-Dv5KWfjC.woff",
-        "rawBytes": 10236,
-        "gzipBytes": 10201
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-11-500-normal-Bpf3NC_S.woff2",
-        "rawBytes": 19432,
-        "gzipBytes": 19460
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-11-500-normal-sAsrtvKB.woff",
-        "rawBytes": 23460,
-        "gzipBytes": 23467
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-110-500-normal-C1x9BJBk.woff",
-        "rawBytes": 10076,
-        "gzipBytes": 10037
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-110-500-normal-Cri6du1Z.woff2",
-        "rawBytes": 8132,
-        "gzipBytes": 8155
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-111-500-normal-CrXizbbk.woff2",
-        "rawBytes": 9072,
-        "gzipBytes": 9095
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-111-500-normal-snVuW0-6.woff",
-        "rawBytes": 11196,
-        "gzipBytes": 11170
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-112-500-normal-D55g0QWq.woff",
-        "rawBytes": 10308,
-        "gzipBytes": 10272
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-112-500-normal-ZLSUlONm.woff2",
-        "rawBytes": 8356,
-        "gzipBytes": 8379
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-113-500-normal-C1KDzIFo.woff2",
-        "rawBytes": 7684,
-        "gzipBytes": 7707
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-113-500-normal-PLIvQkyP.woff",
-        "rawBytes": 9580,
-        "gzipBytes": 9558
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-114-500-normal-BkS7Nx7B.woff2",
-        "rawBytes": 7864,
-        "gzipBytes": 7887
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-114-500-normal-Dp6d4-a0.woff",
-        "rawBytes": 9596,
-        "gzipBytes": 9559
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-115-500-normal-BVm3Fvdv.woff2",
-        "rawBytes": 8212,
-        "gzipBytes": 8235
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-115-500-normal-tDQG94Aw.woff",
-        "rawBytes": 10072,
-        "gzipBytes": 10035
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-116-500-normal-CvQEMyXA.woff",
-        "rawBytes": 10172,
-        "gzipBytes": 10143
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-116-500-normal-DDphGczd.woff2",
-        "rawBytes": 8344,
-        "gzipBytes": 8367
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-117-500-normal-JC_7u2dv.woff2",
-        "rawBytes": 6152,
-        "gzipBytes": 6175
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-117-500-normal-QpZHLsGb.woff",
-        "rawBytes": 7796,
-        "gzipBytes": 7758
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-118-500-normal-BPvnosqn.woff",
-        "rawBytes": 8904,
-        "gzipBytes": 8888
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-118-500-normal-RslETQiE.woff2",
-        "rawBytes": 6812,
-        "gzipBytes": 6835
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-119-500-normal-BYioqAnc.woff2",
-        "rawBytes": 18352,
-        "gzipBytes": 18380
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-119-500-normal-DGFQ0G0O.woff",
-        "rawBytes": 22836,
-        "gzipBytes": 22774
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-12-500-normal-BeXJ2QEH.woff",
-        "rawBytes": 19432,
-        "gzipBytes": 19432
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-12-500-normal-ejRxsBx6.woff2",
-        "rawBytes": 15920,
-        "gzipBytes": 15943
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-13-500-normal-9FYTBLE2.woff",
-        "rawBytes": 19280,
-        "gzipBytes": 19281
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-13-500-normal-DzxE3OsG.woff2",
-        "rawBytes": 15988,
-        "gzipBytes": 16011
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-14-500-normal-B6B6O0z1.woff",
-        "rawBytes": 20460,
-        "gzipBytes": 20472
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-14-500-normal-DPxY7iE3.woff2",
-        "rawBytes": 16996,
-        "gzipBytes": 17024
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-15-500-normal-BbHX2MWs.woff",
-        "rawBytes": 23916,
-        "gzipBytes": 23923
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-15-500-normal-C9YIK0en.woff2",
-        "rawBytes": 20036,
-        "gzipBytes": 20064
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-16-500-normal-3U2wy_o2.woff",
-        "rawBytes": 19116,
-        "gzipBytes": 19124
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-16-500-normal-B413LXF6.woff2",
-        "rawBytes": 15928,
-        "gzipBytes": 15951
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-17-500-normal-BKR4V6uX.woff2",
-        "rawBytes": 18400,
-        "gzipBytes": 18428
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-17-500-normal-DZ5hNQv4.woff",
-        "rawBytes": 22280,
-        "gzipBytes": 22285
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-18-500-normal-Bw-eN-kp.woff2",
-        "rawBytes": 16860,
-        "gzipBytes": 16888
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-18-500-normal-C2pQA8h7.woff",
-        "rawBytes": 20156,
-        "gzipBytes": 20162
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-19-500-normal-DWGxmCLn.woff2",
-        "rawBytes": 18536,
-        "gzipBytes": 18564
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-19-500-normal-dWUgmgp_.woff",
-        "rawBytes": 22344,
-        "gzipBytes": 22353
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-20-500-normal-B-wEhWQV.woff2",
-        "rawBytes": 14900,
-        "gzipBytes": 14923
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-20-500-normal-Boj3DGxL.woff",
-        "rawBytes": 18120,
-        "gzipBytes": 18121
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-21-500-normal-BOdPB5MU.woff2",
-        "rawBytes": 17452,
-        "gzipBytes": 17480
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-21-500-normal-BOV8VG12.woff",
-        "rawBytes": 20940,
-        "gzipBytes": 20946
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-22-500-normal-AC-Jb9zV.woff2",
-        "rawBytes": 17228,
-        "gzipBytes": 17256
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-22-500-normal-eI1m6KFU.woff",
-        "rawBytes": 20736,
-        "gzipBytes": 20744
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-23-500-normal-c84D9HUi.woff2",
-        "rawBytes": 23620,
-        "gzipBytes": 23648
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-23-500-normal-D95Ayn2-.woff",
-        "rawBytes": 28316,
-        "gzipBytes": 28323
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-24-500-normal-CQZnPdP9.woff",
-        "rawBytes": 24716,
-        "gzipBytes": 24720
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-24-500-normal-Dk1BgFSL.woff2",
-        "rawBytes": 20624,
-        "gzipBytes": 20652
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-25-500-normal-gkghzOm8.woff",
-        "rawBytes": 23752,
-        "gzipBytes": 23749
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-25-500-normal-gmPTPWYs.woff2",
-        "rawBytes": 19636,
-        "gzipBytes": 19664
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-26-500-normal-CSy9tXlJ.woff",
-        "rawBytes": 17648,
-        "gzipBytes": 17656
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-26-500-normal-CVJYR5_Q.woff2",
-        "rawBytes": 14564,
-        "gzipBytes": 14587
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-27-500-normal-BHWonAaH.woff2",
-        "rawBytes": 13768,
-        "gzipBytes": 13791
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-27-500-normal-BKSOj4gC.woff",
-        "rawBytes": 16660,
-        "gzipBytes": 16645
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-28-500-normal-CsMoUf5t.woff",
-        "rawBytes": 21076,
-        "gzipBytes": 21083
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-28-500-normal-Dm2L6UxT.woff2",
-        "rawBytes": 17572,
-        "gzipBytes": 17600
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-29-500-normal-BTEtd_ef.woff2",
-        "rawBytes": 15080,
-        "gzipBytes": 15103
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-29-500-normal-TW4Sas-8.woff",
-        "rawBytes": 18000,
-        "gzipBytes": 18002
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-3-500-normal-43ZCjH0J.woff",
-        "rawBytes": 9620,
-        "gzipBytes": 9594
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-3-500-normal-BctPH16X.woff2",
-        "rawBytes": 7668,
-        "gzipBytes": 7691
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-30-500-normal-DggkbxfS.woff2",
-        "rawBytes": 19324,
-        "gzipBytes": 19352
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-30-500-normal-hH4I9jsu.woff",
-        "rawBytes": 23180,
-        "gzipBytes": 23182
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-31-500-normal-Do2HtApR.woff",
-        "rawBytes": 24248,
-        "gzipBytes": 24255
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-31-500-normal-YJIXaoHh.woff2",
-        "rawBytes": 20008,
-        "gzipBytes": 20036
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-32-500-normal-D-i1Feb3.woff2",
-        "rawBytes": 18164,
-        "gzipBytes": 18192
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-32-500-normal-LPhY_Fx1.woff",
-        "rawBytes": 22212,
-        "gzipBytes": 22216
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-33-500-normal-Bv62VtxF.woff",
-        "rawBytes": 17248,
-        "gzipBytes": 17235
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-33-500-normal-CXYD2mkV.woff2",
-        "rawBytes": 14088,
-        "gzipBytes": 14111
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-34-500-normal-Cedf2Htb.woff",
-        "rawBytes": 23876,
-        "gzipBytes": 23886
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-34-500-normal-Cnd0ACt2.woff2",
-        "rawBytes": 19908,
-        "gzipBytes": 19936
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-35-500-normal-DI7o71NT.woff",
-        "rawBytes": 21264,
-        "gzipBytes": 21272
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-35-500-normal-NKeNm87A.woff2",
-        "rawBytes": 17420,
-        "gzipBytes": 17448
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-36-500-normal-CzzCsSfE.woff2",
-        "rawBytes": 14224,
-        "gzipBytes": 14247
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-36-500-normal-kMB6w1DR.woff",
-        "rawBytes": 17508,
-        "gzipBytes": 17510
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-37-500-normal-nprGeJUG.woff",
-        "rawBytes": 21508,
-        "gzipBytes": 21516
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-37-500-normal-T5g4oMAb.woff2",
-        "rawBytes": 17844,
-        "gzipBytes": 17872
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-38-500-normal-B22d519O.woff2",
-        "rawBytes": 13692,
-        "gzipBytes": 13715
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-38-500-normal-CUVFBOJ3.woff",
-        "rawBytes": 16408,
-        "gzipBytes": 16388
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-39-500-normal-DD5PSTs6.woff",
-        "rawBytes": 24796,
-        "gzipBytes": 24799
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-39-500-normal-D_Y4HQRA.woff2",
-        "rawBytes": 20564,
-        "gzipBytes": 20592
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-40-500-normal-CyH3X6VM.woff2",
-        "rawBytes": 17024,
-        "gzipBytes": 17052
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-40-500-normal-ZwrTPSpp.woff",
-        "rawBytes": 20848,
-        "gzipBytes": 20856
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-41-500-normal-B-v97_mZ.woff",
-        "rawBytes": 22236,
-        "gzipBytes": 22235
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-41-500-normal-DqtdHL-0.woff2",
-        "rawBytes": 18564,
-        "gzipBytes": 18592
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-42-500-normal-BArvvuhy.woff2",
-        "rawBytes": 15120,
-        "gzipBytes": 15143
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-42-500-normal-D3MbQnYI.woff",
-        "rawBytes": 18536,
-        "gzipBytes": 18542
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-43-500-normal-BoUi5LKq.woff2",
-        "rawBytes": 14832,
-        "gzipBytes": 14855
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-43-500-normal-WJLXR095.woff",
-        "rawBytes": 17892,
-        "gzipBytes": 17898
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-44-500-normal-6JDauJmr.woff2",
-        "rawBytes": 16212,
-        "gzipBytes": 16235
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-44-500-normal-TuYcy67w.woff",
-        "rawBytes": 19552,
-        "gzipBytes": 19563
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-45-500-normal-BZxKlWMv.woff2",
-        "rawBytes": 12408,
-        "gzipBytes": 12431
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-45-500-normal-Cbgl9AvI.woff",
-        "rawBytes": 15140,
-        "gzipBytes": 15119
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-46-500-normal-BJboihzq.woff",
-        "rawBytes": 15024,
-        "gzipBytes": 15005
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-46-500-normal-Czvc-npF.woff2",
-        "rawBytes": 12128,
-        "gzipBytes": 12151
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-47-500-normal-BAX5pvu6.woff",
-        "rawBytes": 17496,
-        "gzipBytes": 17494
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-47-500-normal-jfCda3QO.woff2",
-        "rawBytes": 14364,
-        "gzipBytes": 14387
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-48-500-normal-Bz5XXpsc.woff",
-        "rawBytes": 18716,
-        "gzipBytes": 18719
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-48-500-normal-CisW2H3O.woff2",
-        "rawBytes": 15416,
-        "gzipBytes": 15439
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-49-500-normal-BqwmuuRE.woff",
-        "rawBytes": 17436,
-        "gzipBytes": 17431
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-49-500-normal-CNQ-uMD9.woff2",
-        "rawBytes": 14344,
-        "gzipBytes": 14367
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-5-500-normal-BiatFd13.woff2",
-        "rawBytes": 16092,
-        "gzipBytes": 16115
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-5-500-normal-fDz3aW7Q.woff",
-        "rawBytes": 19256,
-        "gzipBytes": 19258
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-50-500-normal-Bt3FXcKz.woff2",
-        "rawBytes": 6756,
-        "gzipBytes": 6779
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-50-500-normal-CIY27X_I.woff",
-        "rawBytes": 8508,
-        "gzipBytes": 8480
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-52-500-normal-CfqwMN0c.woff2",
-        "rawBytes": 9384,
-        "gzipBytes": 9407
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-52-500-normal-DUjjiyQp.woff",
-        "rawBytes": 11476,
-        "gzipBytes": 11438
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-53-500-normal-32uHewO2.woff",
-        "rawBytes": 6804,
-        "gzipBytes": 6767
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-53-500-normal-BSY-7RzD.woff2",
-        "rawBytes": 5588,
-        "gzipBytes": 5611
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-56-500-normal-dDCO-DNe.woff2",
-        "rawBytes": 4180,
-        "gzipBytes": 4203
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-56-500-normal-DZVMvw40.woff",
-        "rawBytes": 4800,
-        "gzipBytes": 4743
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-58-500-normal-C_uftcEV.woff",
-        "rawBytes": 8452,
-        "gzipBytes": 8405
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-58-500-normal-Dfc-4WMP.woff2",
-        "rawBytes": 6680,
-        "gzipBytes": 6703
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-59-500-normal-CvQUbgTv.woff2",
-        "rawBytes": 4620,
-        "gzipBytes": 4643
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-59-500-normal-G8454kzh.woff",
-        "rawBytes": 6088,
-        "gzipBytes": 6049
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-6-500-normal-Dzkngd-4.woff2",
-        "rawBytes": 18716,
-        "gzipBytes": 18744
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-6-500-normal-X9U3G_In.woff",
-        "rawBytes": 22736,
-        "gzipBytes": 22745
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-60-500-normal-n9Hwqe_m.woff2",
-        "rawBytes": 10784,
-        "gzipBytes": 10807
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-60-500-normal-wkJELOxS.woff",
-        "rawBytes": 12876,
-        "gzipBytes": 12849
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-61-500-normal-Bc1K9Id8.woff2",
-        "rawBytes": 10680,
-        "gzipBytes": 10703
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-61-500-normal-UJp-a96y.woff",
-        "rawBytes": 12744,
-        "gzipBytes": 12718
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-62-500-normal-BOE41vQY.woff",
-        "rawBytes": 11964,
-        "gzipBytes": 11930
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-62-500-normal-BVza2iI9.woff2",
-        "rawBytes": 9904,
-        "gzipBytes": 9927
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-63-500-normal-ULVxvkgm.woff",
-        "rawBytes": 10920,
-        "gzipBytes": 10882
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-63-500-normal-xwGhxXxe.woff2",
-        "rawBytes": 9040,
-        "gzipBytes": 9063
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-64-500-normal-BC74byhV.woff",
-        "rawBytes": 13636,
-        "gzipBytes": 13599
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-64-500-normal-CNE2B-fm.woff2",
-        "rawBytes": 11392,
-        "gzipBytes": 11415
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-65-500-normal-BTDiX0zz.woff2",
-        "rawBytes": 10644,
-        "gzipBytes": 10667
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-65-500-normal-DAX2h1l8.woff",
-        "rawBytes": 12856,
-        "gzipBytes": 12821
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-66-500-normal-CLxVpw6r.woff2",
-        "rawBytes": 9428,
-        "gzipBytes": 9451
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-66-500-normal-cszwUQIT.woff",
-        "rawBytes": 11372,
-        "gzipBytes": 11343
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-67-500-normal-Bym7AaCV.woff2",
-        "rawBytes": 9264,
-        "gzipBytes": 9287
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-67-500-normal-woOnhsj5.woff",
-        "rawBytes": 11280,
-        "gzipBytes": 11247
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-68-500-normal-BFduLpua.woff2",
-        "rawBytes": 10532,
-        "gzipBytes": 10555
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-68-500-normal-C-3Pugjc.woff",
-        "rawBytes": 12608,
-        "gzipBytes": 12574
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-69-500-normal-DhmIHuTQ.woff2",
-        "rawBytes": 10024,
-        "gzipBytes": 10047
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-69-500-normal-jJkjsdZd.woff",
-        "rawBytes": 12156,
-        "gzipBytes": 12117
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-7-500-normal-Bg93F7kB.woff",
-        "rawBytes": 24780,
-        "gzipBytes": 24783
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-7-500-normal-DW82qDlD.woff2",
-        "rawBytes": 20508,
-        "gzipBytes": 20536
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-70-500-normal-DKPm5_JE.woff2",
-        "rawBytes": 9876,
-        "gzipBytes": 9899
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-70-500-normal-vUhXdWdD.woff",
-        "rawBytes": 11896,
-        "gzipBytes": 11868
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-71-500-normal-BSpM0qu0.woff",
-        "rawBytes": 11308,
-        "gzipBytes": 11269
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-71-500-normal-cAJRICYx.woff2",
-        "rawBytes": 9300,
-        "gzipBytes": 9323
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-72-500-normal-Clmcq5wA.woff",
-        "rawBytes": 13164,
-        "gzipBytes": 13130
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-72-500-normal-CPpw8Rk2.woff2",
-        "rawBytes": 11020,
-        "gzipBytes": 11043
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-73-500-normal-B-4NIKt2.woff2",
-        "rawBytes": 9888,
-        "gzipBytes": 9911
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-73-500-normal-BN7GSzNx.woff",
-        "rawBytes": 11876,
-        "gzipBytes": 11840
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-74-500-normal-CzvvRdnj.woff",
-        "rawBytes": 11112,
-        "gzipBytes": 11084
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-74-500-normal-DE1RzNNr.woff2",
-        "rawBytes": 9104,
-        "gzipBytes": 9127
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-75-500-normal-BEpDCEuu.woff2",
-        "rawBytes": 9460,
-        "gzipBytes": 9483
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-75-500-normal-DY_WQn7n.woff",
-        "rawBytes": 11428,
-        "gzipBytes": 11396
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-76-500-normal-BYOEEkgt.woff2",
-        "rawBytes": 9368,
-        "gzipBytes": 9391
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-76-500-normal-D7zoGQkq.woff",
-        "rawBytes": 11388,
-        "gzipBytes": 11363
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-77-500-normal-5VEtu6G_.woff",
-        "rawBytes": 12152,
-        "gzipBytes": 12111
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-77-500-normal-BM1-rRcv.woff2",
-        "rawBytes": 10048,
-        "gzipBytes": 10071
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-78-500-normal-BhPouapT.woff",
-        "rawBytes": 12500,
-        "gzipBytes": 12470
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-78-500-normal-D7kp2uCr.woff2",
-        "rawBytes": 10436,
-        "gzipBytes": 10459
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-79-500-normal-BDEIGhaE.woff",
-        "rawBytes": 12112,
-        "gzipBytes": 12086
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-79-500-normal-CQy8HSvF.woff2",
-        "rawBytes": 9972,
-        "gzipBytes": 9995
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-8-500-normal-BWsQRRDk.woff2",
-        "rawBytes": 18596,
-        "gzipBytes": 18624
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-8-500-normal-k4zGTKiV.woff",
-        "rawBytes": 22368,
-        "gzipBytes": 22368
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-80-500-normal-GbtKa7Ie.woff",
-        "rawBytes": 11480,
-        "gzipBytes": 11442
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-80-500-normal-THUTtjoD.woff2",
-        "rawBytes": 9464,
-        "gzipBytes": 9487
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-81-500-normal-BkdDimBk.woff2",
-        "rawBytes": 9068,
-        "gzipBytes": 9091
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-81-500-normal-BS6Q46z2.woff",
-        "rawBytes": 11108,
-        "gzipBytes": 11081
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-82-500-normal-BK9YtqHX.woff2",
-        "rawBytes": 9756,
-        "gzipBytes": 9779
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-82-500-normal-WQkbPjJS.woff",
-        "rawBytes": 11984,
-        "gzipBytes": 11942
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-83-500-normal-BIvQ23_n.woff2",
-        "rawBytes": 9876,
-        "gzipBytes": 9899
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-83-500-normal-l6xf10ZG.woff",
-        "rawBytes": 11988,
-        "gzipBytes": 11964
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-84-500-normal-BCOKBgSE.woff",
-        "rawBytes": 11216,
-        "gzipBytes": 11189
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-84-500-normal-BK8uDVdV.woff2",
-        "rawBytes": 9140,
-        "gzipBytes": 9163
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-85-500-normal-DgNbyEzs.woff2",
-        "rawBytes": 8692,
-        "gzipBytes": 8715
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-85-500-normal-DhZC5IYL.woff",
-        "rawBytes": 10708,
-        "gzipBytes": 10673
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-86-500-normal-CaJdWx6B.woff2",
-        "rawBytes": 8716,
-        "gzipBytes": 8739
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-86-500-normal-CJibAU5C.woff",
-        "rawBytes": 10648,
-        "gzipBytes": 10612
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-87-500-normal-B579noex.woff2",
-        "rawBytes": 9780,
-        "gzipBytes": 9803
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-87-500-normal-DNTYr9NK.woff",
-        "rawBytes": 11776,
-        "gzipBytes": 11738
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-88-500-normal-CrpC1jM6.woff",
-        "rawBytes": 11084,
-        "gzipBytes": 11044
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-88-500-normal-h3koZogD.woff2",
-        "rawBytes": 8992,
-        "gzipBytes": 9015
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-89-500-normal-DrCHtAKF.woff2",
-        "rawBytes": 9268,
-        "gzipBytes": 9291
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-89-500-normal-DWWZP5XW.woff",
-        "rawBytes": 11248,
-        "gzipBytes": 11215
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-9-500-normal-ftdqwNJY.woff",
-        "rawBytes": 20736,
-        "gzipBytes": 20744
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-9-500-normal-Lgbx3ft_.woff2",
-        "rawBytes": 17308,
-        "gzipBytes": 17336
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-90-500-normal-BOs9mzoF.woff2",
-        "rawBytes": 9840,
-        "gzipBytes": 9863
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-90-500-normal-CQWGwBBS.woff",
-        "rawBytes": 11884,
-        "gzipBytes": 11848
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-91-500-normal-BcoqS9Ra.woff2",
-        "rawBytes": 9660,
-        "gzipBytes": 9683
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-91-500-normal-BjNZGlpE.woff",
-        "rawBytes": 11752,
-        "gzipBytes": 11719
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-92-500-normal-BQdrgVYZ.woff",
-        "rawBytes": 11032,
-        "gzipBytes": 10996
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-92-500-normal-mFm0gifM.woff2",
-        "rawBytes": 9060,
-        "gzipBytes": 9083
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-93-500-normal-BV1tL5bI.woff2",
-        "rawBytes": 9316,
-        "gzipBytes": 9339
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-93-500-normal-cqa2WocW.woff",
-        "rawBytes": 11380,
-        "gzipBytes": 11355
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-94-500-normal-BashDHkI.woff2",
-        "rawBytes": 9788,
-        "gzipBytes": 9811
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-94-500-normal-DRj7IpJ3.woff",
-        "rawBytes": 11792,
-        "gzipBytes": 11760
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-95-500-normal-CBd-_h-b.woff",
-        "rawBytes": 10988,
-        "gzipBytes": 10969
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-95-500-normal-CPpay3lm.woff2",
-        "rawBytes": 8996,
-        "gzipBytes": 9019
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-96-500-normal-Djsuuc0i.woff",
-        "rawBytes": 11192,
-        "gzipBytes": 11158
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-96-500-normal-DKIymfXw.woff2",
-        "rawBytes": 9164,
-        "gzipBytes": 9187
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-97-500-normal-B6aA7s-N.woff2",
-        "rawBytes": 8752,
-        "gzipBytes": 8775
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-97-500-normal-Bisz-wrA.woff",
-        "rawBytes": 10756,
-        "gzipBytes": 10714
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-98-500-normal-BJX_Pd-C.woff2",
-        "rawBytes": 9712,
-        "gzipBytes": 9735
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-98-500-normal-CtqHmyb8.woff",
-        "rawBytes": 11852,
-        "gzipBytes": 11816
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-99-500-normal-Bdkl8RTu.woff2",
-        "rawBytes": 9816,
-        "gzipBytes": 9839
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-99-500-normal-ilDrQwyS.woff",
-        "rawBytes": 11936,
-        "gzipBytes": 11903
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-cyrillic-500-normal-5Dinq4Fb.woff2",
-        "rawBytes": 4700,
-        "gzipBytes": 4723
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-cyrillic-500-normal-RUznZfXM.woff",
-        "rawBytes": 6124,
-        "gzipBytes": 6086
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-latin-500-normal-BIfs0Bhs.woff",
-        "rawBytes": 12432,
-        "gzipBytes": 12399
-      },
-      {
-        "path": "assets/zen-kaku-gothic-new-latin-500-normal-Dfjj7AIU.woff2",
-        "rawBytes": 9588,
-        "gzipBytes": 9611
-      },
-      {
-        "path": "icon.svg",
-        "rawBytes": 1127,
-        "gzipBytes": 452
-      },
-      {
         "path": "index.html",
-        "rawBytes": 699,
-        "gzipBytes": 404
+        "rawBytes": 874,
+        "gzipBytes": 465
+      },
+      {
+        "path": "kata-favicon-light.svg",
+        "rawBytes": 490,
+        "gzipBytes": 307
+      },
+      {
+        "path": "kata-favicon.svg",
+        "rawBytes": 490,
+        "gzipBytes": 308
+      },
+      {
+        "path": "kata-icon-light.svg",
+        "rawBytes": 898,
+        "gzipBytes": 413
+      },
+      {
+        "path": "kata-icon.svg",
+        "rawBytes": 898,
+        "gzipBytes": 415
       },
       {
         "path": "manifest.webmanifest",
-        "rawBytes": 786,
+        "rawBytes": 791,
         "gzipBytes": 417
       },
       {
-        "path": "mask-icon.svg",
-        "rawBytes": 226,
-        "gzipBytes": 192
-      },
-      {
         "path": "samples/latest-profile.json",
-        "rawBytes": 90800,
-        "gzipBytes": 12942
+        "rawBytes": 17161,
+        "gzipBytes": 2947
       },
       {
         "path": "sw.js",
-        "rawBytes": 1716,
-        "gzipBytes": 842
+        "rawBytes": 1879,
+        "gzipBytes": 907
       },
       {
         "path": "workbox-8c29f6e4.js",
@@ -2763,10 +303,10 @@
   "app": {
     "startup": {
       "ready": true,
-      "initialReadyMs": 158,
+      "initialReadyMs": 62.8,
       "currentView": "tree",
-      "parseMs": 7.3,
-      "parseNodeCount": 2492,
+      "parseMs": 1.8,
+      "parseNodeCount": 531,
       "latestViewSwitchMs": null,
       "latestTreeToggleMs": null,
       "viewSwitchSamples": [],
@@ -2776,45 +316,48 @@
         "maxDuration": 0,
         "totalDuration": 0
       },
-      "lastUpdatedAt": 1774601286136
+      "lastUpdatedAt": 1774679586336
     },
     "navigation": {
-      "domContentLoadedMs": 18.399999998509884,
-      "loadEventMs": 60.600000001490116
+      "domContentLoadedMs": 32.599999994039536,
+      "loadEventMs": 79.5
     },
     "memory": {
-      "usedJSHeapSize": 2903115,
-      "totalJSHeapSize": 6461339,
+      "usedJSHeapSize": 1946201,
+      "totalJSHeapSize": 3241485,
       "jsHeapSizeLimit": 4294967296
     },
     "interactions": {
       "rawView": {
         "ready": true,
-        "initialReadyMs": 158,
-        "currentView": "tree",
-        "parseMs": 7.3,
-        "parseNodeCount": 2492,
-        "latestViewSwitchMs": null,
+        "initialReadyMs": 62.8,
+        "currentView": "raw",
+        "parseMs": 1.8,
+        "parseNodeCount": 531,
+        "latestViewSwitchMs": 2.5,
         "latestTreeToggleMs": null,
-        "viewSwitchSamples": [],
+        "viewSwitchSamples": [
+          2.5
+        ],
         "treeToggleSamples": [],
         "longTasks": {
           "count": 0,
           "maxDuration": 0,
           "totalDuration": 0
         },
-        "lastUpdatedAt": 1774601286136
+        "lastUpdatedAt": 1774679586347
       },
       "cardsView": {
         "ready": true,
-        "initialReadyMs": 158,
-        "currentView": "raw",
-        "parseMs": 7.3,
-        "parseNodeCount": 2492,
-        "latestViewSwitchMs": 3.3,
+        "initialReadyMs": 62.8,
+        "currentView": "cards",
+        "parseMs": 1.8,
+        "parseNodeCount": 531,
+        "latestViewSwitchMs": 1.2,
         "latestTreeToggleMs": null,
         "viewSwitchSamples": [
-          3.3
+          2.5,
+          1.2
         ],
         "treeToggleSamples": [],
         "longTasks": {
@@ -2822,19 +365,20 @@
           "maxDuration": 0,
           "totalDuration": 0
         },
-        "lastUpdatedAt": 1774601286225
+        "lastUpdatedAt": 1774679586374
       },
       "treeView": {
         "ready": true,
-        "initialReadyMs": 158,
-        "currentView": "cards",
-        "parseMs": 7.3,
-        "parseNodeCount": 2492,
-        "latestViewSwitchMs": 4.8,
+        "initialReadyMs": 62.8,
+        "currentView": "tree",
+        "parseMs": 1.8,
+        "parseNodeCount": 531,
+        "latestViewSwitchMs": 1,
         "latestTreeToggleMs": null,
         "viewSwitchSamples": [
-          3.3,
-          4.8
+          2.5,
+          1.2,
+          1
         ],
         "treeToggleSamples": [],
         "longTasks": {
@@ -2842,74 +386,79 @@
           "maxDuration": 0,
           "totalDuration": 0
         },
-        "lastUpdatedAt": 1774601286284
+        "lastUpdatedAt": 1774679586400
       },
       "collapseToggle": {
         "ready": true,
-        "initialReadyMs": 158,
+        "initialReadyMs": 62.8,
         "currentView": "tree",
-        "parseMs": 7.3,
-        "parseNodeCount": 2492,
-        "latestViewSwitchMs": 4.8,
-        "latestTreeToggleMs": null,
+        "parseMs": 1.8,
+        "parseNodeCount": 531,
+        "latestViewSwitchMs": 1,
+        "latestTreeToggleMs": 0.5,
         "viewSwitchSamples": [
-          3.3,
-          4.8
+          2.5,
+          1.2,
+          1
         ],
-        "treeToggleSamples": [],
+        "treeToggleSamples": [
+          0.5
+        ],
         "longTasks": {
           "count": 0,
           "maxDuration": 0,
           "totalDuration": 0
         },
-        "lastUpdatedAt": 1774601286334
+        "lastUpdatedAt": 1774679586432
       },
       "expandToggle": {
         "ready": true,
-        "initialReadyMs": 158,
+        "initialReadyMs": 62.8,
         "currentView": "tree",
-        "parseMs": 7.3,
-        "parseNodeCount": 2492,
-        "latestViewSwitchMs": 4.8,
-        "latestTreeToggleMs": 15.8,
+        "parseMs": 1.8,
+        "parseNodeCount": 531,
+        "latestViewSwitchMs": 1,
+        "latestTreeToggleMs": 0.9,
         "viewSwitchSamples": [
-          3.3,
-          4.8
+          2.5,
+          1.2,
+          1
         ],
         "treeToggleSamples": [
-          15.8
+          0.5,
+          0.9
         ],
         "longTasks": {
           "count": 0,
           "maxDuration": 0,
           "totalDuration": 0
         },
-        "lastUpdatedAt": 1774601286362
+        "lastUpdatedAt": 1774679586465
       }
     }
   },
   "lighthouse": {
     "mobile": {
       "preset": "mobile",
-      "performanceScore": 98,
-      "firstContentfulPaintMs": 1807.3,
-      "speedIndexMs": 1807.3,
-      "largestContentfulPaintMs": 1957.3,
-      "totalBlockingTimeMs": 0,
+      "performanceScore": 99,
+      "firstContentfulPaintMs": 1390.25,
+      "speedIndexMs": 1390.25,
+      "largestContentfulPaintMs": 1573.25,
+      "totalBlockingTimeMs": 6.79,
       "cumulativeLayoutShift": 0,
-      "mainThreadWorkBreakdownMs": 602.39,
-      "scriptBootupTimeMs": 122
+      "mainThreadWorkBreakdownMs": 389.46,
+      "scriptBootupTimeMs": 31.38
     },
     "desktop": {
       "preset": "desktop",
-      "performanceScore": 81,
-      "firstContentfulPaintMs": 1807.02,
-      "speedIndexMs": 1807.02,
-      "largestContentfulPaintMs": 2107.02,
-      "totalBlockingTimeMs": 0,
-      "cumulativeLayoutShift": 0.04,
-      "mainThreadWorkBreakdownMs": 891.14,
-      "scriptBootupTimeMs": 153.64
+      "performanceScore": 90,
+      "firstContentfulPaintMs": 1315,
+      "speedIndexMs": 1315,
+      "largestContentfulPaintMs": 1575,
+      "totalBlockingTimeMs": 10,
+      "cumulativeLayoutShift": 0,
+      "mainThreadWorkBreakdownMs": 388.7,
+      "scriptBootupTimeMs": 30.28
     }
   },
   "checks": {
@@ -2922,8 +471,8 @@
         "target": 100,
         "unit": "ms",
         "sourceSection": "6.1 Hard Constraints",
-        "actual": 158,
-        "status": "fail"
+        "actual": 62.8,
+        "status": "pass"
       },
       {
         "id": "view-switch-ms",
@@ -2933,7 +482,7 @@
         "target": 50,
         "unit": "ms",
         "sourceSection": "6.1 Hard Constraints",
-        "actual": 4.8,
+        "actual": 2.5,
         "status": "pass"
       },
       {
@@ -2944,7 +493,7 @@
         "target": 16,
         "unit": "ms",
         "sourceSection": "6.1 Hard Constraints",
-        "actual": 15.8,
+        "actual": 0.9,
         "status": "pass"
       },
       {
@@ -2955,8 +504,8 @@
         "target": 51200,
         "unit": "bytes",
         "sourceSection": "7. Bundle Strategy",
-        "actual": 86128,
-        "status": "fail"
+        "actual": 24672,
+        "status": "pass"
       },
       {
         "id": "long-task-count",
@@ -3010,7 +559,7 @@
             "target": 2500,
             "unit": "ms",
             "note": "web.dev defines good LCP as 2.5s or less at the 75th percentile.",
-            "actual": 1957.3,
+            "actual": 1573.25,
             "status": "pass"
           },
           {
@@ -3064,7 +613,7 @@
             "target": 90,
             "unit": "score",
             "note": "Chrome Docs classifies 90-100 as Good.",
-            "actual": 98,
+            "actual": 99,
             "status": "pass"
           },
           {
@@ -3075,15 +624,15 @@
             "target": 90,
             "unit": "score",
             "note": "Chrome Docs classifies 90-100 as Good.",
-            "actual": 81,
-            "status": "fail"
+            "actual": 90,
+            "status": "pass"
           }
         ]
       }
     ]
   },
   "sources": {
-    "project": "specification.md",
+    "project": "internal",
     "verified": [
       {
         "name": "Google Core Web Vitals",

@@ -93,6 +93,7 @@ async function main() {
 
     const summaryJson = JSON.stringify(reportContext, null, 2)
     const summaryMarkdown = renderMarkdown(reportContext)
+    const sampleJson = JSON.stringify(buildSampleProfile(reportContext), null, 2)
     const latestSamplePath = path.join(publicSamplesRoot, 'latest-profile.json')
     const distSamplePath = path.join(distPath, 'samples', 'latest-profile.json')
     await fs.mkdir(path.dirname(distSamplePath), { recursive: true })
@@ -106,8 +107,8 @@ async function main() {
       fs.writeFile(path.join(versionDir, 'lighthouse.desktop.report.html'), desktopAudit.html),
       fs.writeFile(path.join(reportsRoot, 'latest.json'), summaryJson),
       fs.writeFile(path.join(reportsRoot, 'latest.md'), summaryMarkdown),
-      fs.writeFile(latestSamplePath, summaryJson),
-      fs.writeFile(distSamplePath, summaryJson),
+      fs.writeFile(latestSamplePath, sampleJson),
+      fs.writeFile(distSamplePath, sampleJson),
     ])
 
     process.stdout.write(`Performance report written to reports/performance/${version}/summary.md\n`)
@@ -173,7 +174,16 @@ async function collectAppMetrics(url, port) {
 
   await Promise.all([Page.enable(), Runtime.enable()])
   await Page.navigate({ url })
-  await waitForExpression(Runtime, 'document.readyState === "complete"', 15_000)
+  await waitForExpression(Runtime, 'Boolean(document.querySelector(".welcome__sample"))', 15_000)
+
+  await evaluate(
+    Runtime,
+    `(async () => {
+      const btn = document.querySelector('.welcome__sample')
+      if (btn) btn.click()
+    })()`,
+  )
+
   await waitForExpression(Runtime, 'Boolean(window.__kataPerf?.ready && window.__kataPerf?.initialReadyMs !== null)', 15_000)
 
   const startup = await evaluate(Runtime, 'window.__kataPerf')
@@ -269,6 +279,57 @@ async function collectAppMetrics(url, port) {
       collapseToggle,
       expandToggle,
     },
+  }
+}
+
+function buildSampleProfile(ctx) {
+  const lh = ctx.lighthouse
+  const app = ctx.app
+  return {
+    kata: {
+      name: 'Kata',
+      version: ctx.version,
+      description: 'Local-first structured text parser and visualizer',
+      copyright: `Copyright © 2026 Corderro Artz / Vaporsoft`,
+      license: 'MIT',
+      repository: 'https://github.com/corderro-artz/kata',
+    },
+    build: {
+      generatedAt: ctx.generatedAt,
+      commit: ctx.git?.commit ?? null,
+      branch: ctx.git?.branch ?? null,
+      durationMs: ctx.build.durationMs,
+      bundle: {
+        initialGzipKB: round(ctx.bundle.initial.gzipBytes / 1024),
+        totalGzipKB: round(ctx.bundle.total.gzipBytes / 1024),
+      },
+    },
+    performance: {
+      budgets: {
+        firstRenderMs: { actual: app.startup.initialReadyMs, target: 100, pass: app.startup.initialReadyMs <= 100 },
+        viewSwitchMs: { actual: Math.max(...(app.interactions?.treeView?.viewSwitchSamples ?? [0])), target: 50 },
+        expandCollapseMs: { actual: Math.max(...(app.interactions?.expandToggle?.treeToggleSamples ?? [0])), target: 16 },
+        longTasks: { actual: app.startup.longTasks.count, target: 0 },
+      },
+      lighthouse: {
+        mobile: { score: lh.mobile.performanceScore, fcp: round(lh.mobile.firstContentfulPaintMs), lcp: round(lh.mobile.largestContentfulPaintMs), tbt: round(lh.mobile.totalBlockingTimeMs), cls: lh.mobile.cumulativeLayoutShift },
+        desktop: { score: lh.desktop.performanceScore, fcp: round(lh.desktop.firstContentfulPaintMs), lcp: round(lh.desktop.largestContentfulPaintMs), tbt: round(lh.desktop.totalBlockingTimeMs), cls: lh.desktop.cumulativeLayoutShift },
+      },
+      coreWebVitals: {
+        lcp: { actual: round(lh.mobile.largestContentfulPaintMs), target: 2500, unit: 'ms' },
+        cls: { actual: lh.mobile.cumulativeLayoutShift, target: 0.1 },
+      },
+    },
+    stack: {
+      framework: 'Preact 10',
+      bundler: 'Vite 7',
+      language: 'TypeScript 5.9',
+      workers: ['parse', 'export'],
+      formats: { input: ['json', 'yaml', 'toml', 'markdown', 'ini', 'text'], output: ['json', 'yaml', 'toml', 'markdown'] },
+      views: ['tree', 'raw', 'cards'],
+      themes: 6,
+    },
+    environment: ctx.environment,
   }
 }
 
@@ -440,7 +501,7 @@ async function waitForExpression(Runtime, expression, timeoutMs) {
       return value
     }
 
-    await sleep(150)
+    await sleep(50)
   }
 
   throw new Error(`Timed out waiting for browser expression: ${expression}`)

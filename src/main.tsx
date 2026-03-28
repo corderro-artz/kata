@@ -12,8 +12,8 @@ import { startPerformanceObservers } from './lib/perf'
 
 startPerformanceObservers()
 
+render(<App />, document.getElementById('app')!)
+
 registerSW({
 	immediate: true,
 })
-
-render(<App />, document.getElementById('app')!)
