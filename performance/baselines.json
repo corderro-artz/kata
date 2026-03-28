@@ -1,0 +1,116 @@
+{
+  "project": {
+    "name": "Kata 0.1.0-alpha release budgets",
+    "source": "internal",
+    "targets": [
+      {
+        "id": "first-render-ms",
+        "label": "First render",
+        "metric": "firstRenderMs",
+        "operator": "<=",
+        "target": 100,
+        "unit": "ms",
+        "sourceSection": "6.1 Hard Constraints"
+      },
+      {
+        "id": "view-switch-ms",
+        "label": "View switch",
+        "metric": "maxViewSwitchMs",
+        "operator": "<=",
+        "target": 50,
+        "unit": "ms",
+        "sourceSection": "6.1 Hard Constraints"
+      },
+      {
+        "id": "expand-collapse-ms",
+        "label": "Expand/collapse",
+        "metric": "maxTreeToggleMs",
+        "operator": "<=",
+        "target": 16,
+        "unit": "ms",
+        "sourceSection": "6.1 Hard Constraints"
+      },
+      {
+        "id": "initial-bundle-gzip-kb",
+        "label": "Initial bundle gzip",
+        "metric": "initialBundleGzipBytes",
+        "operator": "<=",
+        "target": 51200,
+        "unit": "bytes",
+        "sourceSection": "7. Bundle Strategy"
+      },
+      {
+        "id": "long-task-count",
+        "label": "Long tasks over 50ms",
+        "metric": "longTaskCount",
+        "operator": "<=",
+        "target": 0,
+        "unit": "count",
+        "sourceSection": "6.1 Hard Constraints",
+        "note": "Release proxy for main-thread blocking. The spec target is <8ms; the Long Tasks API only surfaces tasks over 50ms."
+      }
+    ]
+  },
+  "verified": [
+    {
+      "id": "google-core-web-vitals",
+      "name": "Google Core Web Vitals",
+      "source": "https://web.dev/articles/vitals",
+      "verifiedAt": "2024-10-31",
+      "targets": [
+        {
+          "id": "lcp-good",
+          "label": "Largest Contentful Paint",
+          "metric": "mobileLcpMs",
+          "operator": "<=",
+          "target": 2500,
+          "unit": "ms",
+          "note": "web.dev defines good LCP as 2.5s or less at the 75th percentile."
+        },
+        {
+          "id": "cls-good",
+          "label": "Cumulative Layout Shift",
+          "metric": "mobileCls",
+          "operator": "<=",
+          "target": 0.1,
+          "unit": "score",
+          "note": "web.dev defines good CLS as 0.1 or less at the 75th percentile."
+        }
+      ],
+      "notes": [
+        "web.dev defines good INP as 200ms or less at the 75th percentile.",
+        "This release report is lab-based; INP needs RUM. TBT is reported as the lab proxy per web.dev guidance."
+      ]
+    },
+    {
+      "id": "lighthouse-good-score",
+      "name": "Chrome Lighthouse Performance Score",
+      "source": "https://developer.chrome.com/docs/lighthouse/performance/performance-scoring",
+      "verifiedAt": "2019-09-19",
+      "targets": [
+        {
+          "id": "mobile-performance-score",
+          "label": "Mobile Lighthouse score",
+          "metric": "mobilePerformanceScore",
+          "operator": ">=",
+          "target": 90,
+          "unit": "score",
+          "note": "Chrome Docs classifies 90-100 as Good."
+        },
+        {
+          "id": "desktop-performance-score",
+          "label": "Desktop Lighthouse score",
+          "metric": "desktopPerformanceScore",
+          "operator": ">=",
+          "target": 90,
+          "unit": "score",
+          "note": "Chrome Docs classifies 90-100 as Good."
+        }
+      ],
+      "notes": [
+        "Lighthouse 10 weights: FCP 10%, Speed Index 10%, LCP 25%, TBT 30%, CLS 25%.",
+        "Scores fluctuate with device conditions and test variability; use repeated runs for trend analysis."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+﻿:root {
+  --bg: #07080b;
+  --bg-elevated: rgba(14, 16, 21, 0.94);
+  --surface: rgba(10, 12, 16, 0.78);
+  --surface-strong: #11141a;
+  --text: #f2ede6;
+  --muted: rgba(242, 237, 230, 0.64);
+  --border: rgba(242, 237, 230, 0.12);
+  --accent: #a11f31;
+  --accent-soft: rgba(161, 31, 49, 0.18);
+  --accent-strong: #df5c70;
+  --signal: #7fd0cf;
+  --grid: rgba(242, 237, 230, 0.06);
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --highlight: rgba(127, 208, 207, 0.14);
+  --danger: #ff6f7d;
+  --success: #56d4a8;
+  --code: #fff7ef;
+
+  --sans: 'Manrope', 'Segoe UI', sans-serif;
+  --display: 'Syncopate', 'Manrope', sans-serif;
+  --mono: 'IBM Plex Mono', 'Cascadia Code', 'Consolas', monospace;
+
+  font: 14px/1.5 var(--sans);
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--text);
+}
+
+::-moz-selection {
+  background: var(--accent-soft);
+  color: var(--text);
+}
