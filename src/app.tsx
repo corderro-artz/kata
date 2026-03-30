@@ -1117,7 +1117,7 @@ function RawViewport({
           {windowLines.map((line, index) => {
             const lineNumber = virtual.start + index + 1
             return (
-              <div key={`${lineNumber}:${line}`} class={`raw-row ${matchedLineNumbers.has(lineNumber) ? 'raw-row--match' : ''}`}>
+              <div key={lineNumber} class={`raw-row ${matchedLineNumbers.has(lineNumber) ? 'raw-row--match' : ''}`}>
                 <span class="raw-row__number">{lineNumber}</span>
                 <span
                   class="raw-row__content"
