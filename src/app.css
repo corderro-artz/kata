@@ -601,6 +601,14 @@
   background: color-mix(in srgb, var(--accent-soft) 20%, transparent);
 }
 
+.raw-row--match {
+  background: color-mix(in srgb, var(--highlight) 58%, transparent);
+}
+
+.raw-row--match:hover {
+  background: color-mix(in srgb, var(--highlight) 78%, transparent);
+}
+
 .raw-row__number {
   color: var(--muted);
   text-align: right;

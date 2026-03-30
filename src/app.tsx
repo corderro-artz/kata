@@ -97,6 +97,8 @@ export function App() {
   const [nodeIndex, setNodeIndex] = useState<NodeIndex | null>(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [searchHits, setSearchHits] = useState<SearchHit[]>([])
+  const [rawSearchMatchedLines, setRawSearchMatchedLines] = useState<Set<number>>(new Set())
+  const [rawSearchCount, setRawSearchCount] = useState(0)
   const [references, setReferences] = useState<ReferenceEdge[]>([])
   const [diffBase, setDiffBase] = useState<ParsedDocument | null>(null)
   const [diffEntries, setDiffEntries] = useState<DiffEntry[]>([])
@@ -223,21 +225,41 @@ export function App() {
   }, [diffBase, documentState])
 
   useEffect(() => {
-    if (!documentState || !nodeIndex || !searchQuery.trim()) {
+    if (!documentState || !searchQuery.trim()) {
       setSearchHits([])
+      setRawSearchMatchedLines(new Set())
+      setRawSearchCount(0)
       return
     }
 
     const handle = window.setTimeout(() => {
+      if (activeView === 'raw') {
+        const sourceText = documentState.previewText || exportText
+        const rawSearch = searchRawText(sourceText, searchQuery.trim())
+        setRawSearchMatchedLines(rawSearch.matchedLines)
+        setRawSearchCount(rawSearch.count)
+        setSearchHits([])
+        setStatus(rawSearch.count > 0 ? `${rawSearch.count} result${rawSearch.count === 1 ? '' : 's'}` : 'No results')
+        return
+      }
+
+      if (!nodeIndex) {
+        setSearchHits([])
+        setStatus('No results')
+        return
+      }
+
       const hits = searchNodes(documentState, nodeIndex, searchQuery.trim())
       setSearchHits(hits)
+      setRawSearchMatchedLines(new Set())
+      setRawSearchCount(0)
       setStatus(hits.length > 0 ? `${hits.length} result${hits.length === 1 ? '' : 's'}` : 'No results')
     }, 180)
 
     return () => {
       window.clearTimeout(handle)
     }
-  }, [searchQuery, nodeIndex, documentState])
+  }, [searchQuery, nodeIndex, documentState, activeView, exportText])
 
   useLayoutEffect(() => {
     if (!documentState || initialReadyRef.current) {
@@ -722,8 +744,8 @@ export function App() {
                   value={searchQuery}
                   onInput={(event) => setSearchQuery(event.currentTarget.value)}
                 />
-                {searchHits.length > 0 ? (
-                  <span class="search-bar__count">{searchHits.length}</span>
+                {(activeView === 'raw' ? rawSearchCount : searchHits.length) > 0 ? (
+                  <span class="search-bar__count">{activeView === 'raw' ? rawSearchCount : searchHits.length}</span>
                 ) : null}
               </div>
             </div>
@@ -764,7 +786,13 @@ export function App() {
               <TreeView documentState={documentState} expandedNodes={expandedNodes} onToggle={toggleNode} matchedNodeIds={matchedNodeIds} linkedNodeIds={linkedNodeIds} />
             ) : null}
 
-            {activeView === 'raw' ? <RawView text={previewText || exportText} format={documentState?.format} /> : null}
+            {activeView === 'raw' ? (
+              <RawView
+                text={previewText || exportText}
+                format={documentState?.format}
+                matchedLineNumbers={rawSearchMatchedLines}
+              />
+            ) : null}
 
             {activeView === 'cards' && documentState ? (
               <CardView documentState={documentState} expandedNodes={expandedNodes} onToggle={toggleNode} matchedNodeIds={matchedNodeIds} />
@@ -955,7 +983,15 @@ function TreeView({
   )
 }
 
-function RawView({ text, format }: { text: string; format?: ParsedDocument['format'] }) {
+function RawView({
+  text,
+  format,
+  matchedLineNumbers,
+}: {
+  text: string
+  format?: ParsedDocument['format']
+  matchedLineNumbers: Set<number>
+}) {
   const lines = useMemo(() => text.split(/\r?\n/), [text])
   const virtual = useVirtualWindow(lines.length, 24)
   const windowLines = lines.slice(virtual.start, virtual.end)
@@ -967,7 +1003,7 @@ function RawView({ text, format }: { text: string; format?: ParsedDocument['form
           {windowLines.map((line, index) => {
             const lineNumber = virtual.start + index + 1
             return (
-              <div key={`${lineNumber}:${line}`} class="raw-row">
+              <div key={`${lineNumber}:${line}`} class={`raw-row ${matchedLineNumbers.has(lineNumber) ? 'raw-row--match' : ''}`}>
                 <span class="raw-row__number">{lineNumber}</span>
                 <span
                   class="raw-row__content"
@@ -980,6 +1016,27 @@ function RawView({ text, format }: { text: string; format?: ParsedDocument['form
       </div>
     </div>
   )
+}
+
+function searchRawText(text: string, query: string): { count: number; matchedLines: Set<number> } {
+  if (!text || !query) {
+    return { count: 0, matchedLines: new Set() }
+  }
+
+  const lines = text.split(/\r?\n/)
+  const normalizedQuery = query.toLowerCase()
+  const matchedLines = new Set<number>()
+  let count = 0
+
+  for (let index = 0; index < lines.length && count < 400; index += 1) {
+    const line = lines[index]
+    if (line.toLowerCase().includes(normalizedQuery)) {
+      count += 1
+      matchedLines.add(index + 1)
+    }
+  }
+
+  return { count, matchedLines }
 }
 
 function CardView({
