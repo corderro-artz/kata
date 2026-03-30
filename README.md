@@ -218,5 +218,4 @@ Use these constraints when local behavior does not match the hosted app or when 
 
 ---
 
-Copyright © 2026 Corderro Artz / Vaporsoft.
-Vaporsoft | https://www.vaporsoft.dev
+Copyright © 2026 [Corderro Artz](https://github.com/corderro-artz) / [Vaporsoft](https://www.vaporsoft.dev).
