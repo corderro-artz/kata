@@ -7,18 +7,21 @@
 
 Kata is a worker-first, offline-capable PWA for parsing, inspecting, comparing, and exporting structured text directly in the browser. It is designed for mixed audiences: fast enough for performance-sensitive workflows, but approachable enough for developers who need a self-contained tool with no backend dependency after load.
 
+**Access**  
 [![Live Site](https://img.shields.io/website?url=https%3A%2F%2Fcorderro-artz.github.io%2Fkata%2F&label=Live%20Site&logo=githubpages&logoColor=white)](https://corderro-artz.github.io/kata/)
 
+**Delivery**  
 [![CI](https://img.shields.io/github/actions/workflow/status/corderro-artz/kata/ci.yml?branch=main&label=CI&logo=githubactions&logoColor=white)](https://github.com/corderro-artz/kata/actions/workflows/ci.yml)
 [![Deploy Pages](https://img.shields.io/github/actions/workflow/status/corderro-artz/kata/deploy-pages.yml?branch=main&label=Pages&logo=githubactions&logoColor=white)](https://github.com/corderro-artz/kata/actions/workflows/deploy-pages.yml)
 [![Performance Report](https://img.shields.io/github/actions/workflow/status/corderro-artz/kata/perf-report.yml?branch=main&label=Perf%20Report&logo=githubactions&logoColor=white)](https://github.com/corderro-artz/kata/actions/workflows/perf-report.yml)
-
 [![Release](https://img.shields.io/github/v/tag/corderro-artz/kata?sort=semver&label=Release&logo=git&logoColor=white)](https://github.com/corderro-artz/kata/tags)
 [![License](https://img.shields.io/github/license/corderro-artz/kata?label=License)](https://github.com/corderro-artz/kata/blob/main/LICENSE)
 
+**Runtime**  
 [![Node 20+](https://img.shields.io/badge/Node-20%2B-5FA04E?logo=nodedotjs&logoColor=white)](https://github.com/corderro-artz/kata/blob/main/package.json)
 [![Chromium Features](https://img.shields.io/badge/Browser-Chromium%20recommended-1f6feb?logo=googlechrome&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/API/File_System_API)
 
+**Performance**  
 [![Bundle Gzip](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fcorderro-artz%2Fkata%2Fmain%2Freports%2Fperformance%2Fbadges%2Fbundle-gzip.json)](https://github.com/corderro-artz/kata/blob/main/reports/performance/latest.md)
 [![First Render](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fcorderro-artz%2Fkata%2Fmain%2Freports%2Fperformance%2Fbadges%2Ffirst-render.json)](https://github.com/corderro-artz/kata/blob/main/reports/performance/latest.md)
 [![View Switch](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fcorderro-artz%2Fkata%2Fmain%2Freports%2Fperformance%2Fbadges%2Fview-switch.json)](https://github.com/corderro-artz/kata/blob/main/reports/performance/latest.md)

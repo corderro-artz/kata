@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process'
+import { once } from 'node:events'
 import { gzipSync } from 'node:zlib'
 import os from 'node:os'
 import path from 'node:path'
@@ -18,6 +19,7 @@ const reportsRoot = path.join(projectRoot, 'reports', 'performance')
 const reportsBadgesRoot = path.join(reportsRoot, 'badges')
 const chromeProfileRoot = path.join(projectRoot, '.tmp', 'chrome-profile')
 const configuredChromePath = process.env.CHROME_PATH?.trim() || undefined
+const childShutdownTimeoutMs = 5_000
 
 async function main() {
   const packageJson = JSON.parse(await fs.readFile(packageJsonPath, 'utf8'))
@@ -47,6 +49,7 @@ async function main() {
     cwd: projectRoot,
     stdio: ['ignore', 'pipe', 'pipe'],
     shell: false,
+    detached: process.platform !== 'win32',
   })
 
   let previewLogs = ''
@@ -134,10 +137,64 @@ async function main() {
 
     process.stdout.write(`Performance report written to reports/performance/${version}/summary.md\n`)
   } finally {
-    await chrome.kill()
+    try {
+      await chrome.kill()
+    } catch {
+      // Ignore cleanup failures so teardown still proceeds.
+    }
     await cleanupChromeProfile()
-    previewServer.kill()
+    await stopPreviewServer(previewServer)
   }
+}
+
+async function stopPreviewServer(previewServer) {
+  if (!previewServer) {
+    return
+  }
+
+  const closed = waitForChildClose(previewServer)
+  if (previewServer.exitCode === null && previewServer.signalCode === null) {
+    terminateChild(previewServer, 'SIGTERM')
+
+    const exitedAfterTerminate = await Promise.race([
+      closed.then(() => true),
+      sleep(childShutdownTimeoutMs).then(() => false),
+    ])
+
+    if (!exitedAfterTerminate) {
+      terminateChild(previewServer, 'SIGKILL')
+      await Promise.race([
+        closed,
+        sleep(childShutdownTimeoutMs),
+      ])
+    }
+  } else {
+    await closed
+  }
+
+  previewServer.stdout?.destroy()
+  previewServer.stderr?.destroy()
+}
+
+function terminateChild(child, signal) {
+  try {
+    if (process.platform !== 'win32' && child.pid) {
+      process.kill(-child.pid, signal)
+      return
+    }
+  } catch {
+    // Fall back to direct child termination when process-group signaling is unavailable.
+  }
+
+  child.kill(signal)
+}
+
+async function waitForChildClose(child) {
+  if (child.exitCode !== null || child.signalCode !== null) {
+    return
+  }
+
+  await once(child, 'close')
 }
 
 async function cleanupChromeProfile() {
