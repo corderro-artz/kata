@@ -620,11 +620,26 @@
   color: var(--muted);
 }
 
+.tree-kind--object,
+.tree-kind--mapping,
+.tree-kind--group {
+  color: var(--text);
+}
+
+.tree-kind--collection,
+.tree-kind--section {
+  color: var(--accent-strong);
+}
+
+.tree-kind--string,
+.tree-kind--date,
 .tree-kind--value {
   color: var(--signal);
 }
 
-.tree-kind--array {
+.tree-kind--number,
+.tree-kind--boolean,
+.tree-kind--null {
   color: var(--accent-strong);
 }
 
@@ -692,10 +707,20 @@
   color: var(--text);
 }
 
+.token--tag,
+.token--date {
+  color: var(--signal);
+}
+
 .token--string,
 .token--number,
 .token--accent {
   color: var(--accent-strong);
+}
+
+.token--comment {
+  color: var(--muted);
+  opacity: 0.82;
 }
 
 /* -- Error banner -- */

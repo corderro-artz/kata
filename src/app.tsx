@@ -28,6 +28,7 @@ import type {
   FlatNode,
   ParsedDocument,
   ParseResponse,
+  SourceFormat,
   ThemeId,
   ViewMode,
   VisibleRow,
@@ -962,6 +963,7 @@ async function fetchSampleDocument(): Promise<{ text: string; sourceName: string
 
 const TreeRow = memo(function TreeRow({
   node,
+  sourceFormat,
   depth,
   isExpanded,
   isMatch,
@@ -969,6 +971,7 @@ const TreeRow = memo(function TreeRow({
   onToggle,
 }: {
   node: FlatNode
+  sourceFormat: SourceFormat
   depth: number
   isExpanded: boolean
   isMatch: boolean
@@ -976,6 +979,7 @@ const TreeRow = memo(function TreeRow({
   onToggle: (nodeId: number) => void
 }) {
   const childCount = node.childEnd - node.childStart
+  const badge = getTreeKindBadge(node, sourceFormat)
 
   return (
     <div class={`tree-row ${isMatch ? 'tree-row--match' : ''}`} style={{ paddingInlineStart: `${depth * 18 + 18}px` }}>
@@ -994,7 +998,7 @@ const TreeRow = memo(function TreeRow({
         {childCount > 0 ? (isExpanded ? '−' : '+') : '·'}
       </button>
       <span class="tree-key">{node.label}</span>
-      <span class={`tree-kind tree-kind--${node.kind}`}>{node.kind}</span>
+      <span class={`tree-kind tree-kind--${badge.tone}`}>{badge.label}</span>
       {isLinked ? <span class="tree-ref-badge">ref</span> : null}
       <span class="tree-value">{node.value}</span>
     </div>
@@ -1029,6 +1033,7 @@ function TreeView({
             <TreeRow
               key={documentState.nodes[row.nodeId].id}
               node={documentState.nodes[row.nodeId]}
+              sourceFormat={documentState.format}
               depth={row.depth}
               isExpanded={expandedNodes.has(row.nodeId)}
               isMatch={matchedNodeIds.has(row.nodeId)}
@@ -1060,6 +1065,9 @@ function RawView({
   splitOrientation: 'vertical' | 'horizontal'
 }) {
   const previewSyntaxFormat = useMemo(() => {
+    if (previewFormat === 'text') {
+      return 'text'
+    }
     if (previewFormat === 'markdown') {
       return 'markdown'
     }
@@ -1073,7 +1081,7 @@ function RawView({
       return 'ini'
     }
     if (previewFormat === 'xaml') {
-      return 'text'
+      return 'xaml'
     }
     return 'json'
   }, [previewFormat])
@@ -1108,7 +1116,7 @@ function RawViewport({
   matchedLineNumbers,
 }: {
   text: string
-  format?: ParsedDocument['format']
+  format?: SourceFormat | ExportFormat
   matchedLineNumbers: Set<number>
 }) {
   const lines = useMemo(() => text.split(/\r?\n/), [text])
@@ -1235,30 +1243,253 @@ function byteLabel(bytes: number): string {
   return `${(bytes / (1024 * 1024)).toFixed(1)} MB`
 }
 
-function highlightLine(line: string, format?: ParsedDocument['format']): string {
+function getTreeKindBadge(node: FlatNode, sourceFormat: SourceFormat): { label: string; tone: string } {
+  if (node.kind === 'array') {
+    return { label: sourceFormat === 'yaml' ? 'list' : 'collection', tone: 'collection' }
+  }
+
+  if (node.kind === 'object') {
+    switch (sourceFormat) {
+      case 'ini':
+        return { label: 'section', tone: 'section' }
+      case 'markdown':
+        return { label: 'section', tone: 'section' }
+      case 'toml':
+        return { label: 'table', tone: 'section' }
+      case 'yaml':
+        return { label: 'mapping', tone: 'object' }
+      case 'text':
+        return { label: 'group', tone: 'object' }
+      default:
+        return { label: 'object', tone: 'object' }
+    }
+  }
+
+  switch (node.valueKind) {
+    case 'string':
+      return { label: sourceFormat === 'markdown' || sourceFormat === 'text' ? 'text' : 'string', tone: 'string' }
+    case 'number':
+      return { label: 'number', tone: 'number' }
+    case 'boolean':
+      return { label: 'bool', tone: 'boolean' }
+    case 'null':
+      return { label: 'null', tone: 'null' }
+    case 'date':
+      return { label: 'date', tone: 'date' }
+    default:
+      return { label: 'value', tone: 'value' }
+  }
+}
+
+function highlightLine(line: string, format?: SourceFormat | ExportFormat): string {
   const escaped = escapeHtml(line)
 
   if (format === 'markdown') {
     return escaped
+      .replace(/^(\s*```.*)$/g, '<span class="token token--accent">$1</span>')
       .replace(/^(#{1,6})(\s.*)$/g, '<span class="token token--accent">$1</span><span class="token token--heading">$2</span>')
+      .replace(/^(\s*&gt;\s?)(.*)$/g, '<span class="token token--accent">$1</span>$2')
+      .replace(/^(\s*\d+\.\s)/g, '<span class="token token--accent">$1</span>')
       .replace(/^(\s*[-*+]\s)/g, '<span class="token token--accent">$1</span>')
   }
 
   if (format === 'ini') {
-    if (/^\s*[;#]/.test(escaped)) {
-      return escaped
-    }
-    if (/^\s*\[/.test(escaped)) {
-      return escaped.replace(/^(\s*\[[^\]]*\])(.*)$/, '<span class="token token--heading">$1</span>$2')
-    }
-    return escaped.replace(/^([^=\n]+?)(\s*=\s*)(.*)$/, '<span class="token token--key">$1</span>$2<span class="token token--string">$3</span>')
+    return highlightAssignmentLine(line, '=', ['#', ';'], {
+      section: /^\s*\[[^\]]+\]\s*$/,
+      headingTone: 'heading',
+    })
   }
 
+  if (format === 'yaml') {
+    return highlightAssignmentLine(line, ':', ['#'], {
+      list: true,
+      headingTone: 'key',
+    })
+  }
+
+  if (format === 'toml') {
+    return highlightAssignmentLine(line, '=', ['#'], {
+      section: /^\s*\[\[?[^\]]+\]\]?\s*$/,
+      headingTone: 'heading',
+    })
+  }
+
+  if (format === 'xaml') {
+    if (/^\s*&lt;!--/.test(escaped)) {
+      return `<span class="token token--comment">${escaped}</span>`
+    }
+    return escaped
+      .replace(/([\w:.-]+)(=)(&quot;.*?&quot;)/g, '<span class="token token--key">$1</span>$2<span class="token token--string">$3</span>')
+      .replace(/(&lt;\/?)([\w:.-]+)/g, '$1<span class="token token--tag">$2</span>')
+      .replace(/(&lt;\/?|\/?&gt;)/g, '<span class="token token--accent">$1</span>')
+  }
+
+  if (format === 'text') {
+    return escaped
+  }
+
+  return highlightJsonLine(escaped)
+}
+
+function highlightAssignmentLine(
+  line: string,
+  delimiter: ':' | '=',
+  commentMarkers: string[],
+  options: {
+    section?: RegExp
+    list?: boolean
+    headingTone: 'heading' | 'key'
+  },
+): string {
+  const escaped = escapeHtml(line)
+  if (line.trim().length === 0) {
+    return escaped
+  }
+
+  const trimmed = line.trimStart()
+  if (commentMarkers.some((marker) => trimmed.startsWith(marker))) {
+    return `<span class="token token--comment">${escaped}</span>`
+  }
+
+  if (options.section?.test(line)) {
+    return `<span class="token token--heading">${escaped}</span>`
+  }
+
+  let listPrefix = ''
+  let body = line
+  if (options.list) {
+    const listMatch = /^(\s*-\s+)(.*)$/.exec(line)
+    if (listMatch) {
+      listPrefix = `<span class="token token--accent">${escapeHtml(listMatch[1])}</span>`
+      body = listMatch[2]
+    }
+  }
+
+  const { body: bodyWithoutComment, comment } = splitTrailingComment(body, commentMarkers)
+  const delimiterIndex = delimiter === ':'
+    ? findYamlDelimiterIndex(bodyWithoutComment)
+    : findDelimiterIndex(bodyWithoutComment, delimiter)
+
+  if (delimiterIndex < 0) {
+    return `${listPrefix}${highlightScalarText(bodyWithoutComment)}${comment ? `<span class="token token--comment">${escapeHtml(comment)}</span>` : ''}`
+  }
+
+  const prefix = bodyWithoutComment.slice(0, delimiterIndex)
+  const suffix = bodyWithoutComment.slice(delimiterIndex + 1)
+  const leading = prefix.match(/^\s*/)?.[0] ?? ''
+  const keyText = prefix.slice(leading.length).trimEnd()
+  const gapBefore = prefix.slice(leading.length + keyText.length)
+  const valueLeading = suffix.match(/^\s*/)?.[0] ?? ''
+  const valueText = suffix.slice(valueLeading.length)
+  const keyTokenClass = options.headingTone === 'heading' ? 'token--heading' : 'token--key'
+
+  if (keyText.length === 0) {
+    return `${listPrefix}${escapeHtml(bodyWithoutComment)}${comment ? `<span class="token token--comment">${escapeHtml(comment)}</span>` : ''}`
+  }
+
+  return `${listPrefix}${escapeHtml(leading)}<span class="token ${keyTokenClass}">${escapeHtml(keyText)}</span>${escapeHtml(gapBefore + delimiter + valueLeading)}${highlightScalarText(valueText)}${comment ? `<span class="token token--comment">${escapeHtml(comment)}</span>` : ''}`
+}
+
+function splitTrailingComment(line: string, commentMarkers: string[]): { body: string; comment: string } {
+  let quote: '"' | '\'' | null = null
+
+  for (let index = 0; index < line.length; index += 1) {
+    const current = line[index]
+    const previous = index > 0 ? line[index - 1] : ''
+
+    if ((current === '"' || current === '\'') && previous !== '\\') {
+      quote = quote === current ? null : quote === null ? current : quote
+      continue
+    }
+
+    if (quote !== null) {
+      continue
+    }
+
+    if (commentMarkers.includes(current) && (index === 0 || /\s/.test(previous))) {
+      return {
+        body: line.slice(0, index).trimEnd(),
+        comment: line.slice(index),
+      }
+    }
+  }
+
+  return { body: line, comment: '' }
+}
+
+function findDelimiterIndex(line: string, delimiter: ':' | '='): number {
+  let quote: '"' | '\'' | null = null
+
+  for (let index = 0; index < line.length; index += 1) {
+    const current = line[index]
+    const previous = index > 0 ? line[index - 1] : ''
+
+    if ((current === '"' || current === '\'') && previous !== '\\') {
+      quote = quote === current ? null : quote === null ? current : quote
+      continue
+    }
+
+    if (quote === null && current === delimiter) {
+      return index
+    }
+  }
+
+  return -1
+}
+
+function findYamlDelimiterIndex(line: string): number {
+  let quote: '"' | '\'' | null = null
+
+  for (let index = 0; index < line.length; index += 1) {
+    const current = line[index]
+    const previous = index > 0 ? line[index - 1] : ''
+
+    if ((current === '"' || current === '\'') && previous !== '\\') {
+      quote = quote === current ? null : quote === null ? current : quote
+      continue
+    }
+
+    if (quote === null && current === ':' && (index === line.length - 1 || /\s/.test(line[index + 1] ?? ''))) {
+      return index
+    }
+  }
+
+  return -1
+}
+
+function highlightJsonLine(escaped: string): string {
   return escaped
     .replace(/("(?:\\.|[^"\\])*")(?=\s*:)/g, '<span class="token token--key">$1</span>')
     .replace(/(:\s*)("(?:\\.|[^"\\])*")/g, '$1<span class="token token--string">$2</span>')
     .replace(/\b(-?\d+(?:\.\d+)?)\b/g, '<span class="token token--number">$1</span>')
     .replace(/\b(true|false|null)\b/g, '<span class="token token--accent">$1</span>')
+}
+
+function highlightScalarText(value: string): string {
+  const escaped = escapeHtml(value)
+  const trimmed = value.trim()
+
+  if (trimmed.length === 0) {
+    return escaped
+  }
+
+  if (/^(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*')$/.test(trimmed)) {
+    return `<span class="token token--string">${escaped}</span>`
+  }
+
+  if (/^(true|false|null)$/i.test(trimmed)) {
+    return `<span class="token token--accent">${escaped}</span>`
+  }
+
+  if (/^-?\d+(?:\.\d+)?$/.test(trimmed)) {
+    return `<span class="token token--number">${escaped}</span>`
+  }
+
+  if (/^\d{4}-\d{2}-\d{2}(?:[tT ][0-9:.+-Zz]+)?$/.test(trimmed)) {
+    return `<span class="token token--date">${escaped}</span>`
+  }
+
+  return escaped
 }
 
 function escapeHtml(value: string): string {
