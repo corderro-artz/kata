@@ -51,6 +51,8 @@ export function exportMime(format: ExportFormat): string {
       return 'application/toml'
     case 'markdown':
       return 'text/markdown;charset=utf-8'
+    case 'xaml':
+      return 'application/xml;charset=utf-8'
     default:
       return 'application/json;charset=utf-8'
   }
@@ -63,6 +65,7 @@ export function suggestExportName(sourceName: string, format: ExportFormat): str
     yaml: 'yaml',
     toml: 'toml',
     markdown: 'md',
+    xaml: 'xaml',
   }
 
   return `${base}.${extensionMap[format]}`

@@ -398,7 +398,7 @@ function buildSampleProfile(ctx) {
       bundler: 'Vite 7',
       language: 'TypeScript 5.9',
       workers: ['parse', 'export'],
-      formats: { input: ['json', 'yaml', 'toml', 'markdown', 'ini', 'text'], output: ['json', 'yaml', 'toml', 'markdown'] },
+      formats: { input: ['json', 'yaml', 'toml', 'markdown', 'ini', 'text'], output: ['json', 'yaml', 'toml', 'markdown', 'xaml'] },
       views: ['tree', 'raw'],
       themes: 6,
     },

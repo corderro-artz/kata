@@ -668,6 +668,7 @@ export function App() {
                 <option value="yaml">YAML</option>
                 <option value="toml">TOML</option>
                 <option value="markdown">Markdown</option>
+                <option value="xaml">XAML</option>
               </select>
             </label>
             <div class="export-panel__actions">
@@ -1003,6 +1004,9 @@ function RawView({
     }
     if (previewFormat === 'toml') {
       return 'toml'
+    }
+    if (previewFormat === 'xaml') {
+      return 'text'
     }
     return 'json'
   }, [previewFormat])

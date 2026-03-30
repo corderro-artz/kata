@@ -26,6 +26,9 @@ async function handleRequest(request: ExportRequest): Promise<void> {
           ? request.document.text
           : toMarkdown(value, request.document.sourceName)
         break
+      case 'xaml':
+        text = toXaml(value, request.document.sourceName)
+        break
       default:
         text = JSON.stringify(value, null, 2)
         break
@@ -126,6 +129,57 @@ function toMarkdown(value: unknown, sourceName: string): string {
   }
 
   return lines.join('\n').trim()
+}
+
+function toXaml(value: unknown, sourceName: string): string {
+  const lines: string[] = [
+    '<?xml version="1.0" encoding="utf-8"?>',
+    '<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"',
+    '                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">',
+    `  <x:String x:Key="SourceName">${escapeXml(sourceName)}</x:String>`,
+  ]
+
+  appendXamlNode(lines, value, 'Root', 1)
+  lines.push('</ResourceDictionary>')
+  return lines.join('\n')
+}
+
+function appendXamlNode(lines: string[], value: unknown, key: string, depth: number): void {
+  const indent = '  '.repeat(depth)
+  if (Array.isArray(value)) {
+    lines.push(`${indent}<x:Array x:Key="${escapeXml(key)}" Type="x:String">`)
+    for (const item of value) {
+      lines.push(`${indent}  <x:String>${escapeXml(stringifyScalar(item))}</x:String>`)
+    }
+    lines.push(`${indent}</x:Array>`)
+    return
+  }
+
+  if (value !== null && typeof value === 'object') {
+    lines.push(`${indent}<ResourceDictionary x:Key="${escapeXml(key)}">`)
+    for (const [childKey, childValue] of Object.entries(value as Record<string, unknown>)) {
+      appendXamlNode(lines, childValue, childKey, depth + 1)
+    }
+    lines.push(`${indent}</ResourceDictionary>`)
+    return
+  }
+
+  lines.push(`${indent}<x:String x:Key="${escapeXml(key)}">${escapeXml(stringifyScalar(value))}</x:String>`)
+}
+
+function stringifyScalar(value: unknown): string {
+  if (value === null || value === undefined) return 'null'
+  if (typeof value === 'string') return value
+  return String(value)
+}
+
+function escapeXml(value: string): string {
+  return value
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&apos;')
 }
 
 function post(message: ExportResponse): void {
