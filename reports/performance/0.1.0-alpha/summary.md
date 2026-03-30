@@ -1,8 +1,8 @@
 # Kata Performance Report
 
 - Version: 0.1.0-alpha
-- Generated: 2026-03-30T10:04:52.250Z
-- Commit: 49a8f4b6f57efddb9970d818a83879f4184bf0d7
+- Generated: 2026-03-30T11:07:45.017Z
+- Commit: 9062c20d43c066ec57ec4d20446de2126c0ecdb7
 - Branch: main
 - Runs: 3 (3-run average)
 
@@ -12,7 +12,7 @@
 - Platform: win32 x64
 - CPU: AMD Ryzen 9 3950X 16-Core Processor            
 - Chrome: unknown
-- Build duration: 4983.31 ms
+- Build duration: 5019.72 ms
 
 ## Kata Spec Budgets
 
@@ -20,55 +20,55 @@ Source: internal
 
 | Budget | Status | Actual | Target | Source |
 | --- | --- | --- | --- | --- |
-| First render | PASS | 60.77 ms | 100 ms | 6.1 Hard Constraints |
-| View switch | PASS | 2.8 ms | 50 ms | 6.1 Hard Constraints |
-| Expand/collapse | PASS | 0.73 ms | 16 ms | 6.1 Hard Constraints |
-| Initial bundle gzip | PASS | 24.96 KB (25556 B) | 50.00 KB (51200 B) | 7. Bundle Strategy |
+| First render | PASS | 59.37 ms | 100 ms | 6.1 Hard Constraints |
+| View switch | PASS | 2.37 ms | 50 ms | 6.1 Hard Constraints |
+| Expand/collapse | PASS | 0.87 ms | 16 ms | 6.1 Hard Constraints |
+| Initial bundle gzip | PASS | 26.68 KB (27319 B) | 50.00 KB (51200 B) | 7. Bundle Strategy |
 | Long tasks over 50ms | PASS | 0 count | 0 count | 6.1 Hard Constraints |
 
 ## Bundle
 
-- Initial raw: 74.72 KB (76517 B)
-- Initial gzip: 24.96 KB (25556 B)
-- Total raw: 462.54 KB (473637 B)
-- Total gzip: 189.73 KB (194288 B)
+- Initial raw: 81.93 KB (83899 B)
+- Initial gzip: 26.68 KB (27319 B)
+- Total raw: 470.25 KB (481537 B)
+- Total gzip: 191.61 KB (196205 B)
 
 ## Lighthouse
 
 ### Mobile
 
 - Score: 100
-- FCP: 1316.23 ms
-- Speed Index: 1316.23 ms
-- LCP: 1577.73 ms
-- TBT: 11.5 ms
+- FCP: 1316.71 ms
+- Speed Index: 1316.71 ms
+- LCP: 1579.54 ms
+- TBT: 12.83 ms
 - CLS: 0
-- Main-thread work: 408.51 ms
-- Script bootup: 35.86 ms
+- Main-thread work: 406.48 ms
+- Script bootup: 32.53 ms
 
 ### Desktop
 
 - Score: 90
-- FCP: 1315.04 ms
-- Speed Index: 1315.04 ms
-- LCP: 1575.04 ms
+- FCP: 1314.07 ms
+- Speed Index: 1314.07 ms
+- LCP: 1574.07 ms
 - TBT: 10 ms
 - CLS: 0
-- Main-thread work: 410.51 ms
-- Script bootup: 36.71 ms
+- Main-thread work: 389.8 ms
+- Script bootup: 34.04 ms
 
 ## App Interaction Metrics
 
-- First render: 60.77 ms
-- Parse worker time: 0.3 ms
+- First render: 59.37 ms
+- Parse worker time: 0.4 ms
 - Parse node count: 82
-- Max view switch: 2.8 ms
-- Max tree toggle: 0.73 ms
+- Max view switch: 2.37 ms
+- Max tree toggle: 0.87 ms
 - Long tasks: 0
 - Max long task: 0 ms
-- DOMContentLoaded: 20.13 ms
-- Load event: 36.13 ms
-- JS heap used: 1697.34 KB (1738080 B)
+- DOMContentLoaded: 19.2 ms
+- Load event: 32.5 ms
+- JS heap used: 1852.82 KB (1897291 B)
 
 ## Google Core Web Vitals
 
@@ -76,7 +76,7 @@ Source: https://web.dev/articles/vitals
 
 | Metric | Status | Actual | Target | Note |
 | --- | --- | --- | --- | --- |
-| Largest Contentful Paint | PASS | 1577.73 ms | 2500 ms | web.dev defines good LCP as 2.5s or less at the 75th percentile. |
+| Largest Contentful Paint | PASS | 1579.54 ms | 2500 ms | web.dev defines good LCP as 2.5s or less at the 75th percentile. |
 | Cumulative Layout Shift | PASS | 0 | 0.1 | web.dev defines good CLS as 0.1 or less at the 75th percentile. |
 
 - web.dev defines good INP as 200ms or less at the 75th percentile.

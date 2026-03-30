@@ -6,6 +6,20 @@
 **A local-first structured text parser and visualizer.**
 Worker-first, offline-capable, and installable as a PWA.
 
+[![CI](https://img.shields.io/github/actions/workflow/status/corderro-artz/kata/ci.yml?branch=main&label=CI&logo=githubactions&logoColor=white)](https://github.com/corderro-artz/kata/actions/workflows/ci.yml)
+[![Deploy Pages](https://img.shields.io/github/actions/workflow/status/corderro-artz/kata/deploy-pages.yml?branch=main&label=Pages&logo=githubactions&logoColor=white)](https://github.com/corderro-artz/kata/actions/workflows/deploy-pages.yml)
+[![Live Site](https://img.shields.io/website?url=https%3A%2F%2Fcorderro-artz.github.io%2Fkata%2F&label=Live%20Site&logo=githubpages&logoColor=white)](https://corderro-artz.github.io/kata/)
+[![Release](https://img.shields.io/github/v/tag/corderro-artz/kata?sort=semver&label=Release&logo=git&logoColor=white)](https://github.com/corderro-artz/kata/tags)
+[![License](https://img.shields.io/github/license/corderro-artz/kata?label=License)](https://github.com/corderro-artz/kata/blob/main/LICENSE)
+[![Node 20+](https://img.shields.io/badge/Node-20%2B-5FA04E?logo=nodedotjs&logoColor=white)](https://github.com/corderro-artz/kata/blob/main/package.json)
+
+[![Bundle Gzip](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fcorderro-artz%2Fkata%2Fmain%2Freports%2Fperformance%2Flatest.json&query=%24.bundle.initial.gzipBytes&label=Bundle%20Gzip&suffix=B&color=3d6b52)](https://github.com/corderro-artz/kata/blob/main/reports/performance/latest.md)
+[![First Render](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fcorderro-artz%2Fkata%2Fmain%2Freports%2Fperformance%2Flatest.json&query=%24.app.startup.initialReadyMs&label=First%20Render&suffix=ms&color=3d6b52)](https://github.com/corderro-artz/kata/blob/main/reports/performance/latest.md)
+[![View Switch](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fcorderro-artz%2Fkata%2Fmain%2Freports%2Fperformance%2Flatest.json&query=%24.app.interactions.rawView.latestViewSwitchMs&label=View%20Switch&suffix=ms&color=3d6b52)](https://github.com/corderro-artz/kata/blob/main/reports/performance/latest.md)
+[![Lighthouse Mobile](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fcorderro-artz%2Fkata%2Fmain%2Freports%2Fperformance%2Flatest.json&query=%24.lighthouse.mobile.performanceScore&label=Lighthouse%20Mobile&color=3d6b52)](https://github.com/corderro-artz/kata/blob/main/reports/performance/latest.md)
+[![Lighthouse Desktop](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fcorderro-artz%2Fkata%2Fmain%2Freports%2Fperformance%2Flatest.json&query=%24.lighthouse.desktop.performanceScore&label=Lighthouse%20Desktop&color=3d6b52)](https://github.com/corderro-artz/kata/blob/main/reports/performance/latest.md)
+[![Long Tasks](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fcorderro-artz%2Fkata%2Fmain%2Freports%2Fperformance%2Flatest.json&query=%24.app.startup.longTasks.count&label=Long%20Tasks&color=3d6b52)](https://github.com/corderro-artz/kata/blob/main/reports/performance/latest.md)
+
 [![Open App](https://img.shields.io/badge/Open%20App-Kata-8b1e2b?style=for-the-badge)](https://corderro-artz.github.io/kata/)
 
 ### Contents
@@ -29,7 +43,7 @@ No backend is required after the app is loaded.
 | Capability | Details |
 | --- | --- |
 | Input formats | JSON, YAML, TOML, Markdown, INI, plain text |
-| Export formats | JSON, YAML, TOML, Markdown, XAML |
+| Export formats | JSON, YAML, TOML, Markdown, INI, XAML, plain text |
 | Views | Tree, Raw, Diff |
 | Raw preview controls | Show/hide preview pane, vertical split, horizontal split |
 | Runtime model | Worker-based parse and export |
@@ -80,22 +94,22 @@ Latest dry-run summary is tracked in [reports/performance/latest.md](reports/per
 
 | Budget | Status | Actual | Target |
 | --- | --- | --- | --- |
-| First render | PASS | 61.77 ms | <= 100 ms |
-| View switch | PASS | 2.23 ms | <= 50 ms |
-| Expand/collapse | PASS | 0.8 ms | <= 16 ms |
+| First render | PASS | 59.37 ms | <= 100 ms |
+| View switch | PASS | 2.37 ms | <= 50 ms |
+| Expand/collapse | PASS | 0.87 ms | <= 16 ms |
 | Long tasks over 50 ms | PASS | 0 count | 0 count |
-| Initial bundle gzip | PASS | 25,365 B | <= 51,200 B |
+| Initial bundle gzip | PASS | 27,319 B | <= 51,200 B |
 | Lighthouse mobile score | PASS | 100 | >= 90 |
 | Lighthouse desktop score | PASS | 90 | >= 90 |
 
 | Lighthouse detail | Actual |
 | --- | --- |
-| Mobile FCP | 1314.39 ms |
-| Mobile LCP | 1573.39 ms |
-| Mobile TBT | 9 ms |
-| Desktop FCP | 1312.85 ms |
-| Desktop LCP | 1571.35 ms |
-| Desktop TBT | 8.5 ms |
+| Mobile FCP | 1316.71 ms |
+| Mobile LCP | 1579.54 ms |
+| Mobile TBT | 12.83 ms |
+| Desktop FCP | 1314.07 ms |
+| Desktop LCP | 1574.07 ms |
+| Desktop TBT | 10 ms |
 
 ## Deployment
 
