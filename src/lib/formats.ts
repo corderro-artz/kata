@@ -36,8 +36,12 @@ export function inferFormat(sourceName: string, mimeType = ''): SourceFormat {
 }
 
 export function recommendedExportFormat(format: SourceFormat): ExportFormat {
-  if (format === 'yaml' || format === 'toml' || format === 'markdown') {
+  if (format === 'yaml' || format === 'toml' || format === 'markdown' || format === 'ini') {
     return format
+  }
+
+  if (format === 'text') {
+    return 'text'
   }
 
   return 'json'
@@ -53,6 +57,10 @@ export function exportMime(format: ExportFormat): string {
       return 'text/markdown;charset=utf-8'
     case 'xaml':
       return 'application/xml;charset=utf-8'
+    case 'ini':
+      return 'text/plain;charset=utf-8'
+    case 'text':
+      return 'text/plain;charset=utf-8'
     default:
       return 'application/json;charset=utf-8'
   }
@@ -66,6 +74,8 @@ export function suggestExportName(sourceName: string, format: ExportFormat): str
     toml: 'toml',
     markdown: 'md',
     xaml: 'xaml',
+    ini: 'ini',
+    text: 'txt',
   }
 
   return `${base}.${extensionMap[format]}`

@@ -2,7 +2,7 @@ export type SourceFormat = 'json' | 'markdown' | 'yaml' | 'toml' | 'ini' | 'text
 
 export type ViewMode = 'tree' | 'raw' | 'diff' | 'graph'
 
-export type ExportFormat = 'json' | 'yaml' | 'toml' | 'markdown' | 'xaml'
+export type ExportFormat = 'json' | 'yaml' | 'toml' | 'markdown' | 'xaml' | 'ini' | 'text'
 
 export type NodeKind = 'object' | 'array' | 'value'
 

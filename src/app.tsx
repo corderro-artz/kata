@@ -670,7 +670,9 @@ export function App() {
                 <option value="yaml">YAML</option>
                 <option value="toml">TOML</option>
                 <option value="markdown">Markdown</option>
+                <option value="ini">INI</option>
                 <option value="xaml">XAML</option>
+                <option value="text">Text</option>
               </select>
             </label>
             <div class="export-panel__actions">
@@ -1067,6 +1069,9 @@ function RawView({
     if (previewFormat === 'toml') {
       return 'toml'
     }
+    if (previewFormat === 'ini') {
+      return 'ini'
+    }
     if (previewFormat === 'xaml') {
       return 'text'
     }
@@ -1237,6 +1242,16 @@ function highlightLine(line: string, format?: ParsedDocument['format']): string 
     return escaped
       .replace(/^(#{1,6})(\s.*)$/g, '<span class="token token--accent">$1</span><span class="token token--heading">$2</span>')
       .replace(/^(\s*[-*+]\s)/g, '<span class="token token--accent">$1</span>')
+  }
+
+  if (format === 'ini') {
+    if (/^\s*[;#]/.test(escaped)) {
+      return escaped
+    }
+    if (/^\s*\[/.test(escaped)) {
+      return escaped.replace(/^(\s*\[[^\]]*\])(.*)$/, '<span class="token token--heading">$1</span>$2')
+    }
+    return escaped.replace(/^([^=\n]+?)(\s*=\s*)(.*)$/, '<span class="token token--key">$1</span>$2<span class="token token--string">$3</span>')
   }
 
   return escaped

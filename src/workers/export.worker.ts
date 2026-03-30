@@ -26,6 +26,16 @@ async function handleRequest(request: ExportRequest): Promise<void> {
           ? request.document.text
           : toMarkdown(value, request.document.sourceName)
         break
+      case 'ini': {
+        const ini = await import('ini')
+        text = ini.stringify(asTomlRoot(value))
+        break
+      }
+      case 'text':
+        text = request.document.format === 'text'
+          ? request.document.text
+          : toText(value, request.document.sourceName)
+        break
       case 'xaml':
         text = toXaml(value, request.document.sourceName)
         break
@@ -180,6 +190,30 @@ function escapeXml(value: string): string {
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&apos;')
+}
+
+function toText(value: unknown, sourceName: string): string {
+  const lines: string[] = [`# ${sourceName}`, '']
+  flattenText('', value, lines)
+  return lines.join('\n')
+}
+
+function flattenText(prefix: string, value: unknown, lines: string[]): void {
+  if (Array.isArray(value)) {
+    for (let index = 0; index < value.length; index += 1) {
+      flattenText(prefix ? `${prefix}[${index}]` : `[${index}]`, value[index], lines)
+    }
+    return
+  }
+
+  if (value !== null && typeof value === 'object') {
+    for (const [key, child] of Object.entries(value as Record<string, unknown>)) {
+      flattenText(prefix ? `${prefix}.${key}` : key, child, lines)
+    }
+    return
+  }
+
+  lines.push(`${prefix} = ${value === null || value === undefined ? 'null' : String(value)}`)
 }
 
 function post(message: ExportResponse): void {
