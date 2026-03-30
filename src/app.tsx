@@ -42,6 +42,12 @@ import { canParseInline, parseInline } from './lib/parse-inline'
 const themeSignal = signal<ThemeId>('vapor-dark')
 const viewSignal = signal<ViewMode>('tree')
 
+const BASE_URL = import.meta.env.BASE_URL
+const resolveBasePath = (relativePath: string) => `${BASE_URL}${relativePath}`
+const welcomeLogoDark = resolveBasePath('kata-icon.svg')
+const welcomeLogoLight = resolveBasePath('kata-icon-light.svg')
+const sampleProfileUrl = resolveBasePath('samples/latest-profile.json')
+
 const FALLBACK_SAMPLE_DOCUMENT = `{
   "kata": {
     "name": "Kata",
@@ -94,7 +100,6 @@ export function App() {
   const [references, setReferences] = useState<ReferenceEdge[]>([])
   const [diffBase, setDiffBase] = useState<ParsedDocument | null>(null)
   const [diffEntries, setDiffEntries] = useState<DiffEntry[]>([])
-  const searchTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     themeSignal.value = loadPreferredTheme()
@@ -222,14 +227,15 @@ export function App() {
       setSearchHits([])
       return
     }
-    if (searchTimerRef.current) clearTimeout(searchTimerRef.current)
-    searchTimerRef.current = setTimeout(() => {
+
+    const handle = window.setTimeout(() => {
       const hits = searchNodes(documentState, nodeIndex, searchQuery.trim())
       setSearchHits(hits)
       setStatus(hits.length > 0 ? `${hits.length} result${hits.length === 1 ? '' : 's'}` : 'No results')
     }, 180)
+
     return () => {
-      if (searchTimerRef.current) clearTimeout(searchTimerRef.current)
+      window.clearTimeout(handle)
     }
   }, [searchQuery, nodeIndex, documentState])
 
@@ -259,23 +265,28 @@ export function App() {
 
   useEffect(() => {
     if (searchHits.length === 0 || !nodeIndex || !documentState) return
-    const toExpand = new Set(expandedNodes)
-    let changed = false
-    for (const hit of searchHits) {
-      let current = hit.nodeId
-      while (current !== documentState.rootId) {
-        const parent = nodeIndex.parentMap[current]
-        if (!toExpand.has(parent)) {
-          toExpand.add(parent)
-          changed = true
+    setExpandedNodes((currentExpanded) => {
+      const toExpand = new Set(currentExpanded)
+      let changed = false
+      for (const hit of searchHits) {
+        let current = hit.nodeId
+        while (current !== documentState.rootId) {
+          const parent = nodeIndex.parentMap[current]
+          if (!toExpand.has(parent)) {
+            toExpand.add(parent)
+            changed = true
+          }
+          current = parent
         }
-        current = parent
       }
-    }
-    if (changed) setExpandedNodes(toExpand)
-  }, [searchHits])
+      return changed ? toExpand : currentExpanded
+    })
+  }, [searchHits, nodeIndex, documentState])
 
-  const currentFileLabel = currentWorkspaceFile?.path ?? documentState?.sourceName ?? 'Untitled'
+  const currentFileLabel = currentWorkspaceFile?.path
+    ?? (parseProgress?.type === 'progress' ? parseProgress.sourceName : undefined)
+    ?? documentState?.sourceName
+    ?? 'Welcome'
   const previewText = parseProgress?.type === 'progress' ? parseProgress.previewText : documentState?.previewText ?? ''
 
   async function loadFile(file: File, workspaceEntry?: WorkspaceFileEntry) {
@@ -329,6 +340,7 @@ export function App() {
 
       fileInputRef.current?.click()
     } catch (error) {
+      if (error instanceof DOMException && error.name === 'AbortError') return
       setErrorMessage(error instanceof Error ? error.message : 'Unable to open file.')
     }
   }
@@ -348,8 +360,28 @@ export function App() {
         await loadFile(file, workspace.files[0])
       }
     } catch (error) {
+      if (error instanceof DOMException && error.name === 'AbortError') return
       setErrorMessage(error instanceof Error ? error.message : 'Unable to open workspace.')
     }
+  }
+
+  function handleCloseDocument() {
+    setDocumentState(null)
+    setParseProgress(null)
+    setExpandedNodes(new Set([0]))
+    setWorkspaceFiles([])
+    setCurrentWorkspaceFile(null)
+    setExportText('')
+    setSearchQuery('')
+    setSearchHits([])
+    setReferences([])
+    setContextMenu(null)
+    setNodeIndex(null)
+    setDiffBase(null)
+    setDiffEntries([])
+    setErrorMessage(null)
+    viewSignal.value = 'tree'
+    setStatus('Ready')
   }
 
   async function handleWorkspaceSelect(entry: WorkspaceFileEntry) {
@@ -464,17 +496,18 @@ export function App() {
   return (
     <div class="app-shell">
       <header class="toolbar">
-        <div class="toolbar__brand">
-          <img src={themes.find((t) => t.id === activeTheme)?.scheme === 'light' ? '/kata-favicon-light.svg' : '/kata-favicon.svg'} alt="" width="24" height="24" class="toolbar__logo" />
-          <span class="toolbar__title">Kata</span>
-        </div>
-
         <div class="toolbar__actions">
-          <button type="button" class="toolbar-btn" onClick={() => void handleManualOpen()}>
-            Open file
+          <button type="button" class="toolbar-btn toolbar-btn--icon" title="Open file" aria-label="Open file" onClick={() => void handleManualOpen()}>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 2h6l4 4v9H3V2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round" />
+              <path d="M9 2v4h4" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" />
+            </svg>
           </button>
-          <button type="button" class="toolbar-btn toolbar-btn--ghost" onClick={() => void handleWorkspaceOpen()}>
-            Open folder
+          <button type="button" class="toolbar-btn toolbar-btn--icon toolbar-btn--ghost" title="Open folder" aria-label="Open folder" onClick={() => void handleWorkspaceOpen()}>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M2 7h12v8H2V7z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" />
+              <path d="M2 7V5h4.5l2 2" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" />
+            </svg>
           </button>
 
           <span class="toolbar__divider" />
@@ -491,6 +524,30 @@ export function App() {
               <option key={theme.id} value={theme.id}>{theme.label}</option>
             ))}
           </select>
+        </div>
+
+        <div class="toolbar__title">
+          {(documentState || parseProgress) ? (
+            <>
+              {documentState ? <span class="badge">{formatLabel(documentState.format)}</span> : null}
+              <span class="toolbar__title-text">{currentFileLabel}</span>
+              {documentState ? (
+                <button
+                  type="button"
+                  class="toolbar-btn toolbar-btn--icon toolbar-btn--ghost toolbar__close-btn"
+                  title="Close document"
+                  aria-label="Close document"
+                  onClick={handleCloseDocument}
+                >
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                    <path d="M1 1l8 8M9 1l-8 8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" />
+                  </svg>
+                </button>
+              ) : null}
+            </>
+          ) : (
+            <span class="toolbar__title-text toolbar__title-text--muted">Welcome</span>
+          )}
         </div>
 
         <div class="toolbar__status">
@@ -626,8 +683,8 @@ export function App() {
         </aside>
 
         <section class="editor-area">
-          <div class="editor-area__chrome">
-            {documentState ? (
+          {documentState ? (
+            <div class="editor-area__chrome">
               <div class="tab-strip">
                 {(['tree', 'raw', 'cards'] as ViewMode[]).map((view) => (
                   <button
@@ -656,9 +713,7 @@ export function App() {
                   </button>
                 ) : null}
               </div>
-            ) : null}
 
-            {documentState ? (
               <div class="search-bar">
                 <input
                   type="text"
@@ -671,13 +726,8 @@ export function App() {
                   <span class="search-bar__count">{searchHits.length}</span>
                 ) : null}
               </div>
-            ) : null}
-
-            <div class="editor-area__file-label">
-              <span>{currentFileLabel}</span>
-              {documentState ? <span class="badge">{formatLabel(documentState.format)}</span> : null}
             </div>
-          </div>
+          ) : null}
 
           {errorMessage ? <div class="error-banner">{errorMessage}</div> : null}
 
@@ -696,7 +746,7 @@ export function App() {
             {!documentState && !parseProgress ? (
               <div class="welcome">
                 <img
-                  src={themes.find((t) => t.id === activeTheme)?.scheme === 'light' ? '/kata-icon-light.svg' : '/kata-icon.svg'}
+                  src={themes.find((t) => t.id === activeTheme)?.scheme === 'light' ? welcomeLogoLight : welcomeLogoDark}
                   alt="Kata"
                   width="240"
                   height="240"
@@ -800,7 +850,7 @@ function getCachedSample(): { text: string; sourceName: string } | null {
 
 async function fetchSampleDocument(): Promise<{ text: string; sourceName: string }> {
   try {
-    const response = await fetch('/samples/latest-profile.json')
+    const response = await fetch(sampleProfileUrl)
 
     if (!response.ok) {
       throw new Error(`Sample fetch failed with status ${response.status}`)
