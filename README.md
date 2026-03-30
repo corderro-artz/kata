@@ -3,7 +3,7 @@
 
 # Kata
 
-A local-first structured text parser and visualizer.
+**A local-first structured text parser and visualizer.**
 Worker-first, offline-capable, and installable as a PWA.
 
 ### Contents
@@ -75,31 +75,45 @@ App UI (Preact + Signals)
 
 Latest dry-run summary is tracked in [reports/performance/latest.md](reports/performance/latest.md).
 
-| Metric | Latest |
+| Budget | Status | Actual | Target |
+| --- | --- | --- | --- |
+| First render | PASS | 61.77 ms | <= 100 ms |
+| View switch | PASS | 2.23 ms | <= 50 ms |
+| Expand/collapse | PASS | 0.8 ms | <= 16 ms |
+| Long tasks over 50 ms | PASS | 0 count | 0 count |
+| Initial bundle gzip | PASS | 25,365 B | <= 51,200 B |
+| Lighthouse mobile score | PASS | 100 | >= 90 |
+| Lighthouse desktop score | PASS | 90 | >= 90 |
+
+| Lighthouse detail | Actual |
 | --- | --- |
-| First render | 61.77 ms |
-| Max view switch | 2.23 ms |
-| Max tree toggle | 0.8 ms |
-| Long tasks over 50 ms | 0 |
-| Initial bundle gzip | 25,365 B |
-| Lighthouse mobile | 100 |
-| Lighthouse desktop | 90 |
+| Mobile FCP | 1314.39 ms |
+| Mobile LCP | 1573.39 ms |
+| Mobile TBT | 9 ms |
+| Desktop FCP | 1312.85 ms |
+| Desktop LCP | 1571.35 ms |
+| Desktop TBT | 8.5 ms |
 
 ## Deployment
 
 GitHub Pages deploy is automated by [.github/workflows/deploy-pages.yml](.github/workflows/deploy-pages.yml).
 
-Live URL:
-https://corderro-artz.github.io/kata/
+Primary live URL: https://corderro-artz.github.io/kata/
 
 ## Links
 
 | Resource | URL |
 | --- | --- |
 | Repository | https://github.com/corderro-artz/kata |
-| Pages | https://corderro-artz.github.io/kata/ |
+| Live site | https://corderro-artz.github.io/kata/ |
 | Releases | https://github.com/corderro-artz/kata/releases |
+| Tags | https://github.com/corderro-artz/kata/tags |
 | Actions | https://github.com/corderro-artz/kata/actions |
+| Issues | https://github.com/corderro-artz/kata/issues |
+| Pull requests | https://github.com/corderro-artz/kata/pulls |
+| Security | https://github.com/corderro-artz/kata/security |
+| Insights | https://github.com/corderro-artz/kata/pulse |
+| License | https://github.com/corderro-artz/kata/blob/main/LICENSE |
 | Vaporsoft | https://www.vaporsoft.dev |
 
 ## Contributing
@@ -111,4 +125,4 @@ https://corderro-artz.github.io/kata/
 
 ## License
 
-[MIT](LICENSE) - Copyright (c) 2026 Corderro Artz / Vaporsoft
+[MIT](https://github.com/corderro-artz/kata/blob/main/LICENSE) - Copyright © 2026 [Corderro Artz](https://github.com/corderro-artz) / [Vaporsoft](https://www.vaporsoft.dev)
