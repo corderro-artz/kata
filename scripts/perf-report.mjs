@@ -15,7 +15,9 @@ const baselinesPath = path.join(projectRoot, 'performance', 'baselines.json')
 const distPath = path.join(projectRoot, 'dist')
 const publicSamplesRoot = path.join(projectRoot, 'public', 'samples')
 const reportsRoot = path.join(projectRoot, 'reports', 'performance')
+const reportsBadgesRoot = path.join(reportsRoot, 'badges')
 const chromeProfileRoot = path.join(projectRoot, '.tmp', 'chrome-profile')
+const configuredChromePath = process.env.CHROME_PATH?.trim() || undefined
 
 async function main() {
   const packageJson = JSON.parse(await fs.readFile(packageJsonPath, 'utf8'))
@@ -64,6 +66,7 @@ async function main() {
     chromeFlags: ['--headless=new', '--disable-gpu', '--no-sandbox'],
     logLevel: 'silent',
     userDataDir: chromeProfileRoot,
+    chromePath: configuredChromePath,
   })
 
   try {
@@ -101,9 +104,11 @@ async function main() {
     })
 
     const versionDir = path.join(reportsRoot, version)
+    const badgeArtifacts = buildBadgeArtifacts(reportContext)
     await Promise.all([
       fs.mkdir(versionDir, { recursive: true }),
       fs.mkdir(publicSamplesRoot, { recursive: true }),
+      fs.mkdir(reportsBadgesRoot, { recursive: true }),
     ])
 
     const summaryJson = JSON.stringify(reportContext, null, 2)
@@ -122,6 +127,7 @@ async function main() {
       fs.writeFile(path.join(versionDir, 'lighthouse.desktop.report.html'), desktopAudit.html),
       fs.writeFile(path.join(reportsRoot, 'latest.json'), summaryJson),
       fs.writeFile(path.join(reportsRoot, 'latest.md'), summaryMarkdown),
+      ...Object.entries(badgeArtifacts).map(([name, badge]) => fs.writeFile(path.join(reportsBadgesRoot, name), JSON.stringify(badge, null, 2))),
       fs.writeFile(latestSamplePath, sampleJson),
       fs.writeFile(distSamplePath, sampleJson),
     ])
@@ -403,6 +409,56 @@ function buildSampleProfile(ctx) {
       themes: 6,
     },
     environment: ctx.environment,
+  }
+}
+
+function buildBadgeArtifacts(ctx) {
+  const checks = Object.fromEntries(ctx.checks.project.map((c) => [c.id, c]))
+  const pass = (id) => checks[id]?.status === 'pass'
+  const lhMobile = ctx.lighthouse.mobile.performanceScore
+  const lhDesktop = ctx.lighthouse.desktop.performanceScore
+  const gzip = ctx.bundle.initial.gzipBytes
+  const firstRender = ctx.app.startup.initialReadyMs
+  const viewSwitch = ctx.app.interactions?.rawView?.latestViewSwitchMs ?? null
+  const longTasks = ctx.app.startup.longTasks.count
+
+  return {
+    'bundle-gzip.json': {
+      schemaVersion: 1,
+      label: 'bundle gzip',
+      message: `${(gzip / 1024).toFixed(1)} KB`,
+      color: pass('initial-bundle-gzip-kb') ? 'brightgreen' : 'red',
+    },
+    'first-render.json': {
+      schemaVersion: 1,
+      label: 'first render',
+      message: `${firstRender} ms`,
+      color: pass('first-render-ms') ? 'brightgreen' : 'red',
+    },
+    'view-switch.json': {
+      schemaVersion: 1,
+      label: 'view switch',
+      message: viewSwitch !== null ? `${viewSwitch} ms` : 'n/a',
+      color: pass('view-switch-ms') ? 'brightgreen' : 'red',
+    },
+    'lighthouse-mobile.json': {
+      schemaVersion: 1,
+      label: 'lighthouse mobile',
+      message: String(lhMobile),
+      color: lhMobile >= 90 ? 'brightgreen' : lhMobile >= 70 ? 'yellow' : 'red',
+    },
+    'lighthouse-desktop.json': {
+      schemaVersion: 1,
+      label: 'lighthouse desktop',
+      message: String(lhDesktop),
+      color: lhDesktop >= 90 ? 'brightgreen' : lhDesktop >= 70 ? 'yellow' : 'red',
+    },
+    'long-tasks.json': {
+      schemaVersion: 1,
+      label: 'long tasks',
+      message: String(longTasks),
+      color: longTasks === 0 ? 'brightgreen' : 'red',
+    },
   }
 }
 

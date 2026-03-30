@@ -1,0 +1,51 @@
+name: Performance Report
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'reports/**'
+      - 'public/samples/**'
+      - '**.md'
+  schedule:
+    - cron: '0 4 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: perf-report
+  cancel-in-progress: true
+
+jobs:
+  report:
+    name: Run Performance Report
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - uses: browser-actions/setup-chrome@v1
+        id: setup-chrome
+
+      - run: npm ci
+
+      - name: Run performance report
+        run: npm run perf:report
+        env:
+          CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+
+      - name: Commit updated reports
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add reports/performance/ public/samples/
+          git diff --staged --quiet || git commit -m "chore: update performance reports [skip ci]"
+          git push
