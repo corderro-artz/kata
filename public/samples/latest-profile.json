@@ -8,28 +8,28 @@
     "repository": "https://github.com/corderro-artz/kata"
   },
   "build": {
-    "generatedAt": "2026-03-30T13:12:19.778Z",
-    "commit": "73c8efddad88309158f324ec76731ffc6f993fd0",
+    "generatedAt": "2026-03-30T13:28:52.914Z",
+    "commit": "58f35404150b81715ded974e628214f02c4857b1",
     "branch": "main",
-    "durationMs": 5243.56,
+    "durationMs": 5434.15,
     "bundle": {
       "initialGzipKB": 26.68,
-      "totalGzipKB": 191.59
+      "totalGzipKB": 191.58
     }
   },
   "performance": {
     "budgets": {
       "firstRenderMs": {
-        "actual": 54.57,
+        "actual": 58.47,
         "target": 100,
         "pass": true
       },
       "viewSwitchMs": {
-        "actual": 6.1,
+        "actual": 5.4,
         "target": 50
       },
       "expandCollapseMs": {
-        "actual": 1.6,
+        "actual": 1.4,
         "target": 16
       },
       "longTasks": {
@@ -40,22 +40,22 @@
     "lighthouse": {
       "mobile": {
         "score": 100,
-        "fcp": 1333.96,
-        "lcp": 1460.8,
-        "tbt": 4.5,
+        "fcp": 1331.79,
+        "lcp": 1455.62,
+        "tbt": 2.67,
         "cls": 0
       },
       "desktop": {
-        "score": 91,
-        "fcp": 1335.72,
-        "lcp": 1463.55,
-        "tbt": 5,
+        "score": 90.33,
+        "fcp": 1323.08,
+        "lcp": 1539.24,
+        "tbt": 4.67,
         "cls": 0
       }
     },
     "coreWebVitals": {
       "lcp": {
-        "actual": 1460.8,
+        "actual": 1455.62,
         "target": 2500,
         "unit": "ms"
       },
