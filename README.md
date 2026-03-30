@@ -15,7 +15,7 @@ Kata is a worker-first, offline-capable PWA for parsing, inspecting, comparing, 
 [![Deploy Pages](https://img.shields.io/github/actions/workflow/status/corderro-artz/kata/deploy-pages.yml?branch=main&label=Pages&logo=githubactions&logoColor=white)](https://github.com/corderro-artz/kata/actions/workflows/deploy-pages.yml)
 [![Performance Report](https://img.shields.io/github/actions/workflow/status/corderro-artz/kata/perf-report.yml?branch=main&label=Perf%20Report&logo=githubactions&logoColor=white)](https://github.com/corderro-artz/kata/actions/workflows/perf-report.yml)
 [![Release](https://img.shields.io/github/v/tag/corderro-artz/kata?sort=semver&label=Release&logo=git&logoColor=white)](https://github.com/corderro-artz/kata/tags)
-[![License](https://img.shields.io/github/license/corderro-artz/kata?label=License)](https://github.com/corderro-artz/kata/blob/main/LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-F7C948?logo=open-source-initiative&logoColor=white)](https://github.com/corderro-artz/kata/blob/main/LICENSE)
 
 **Runtime**  
 [![Node 20+](https://img.shields.io/badge/Node-20%2B-5FA04E?logo=nodedotjs&logoColor=white)](https://github.com/corderro-artz/kata/blob/main/package.json)

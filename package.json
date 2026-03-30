@@ -4,6 +4,7 @@
   "version": "0.1.0-alpha",
   "type": "module",
   "description": "Local-first structured text parser and visualizer.",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
