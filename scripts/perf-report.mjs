@@ -68,9 +68,19 @@ async function main() {
 
   try {
     const gitInfo = await readGitInfo()
-    const mobileAudit = await runLighthouseAudit(previewUrl, chrome.port, 'mobile')
-    const desktopAudit = await runLighthouseAudit(previewUrl, chrome.port, 'desktop')
-    const appMetrics = await collectAppMetrics(previewUrl, chrome.port)
+
+    const RUNS = 3
+    const runResults = []
+    for (let run = 0; run < RUNS; run++) {
+      const mobileAudit = await runLighthouseAudit(previewUrl, chrome.port, 'mobile')
+      const desktopAudit = await runLighthouseAudit(previewUrl, chrome.port, 'desktop')
+      const appMetrics = await collectAppMetrics(previewUrl, chrome.port)
+      runResults.push({ mobileAudit, desktopAudit, appMetrics })
+    }
+
+    const mobileAudit = buildAveragedLighthouseAudit(runResults.map((r) => r.mobileAudit))
+    const desktopAudit = buildAveragedLighthouseAudit(runResults.map((r) => r.desktopAudit))
+    const appMetrics = buildAveragedAppMetrics(runResults.map((r) => r.appMetrics))
 
     const reportContext = buildReportContext({
       version,
@@ -82,7 +92,12 @@ async function main() {
       desktopAudit,
       appMetrics,
       gitInfo,
-        chromePath: chrome.executablePath ?? chrome.chromePath ?? 'unknown',
+      runs: runResults.map((r) => ({
+        mobileAudit: r.mobileAudit.summary,
+        desktopAudit: r.desktopAudit.summary,
+        appMetrics: { startup: r.appMetrics.startup, navigation: r.appMetrics.navigation },
+      })),
+      chromePath: chrome.executablePath ?? chrome.chromePath ?? 'unknown',
     })
 
     const versionDir = path.join(reportsRoot, version)
@@ -282,6 +297,76 @@ async function collectAppMetrics(url, port) {
   }
 }
 
+function buildAveragedLighthouseAudit(audits) {
+  return {
+    html: audits[0].html,
+    lhr: audits[0].lhr,
+    summary: averageNumericFields(audits.map((a) => a.summary)),
+  }
+}
+
+function buildAveragedAppMetrics(allMetrics) {
+  const avgNullable = (values) => {
+    const nums = values.filter(isNumber)
+    return nums.length > 0 ? round(nums.reduce((s, v) => s + v, 0) / nums.length) : null
+  }
+  const base = allMetrics[0]
+  return {
+    startup: {
+      ...base.startup,
+      initialReadyMs: avgNullable(allMetrics.map((m) => m.startup?.initialReadyMs)),
+      parseMs: avgNullable(allMetrics.map((m) => m.startup?.parseMs)),
+      longTasks: {
+        count: avgNullable(allMetrics.map((m) => m.startup?.longTasks?.count)),
+        maxDuration: avgNullable(allMetrics.map((m) => m.startup?.longTasks?.maxDuration)),
+        totalDuration: avgNullable(allMetrics.map((m) => m.startup?.longTasks?.totalDuration)),
+      },
+    },
+    navigation: {
+      domContentLoadedMs: avgNullable(allMetrics.map((m) => m.navigation?.domContentLoadedMs)),
+      loadEventMs: avgNullable(allMetrics.map((m) => m.navigation?.loadEventMs)),
+    },
+    memory: base.memory,
+    interactions: buildAveragedInteractions(allMetrics.map((m) => m.interactions)),
+  }
+}
+
+function buildAveragedInteractions(allInteractions) {
+  const avgNullable = (values) => {
+    const nums = values.filter(isNumber)
+    return nums.length > 0 ? round(nums.reduce((s, v) => s + v, 0) / nums.length) : null
+  }
+  const interactionKeys = Object.keys(allInteractions[0])
+  const result = {}
+  for (const key of interactionKeys) {
+    const snapshots = allInteractions.map((i) => i[key]).filter(Boolean)
+    if (snapshots.length === 0) continue
+    const base = snapshots[0]
+    result[key] = {
+      ...base,
+      initialReadyMs: avgNullable(snapshots.map((s) => s.initialReadyMs)),
+      latestViewSwitchMs: avgNullable(snapshots.map((s) => s.latestViewSwitchMs)),
+      latestTreeToggleMs: avgNullable(snapshots.map((s) => s.latestTreeToggleMs)),
+      longTasks: {
+        count: avgNullable(snapshots.map((s) => s.longTasks?.count)),
+        maxDuration: avgNullable(snapshots.map((s) => s.longTasks?.maxDuration)),
+        totalDuration: avgNullable(snapshots.map((s) => s.longTasks?.totalDuration)),
+      },
+    }
+  }
+  return result
+}
+
+function averageNumericFields(objects) {
+  const result = { ...objects[0] }
+  for (const key of Object.keys(result)) {
+    if (typeof result[key] === 'number') {
+      result[key] = round(objects.reduce((s, o) => s + (o[key] ?? 0), 0) / objects.length)
+    }
+  }
+  return result
+}
+
 function buildSampleProfile(ctx) {
   const lh = ctx.lighthouse
   const app = ctx.app
@@ -343,6 +428,7 @@ function buildReportContext({
   desktopAudit,
   appMetrics,
   gitInfo,
+  runs,
   chromePath,
 }) {
   const interactionSnapshots = collectInteractionSnapshots(appMetrics)
@@ -398,6 +484,8 @@ function buildReportContext({
       mobile: mobileAudit.summary,
       desktop: desktopAudit.summary,
     },
+    runCount: runs.length,
+    runs,
     checks: {
       project: projectChecks,
       verified: verifiedChecks,
@@ -428,7 +516,7 @@ async function collectBundleStats(rootDistPath) {
   }
 
   const indexHtml = await fs.readFile(path.join(rootDistPath, 'index.html'), 'utf8')
-  const initialPaths = [...indexHtml.matchAll(/(?:src|href)="\/(assets\/[^\"]+)"/g)].map((match) => match[1])
+  const initialPaths = [...indexHtml.matchAll(/(?:src|href)="[^"]*\/(assets\/[^"]+)"/g)].map((match) => match[1])
   const initialAssets = allAssets.filter((asset) => initialPaths.includes(asset.path))
 
   return {
@@ -571,7 +659,7 @@ function renderMarkdown(context) {
     })
     .join('\n\n')
 
-  return `# Kata Performance Report\n\n- Version: ${context.version}\n- Generated: ${context.generatedAt}\n- Commit: ${context.git.commit}\n- Branch: ${context.git.branch}\n\n## Environment\n\n- Node: ${context.environment.node}\n- Platform: ${context.environment.platform}\n- CPU: ${context.environment.cpu}\n- Chrome: ${context.environment.chromePath}\n- Build duration: ${formatMetric(context.build.durationMs, 'ms')}\n\n## Kata Spec Budgets\n\nSource: ${context.sources.project}\n\n| Budget | Status | Actual | Target | Source |\n| --- | --- | --- | --- | --- |\n${projectRows}\n\n## Bundle\n\n- Initial raw: ${formatMetric(context.bundle.initial.rawBytes, 'bytes')}\n- Initial gzip: ${formatMetric(context.bundle.initial.gzipBytes, 'bytes')}\n- Total raw: ${formatMetric(context.bundle.total.rawBytes, 'bytes')}\n- Total gzip: ${formatMetric(context.bundle.total.gzipBytes, 'bytes')}\n\n## Lighthouse\n\n### Mobile\n\n- Score: ${formatMetric(context.lighthouse.mobile.performanceScore, 'score')}\n- FCP: ${formatMetric(context.lighthouse.mobile.firstContentfulPaintMs, 'ms')}\n- Speed Index: ${formatMetric(context.lighthouse.mobile.speedIndexMs, 'ms')}\n- LCP: ${formatMetric(context.lighthouse.mobile.largestContentfulPaintMs, 'ms')}\n- TBT: ${formatMetric(context.lighthouse.mobile.totalBlockingTimeMs, 'ms')}\n- CLS: ${formatMetric(context.lighthouse.mobile.cumulativeLayoutShift, 'score')}\n- Main-thread work: ${formatMetric(context.lighthouse.mobile.mainThreadWorkBreakdownMs, 'ms')}\n- Script bootup: ${formatMetric(context.lighthouse.mobile.scriptBootupTimeMs, 'ms')}\n\n### Desktop\n\n- Score: ${formatMetric(context.lighthouse.desktop.performanceScore, 'score')}\n- FCP: ${formatMetric(context.lighthouse.desktop.firstContentfulPaintMs, 'ms')}\n- Speed Index: ${formatMetric(context.lighthouse.desktop.speedIndexMs, 'ms')}\n- LCP: ${formatMetric(context.lighthouse.desktop.largestContentfulPaintMs, 'ms')}\n- TBT: ${formatMetric(context.lighthouse.desktop.totalBlockingTimeMs, 'ms')}\n- CLS: ${formatMetric(context.lighthouse.desktop.cumulativeLayoutShift, 'score')}\n- Main-thread work: ${formatMetric(context.lighthouse.desktop.mainThreadWorkBreakdownMs, 'ms')}\n- Script bootup: ${formatMetric(context.lighthouse.desktop.scriptBootupTimeMs, 'ms')}\n\n## App Interaction Metrics\n\n- First render: ${formatMetric(context.app.startup.initialReadyMs, 'ms')}\n- Parse worker time: ${formatMetric(context.app.startup.parseMs, 'ms')}\n- Parse node count: ${context.app.startup.parseNodeCount ?? 'n/a'}\n- Max view switch: ${formatMetric(maxInteractionValue(context.app, 'latestViewSwitchMs'), 'ms')}\n- Max tree toggle: ${formatMetric(maxInteractionValue(context.app, 'latestTreeToggleMs'), 'ms')}\n- Long tasks: ${maxLongTaskCount(context.app)}\n- Max long task: ${formatMetric(maxLongTaskDuration(context.app), 'ms')}\n- DOMContentLoaded: ${formatMetric(context.app.navigation?.domContentLoadedMs ?? null, 'ms')}\n- Load event: ${formatMetric(context.app.navigation?.loadEventMs ?? null, 'ms')}\n- JS heap used: ${formatMetric(context.app.memory?.usedJSHeapSize ?? null, 'bytes')}\n\n${verifiedSections}\n`
+  return `# Kata Performance Report\n\n- Version: ${context.version}\n- Generated: ${context.generatedAt}\n- Commit: ${context.git.commit}\n- Branch: ${context.git.branch}\n- Runs: ${context.runCount} (3-run average)\n\n## Environment\n\n- Node: ${context.environment.node}\n- Platform: ${context.environment.platform}\n- CPU: ${context.environment.cpu}\n- Chrome: ${context.environment.chromePath}\n- Build duration: ${formatMetric(context.build.durationMs, 'ms')}\n\n## Kata Spec Budgets\n\nSource: ${context.sources.project}\n\n| Budget | Status | Actual | Target | Source |\n| --- | --- | --- | --- | --- |\n${projectRows}\n\n## Bundle\n\n- Initial raw: ${formatMetric(context.bundle.initial.rawBytes, 'bytes')}\n- Initial gzip: ${formatMetric(context.bundle.initial.gzipBytes, 'bytes')}\n- Total raw: ${formatMetric(context.bundle.total.rawBytes, 'bytes')}\n- Total gzip: ${formatMetric(context.bundle.total.gzipBytes, 'bytes')}\n\n## Lighthouse\n\n### Mobile\n\n- Score: ${formatMetric(context.lighthouse.mobile.performanceScore, 'score')}\n- FCP: ${formatMetric(context.lighthouse.mobile.firstContentfulPaintMs, 'ms')}\n- Speed Index: ${formatMetric(context.lighthouse.mobile.speedIndexMs, 'ms')}\n- LCP: ${formatMetric(context.lighthouse.mobile.largestContentfulPaintMs, 'ms')}\n- TBT: ${formatMetric(context.lighthouse.mobile.totalBlockingTimeMs, 'ms')}\n- CLS: ${formatMetric(context.lighthouse.mobile.cumulativeLayoutShift, 'score')}\n- Main-thread work: ${formatMetric(context.lighthouse.mobile.mainThreadWorkBreakdownMs, 'ms')}\n- Script bootup: ${formatMetric(context.lighthouse.mobile.scriptBootupTimeMs, 'ms')}\n\n### Desktop\n\n- Score: ${formatMetric(context.lighthouse.desktop.performanceScore, 'score')}\n- FCP: ${formatMetric(context.lighthouse.desktop.firstContentfulPaintMs, 'ms')}\n- Speed Index: ${formatMetric(context.lighthouse.desktop.speedIndexMs, 'ms')}\n- LCP: ${formatMetric(context.lighthouse.desktop.largestContentfulPaintMs, 'ms')}\n- TBT: ${formatMetric(context.lighthouse.desktop.totalBlockingTimeMs, 'ms')}\n- CLS: ${formatMetric(context.lighthouse.desktop.cumulativeLayoutShift, 'score')}\n- Main-thread work: ${formatMetric(context.lighthouse.desktop.mainThreadWorkBreakdownMs, 'ms')}\n- Script bootup: ${formatMetric(context.lighthouse.desktop.scriptBootupTimeMs, 'ms')}\n\n## App Interaction Metrics\n\n- First render: ${formatMetric(context.app.startup.initialReadyMs, 'ms')}\n- Parse worker time: ${formatMetric(context.app.startup.parseMs, 'ms')}\n- Parse node count: ${context.app.startup.parseNodeCount ?? 'n/a'}\n- Max view switch: ${formatMetric(maxInteractionValue(context.app, 'latestViewSwitchMs'), 'ms')}\n- Max tree toggle: ${formatMetric(maxInteractionValue(context.app, 'latestTreeToggleMs'), 'ms')}\n- Long tasks: ${maxLongTaskCount(context.app)}\n- Max long task: ${formatMetric(maxLongTaskDuration(context.app), 'ms')}\n- DOMContentLoaded: ${formatMetric(context.app.navigation?.domContentLoadedMs ?? null, 'ms')}\n- Load event: ${formatMetric(context.app.navigation?.loadEventMs ?? null, 'ms')}\n- JS heap used: ${formatMetric(context.app.memory?.usedJSHeapSize ?? null, 'bytes')}\n\n${verifiedSections}\n`
 }
 
 function evaluateTarget(actual, operator, target) {

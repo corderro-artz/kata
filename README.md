@@ -1,59 +1,114 @@
-﻿# Kata
+﻿[![Vaporsoft](https://raw.githubusercontent.com/corderro-artz/corderro-artz.github.io/main/public/vaporsoft-logo.svg)](https://www.vaporsoft.dev)
+[![Kata](https://raw.githubusercontent.com/corderro-artz/corderro-artz.github.io/main/public/kata-icon.svg)](https://corderro-artz.github.io/kata/)
 
-Local-first structured text parser and visualizer.
-Installable PWA that parses, inspects, and exports entirely in-browser.
+# Kata
 
-## Highlights
+A local-first structured text parser and visualizer.
+Worker-first, offline-capable, and installable as a PWA.
 
-- 6 input formats: JSON, YAML, TOML, Markdown, INI, plain text
-- 4 export formats: JSON, YAML, TOML, Markdown
-- 3 virtualized views: tree, raw, cards
-- Worker-first runtime for parse and export
-- Workspace mode via File System Access API
-- Offline support with service worker precache
+### Contents
+
+- [Overview](#overview)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Architecture](#architecture)
+- [Performance](#performance)
+- [Deployment](#deployment)
+- [Links](#links)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Overview
+
+Kata parses, inspects, compares, and exports structured text entirely in-browser.
+No backend is required after the app is loaded.
+
+| Capability | Details |
+| --- | --- |
+| Input formats | JSON, YAML, TOML, Markdown, INI, plain text |
+| Export formats | JSON, YAML, TOML, Markdown |
+| Views | Tree, Raw, Cards, Diff |
+| Runtime model | Worker-based parse and export |
+| Local file support | File picker + workspace folder mode |
+| PWA | Installable, offline-capable |
+
+## Requirements
+
+- Node.js 20+
+- npm 10+
+- Chromium-based browser for full File System Access features
+
+## Installation
+
+```bash
+npm install
+```
 
 ## Quick Start
 
-1. npm install
-2. npm run dev
+```bash
+npm run dev
+```
 
 Build and preview:
 
-1. npm run build
-2. npm run preview
+```bash
+npm run build
+npm run preview
+```
 
-## Performance Snapshot
+## Architecture
 
-From the latest dry run in [reports/performance/latest.md](reports/performance/latest.md):
+```text
+App UI (Preact + Signals)
+	|
+	+-- Parse Worker  -> structured document model
+	+-- Export Worker -> format conversion output
+	|
+	+-- Virtualized renderers (tree/raw/cards/diff)
+	+-- Search/index/reference graph
+	+-- PWA shell + cache
+```
 
-- First render: 61.77 ms
-- Max view switch: 2.23 ms
-- Max tree toggle: 0.8 ms
-- Long tasks over 50 ms: 0
-- Initial bundle gzip: 25,365 B
-- Lighthouse mobile: 100 (FCP 1314.39 ms, LCP 1573.39 ms, TBT 9 ms)
-- Lighthouse desktop: 90 (FCP 1312.85 ms, LCP 1571.35 ms, TBT 8.5 ms)
+## Performance
 
-## Scripts
+Latest dry-run summary is tracked in [reports/performance/latest.md](reports/performance/latest.md).
 
-- npm run dev: start dev server
-- npm run build: type-check and production build
-- npm run check: type-check only
-- npm run preview: serve production build
-- npm run perf:report: run Lighthouse and app metrics, write reports
+| Metric | Latest |
+| --- | --- |
+| First render | 61.77 ms |
+| Max view switch | 2.23 ms |
+| Max tree toggle | 0.8 ms |
+| Long tasks over 50 ms | 0 |
+| Initial bundle gzip | 25,365 B |
+| Lighthouse mobile | 100 |
+| Lighthouse desktop | 90 |
 
 ## Deployment
 
-GitHub Pages deployment is automated via workflow in [.github/workflows/deploy-pages.yml](.github/workflows/deploy-pages.yml).
+GitHub Pages deploy is automated by [.github/workflows/deploy-pages.yml](.github/workflows/deploy-pages.yml).
 
-Expected Pages URL:
+Live URL:
 https://corderro-artz.github.io/kata/
 
-## Docs
+## Links
 
-- Product constraints: [specification.md](specification.md)
-- Session notes: [SESSION_SUMMARY.md](SESSION_SUMMARY.md)
+| Resource | URL |
+| --- | --- |
+| Repository | https://github.com/corderro-artz/kata |
+| Pages | https://corderro-artz.github.io/kata/ |
+| Releases | https://github.com/corderro-artz/kata/releases |
+| Actions | https://github.com/corderro-artz/kata/actions |
+| Vaporsoft | https://www.vaporsoft.dev |
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Run npm run check and npm run build
+4. Open a pull request
 
 ## License
 
-[MIT](LICENSE) © 2026 Corderro Artz / Vaporsoft
+[MIT](LICENSE) - Copyright (c) 2026 Corderro Artz / Vaporsoft
