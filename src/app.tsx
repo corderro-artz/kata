@@ -788,8 +788,10 @@ export function App() {
 
             {activeView === 'raw' ? (
               <RawView
-                text={previewText || exportText}
-                format={documentState?.format}
+                sourceText={previewText || exportText}
+                sourceFormat={documentState?.format}
+                previewText={exportText}
+                previewFormat={exportFormat}
                 matchedLineNumbers={rawSearchMatchedLines}
               />
             ) : null}
@@ -980,6 +982,54 @@ function TreeView({
 }
 
 function RawView({
+  sourceText,
+  sourceFormat,
+  previewText,
+  previewFormat,
+  matchedLineNumbers,
+}: {
+  sourceText: string
+  sourceFormat?: ParsedDocument['format']
+  previewText: string
+  previewFormat: ExportFormat
+  matchedLineNumbers: Set<number>
+}) {
+  const previewSyntaxFormat = useMemo(() => {
+    if (previewFormat === 'markdown') {
+      return 'markdown'
+    }
+    if (previewFormat === 'yaml') {
+      return 'yaml'
+    }
+    if (previewFormat === 'toml') {
+      return 'toml'
+    }
+    return 'json'
+  }, [previewFormat])
+  const emptyMatches = useMemo(() => new Set<number>(), [])
+
+  return (
+    <div class="raw-split">
+      <section class="raw-pane">
+        <header class="raw-pane__header">
+          <span class="label-sm">Source</span>
+          <span class="label-sm label-sm--muted">{formatLabel(sourceFormat ?? 'text')}</span>
+        </header>
+        <RawViewport text={sourceText} format={sourceFormat} matchedLineNumbers={matchedLineNumbers} />
+      </section>
+
+      <section class="raw-pane raw-pane--preview">
+        <header class="raw-pane__header">
+          <span class="label-sm">Preview</span>
+          <span class="label-sm label-sm--muted">{formatLabel(previewFormat)}</span>
+        </header>
+        <RawViewport text={previewText} format={previewSyntaxFormat} matchedLineNumbers={emptyMatches} />
+      </section>
+    </div>
+  )
+}
+
+function RawViewport({
   text,
   format,
   matchedLineNumbers,

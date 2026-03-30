@@ -493,6 +493,34 @@
   background: color-mix(in srgb, var(--surface-strong) 82%, transparent);
 }
 
+.raw-split {
+  height: 100%;
+  display: grid;
+  grid-template-rows: minmax(140px, 1fr) minmax(140px, 1fr);
+}
+
+.raw-pane {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--grid);
+}
+
+.raw-pane--preview {
+  border-bottom: none;
+  border-top: 1px solid var(--border);
+}
+
+.raw-pane__header {
+  min-height: 28px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--grid);
+  background: color-mix(in srgb, var(--bg-elevated) 82%, transparent);
+}
+
 /* -- Tree view -- */
 
 .tree-row {
