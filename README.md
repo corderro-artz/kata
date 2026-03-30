@@ -6,6 +6,8 @@
 **A local-first structured text parser and visualizer.**
 Worker-first, offline-capable, and installable as a PWA.
 
+[![Open App](https://img.shields.io/badge/Open%20App-Kata-8b1e2b?style=for-the-badge)](https://corderro-artz.github.io/kata/)
+
 ### Contents
 
 - [Overview](#overview)

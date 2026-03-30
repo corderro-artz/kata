@@ -22,7 +22,7 @@
     "micromark": "^4.0.2",
     "preact": "^10.29.0",
     "smol-toml": "^1.6.1",
-    "vite-plugin-pwa": "^1.2.0",
+    "vite-plugin-pwa": "1.2.0",
     "yaml": "^2.8.3"
   },
   "devDependencies": {
@@ -34,5 +34,8 @@
     "lighthouse": "^12.8.2",
     "typescript": "~5.9.3",
     "vite": "^7.1.12"
+  },
+  "overrides": {
+    "serialize-javascript": "^7.0.5"
   }
 }
