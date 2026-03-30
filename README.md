@@ -31,6 +31,7 @@ No backend is required after the app is loaded.
 | Input formats | JSON, YAML, TOML, Markdown, INI, plain text |
 | Export formats | JSON, YAML, TOML, Markdown, XAML |
 | Views | Tree, Raw, Diff |
+| Raw preview controls | Show/hide preview pane, vertical split, horizontal split |
 | Runtime model | Worker-based parse and export |
 | Local file support | File picker + workspace folder mode |
 | PWA | Installable, offline-capable |

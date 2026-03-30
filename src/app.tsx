@@ -102,6 +102,8 @@ export function App() {
   const [references, setReferences] = useState<ReferenceEdge[]>([])
   const [diffBase, setDiffBase] = useState<ParsedDocument | null>(null)
   const [diffEntries, setDiffEntries] = useState<DiffEntry[]>([])
+  const [rawPreviewVisible, setRawPreviewVisible] = useState(true)
+  const [rawPreviewOrientation, setRawPreviewOrientation] = useState<'vertical' | 'horizontal'>('vertical')
 
   useEffect(() => {
     themeSignal.value = loadPreferredTheme()
@@ -738,6 +740,60 @@ export function App() {
               </div>
 
               <div class="search-bar">
+                {activeView === 'raw' ? (
+                  <div class="raw-controls" role="group" aria-label="Raw preview controls">
+                    <button
+                      type="button"
+                      class={`toolbar-btn toolbar-btn--icon toolbar-btn--ghost ${rawPreviewVisible ? 'is-active' : ''}`}
+                      title={rawPreviewVisible ? 'Hide preview pane' : 'Show preview pane'}
+                      aria-label={rawPreviewVisible ? 'Hide preview pane' : 'Show preview pane'}
+                      aria-pressed={rawPreviewVisible}
+                      onClick={() => {
+                        setRawPreviewVisible((current) => !current)
+                      }}
+                    >
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                        <path d="M1.5 7c1.2-2 3-3.3 5.5-3.3S11.3 5 12.5 7c-1.2 2-3 3.3-5.5 3.3S2.7 9 1.5 7Z" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="7" cy="7" r="1.8" stroke="currentColor" stroke-width="1.1" />
+                        {!rawPreviewVisible ? <path d="M2 12L12 2" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" /> : null}
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      class={`toolbar-btn toolbar-btn--icon toolbar-btn--ghost ${rawPreviewOrientation === 'vertical' ? 'is-active' : ''}`}
+                      title="Vertical split (side by side)"
+                      aria-label="Vertical split"
+                      aria-pressed={rawPreviewOrientation === 'vertical'}
+                      onClick={() => {
+                        setRawPreviewOrientation('vertical')
+                        setRawPreviewVisible(true)
+                      }}
+                      disabled={!rawPreviewVisible}
+                    >
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                        <rect x="1.5" y="2" width="11" height="10" stroke="currentColor" stroke-width="1.1" />
+                        <path d="M7 2v10" stroke="currentColor" stroke-width="1.1" />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      class={`toolbar-btn toolbar-btn--icon toolbar-btn--ghost ${rawPreviewOrientation === 'horizontal' ? 'is-active' : ''}`}
+                      title="Horizontal split (stacked)"
+                      aria-label="Horizontal split"
+                      aria-pressed={rawPreviewOrientation === 'horizontal'}
+                      onClick={() => {
+                        setRawPreviewOrientation('horizontal')
+                        setRawPreviewVisible(true)
+                      }}
+                      disabled={!rawPreviewVisible}
+                    >
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                        <rect x="1.5" y="2" width="11" height="10" stroke="currentColor" stroke-width="1.1" />
+                        <path d="M1.5 7h11" stroke="currentColor" stroke-width="1.1" />
+                      </svg>
+                    </button>
+                  </div>
+                ) : null}
                 <input
                   type="text"
                   class="search-bar__input"
@@ -794,6 +850,8 @@ export function App() {
                 previewText={exportText}
                 previewFormat={exportFormat}
                 matchedLineNumbers={rawSearchMatchedLines}
+                showPreview={rawPreviewVisible}
+                splitOrientation={rawPreviewOrientation}
               />
             ) : null}
 
@@ -988,12 +1046,16 @@ function RawView({
   previewText,
   previewFormat,
   matchedLineNumbers,
+  showPreview,
+  splitOrientation,
 }: {
   sourceText: string
   sourceFormat?: ParsedDocument['format']
   previewText: string
   previewFormat: ExportFormat
   matchedLineNumbers: Set<number>
+  showPreview: boolean
+  splitOrientation: 'vertical' | 'horizontal'
 }) {
   const previewSyntaxFormat = useMemo(() => {
     if (previewFormat === 'markdown') {
@@ -1013,7 +1075,7 @@ function RawView({
   const emptyMatches = useMemo(() => new Set<number>(), [])
 
   return (
-    <div class="raw-split">
+    <div class={`raw-split ${showPreview ? `raw-split--${splitOrientation}` : 'raw-split--source-only'}`}>
       <section class="raw-pane">
         <header class="raw-pane__header">
           <span class="label-sm">Source</span>
@@ -1022,13 +1084,15 @@ function RawView({
         <RawViewport text={sourceText} format={sourceFormat} matchedLineNumbers={matchedLineNumbers} />
       </section>
 
-      <section class="raw-pane raw-pane--preview">
-        <header class="raw-pane__header">
-          <span class="label-sm">Preview</span>
-          <span class="label-sm label-sm--muted">{formatLabel(previewFormat)}</span>
-        </header>
-        <RawViewport text={previewText} format={previewSyntaxFormat} matchedLineNumbers={emptyMatches} />
-      </section>
+      {showPreview ? (
+        <section class="raw-pane raw-pane--preview">
+          <header class="raw-pane__header">
+            <span class="label-sm">Preview</span>
+            <span class="label-sm label-sm--muted">{formatLabel(previewFormat)}</span>
+          </header>
+          <RawViewport text={previewText} format={previewSyntaxFormat} matchedLineNumbers={emptyMatches} />
+        </section>
+      ) : null}
     </div>
   )
 }
