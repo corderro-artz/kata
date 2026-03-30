@@ -30,7 +30,7 @@ No backend is required after the app is loaded.
 | --- | --- |
 | Input formats | JSON, YAML, TOML, Markdown, INI, plain text |
 | Export formats | JSON, YAML, TOML, Markdown |
-| Views | Tree, Raw, Cards, Diff |
+| Views | Tree, Raw, Diff |
 | Runtime model | Worker-based parse and export |
 | Local file support | File picker + workspace folder mode |
 | PWA | Installable, offline-capable |
@@ -68,7 +68,7 @@ App UI (Preact + Signals)
 	+-- Parse Worker  -> structured document model
 	+-- Export Worker -> format conversion output
 	|
-	+-- Virtualized renderers (tree/raw/cards/diff)
+	+-- Virtualized renderers (tree/raw/diff)
 	+-- Search/index/reference graph
 	+-- PWA shell + cache
 ```

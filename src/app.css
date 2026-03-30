@@ -632,63 +632,6 @@
   color: var(--accent-strong);
 }
 
-/* -- Card view -- */
-
-.card-row {
-  display: grid;
-  grid-template-columns: 20px minmax(80px, 180px) auto minmax(0, 1fr);
-  align-items: center;
-  gap: 8px;
-  height: 42px;
-  padding-inline-end: 12px;
-  border-bottom: 1px solid var(--grid);
-  font-size: 13px;
-}
-
-.card-row--parent {
-  background: color-mix(in srgb, var(--surface) 50%, transparent);
-}
-
-.card-row--match {
-  background: var(--highlight);
-}
-
-.card-toggle {
-  all: unset;
-  display: grid;
-  place-items: center;
-  width: 20px;
-  height: 20px;
-  font-size: 13px;
-  color: var(--muted);
-  cursor: pointer;
-}
-
-.card-toggle.is-empty {
-  cursor: default;
-  opacity: 0.3;
-}
-
-.card-row__label {
-  color: var(--text);
-  font-weight: 600;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.card-row__value {
-  color: var(--muted);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.card-row__count {
-  color: var(--muted);
-  font-size: 11px;
-}
-
 /* -- Error banner -- */
 
 .error-banner {

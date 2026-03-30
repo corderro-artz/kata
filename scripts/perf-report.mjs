@@ -235,17 +235,6 @@ async function collectAppMetrics(url, port) {
     })()`,
   )
 
-  const cardsView = await evaluate(
-    Runtime,
-    `(async () => {
-      const button = document.querySelector('[data-kata-view="cards"]')
-      if (!button) throw new Error('Missing cards view button')
-      button.click()
-      await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)))
-      return window.__kataPerf
-    })()`,
-  )
-
   const treeView = await evaluate(
     Runtime,
     `(async () => {
@@ -289,7 +278,6 @@ async function collectAppMetrics(url, port) {
     memory,
     interactions: {
       rawView,
-      cardsView,
       treeView,
       collapseToggle,
       expandToggle,
@@ -411,7 +399,7 @@ function buildSampleProfile(ctx) {
       language: 'TypeScript 5.9',
       workers: ['parse', 'export'],
       formats: { input: ['json', 'yaml', 'toml', 'markdown', 'ini', 'text'], output: ['json', 'yaml', 'toml', 'markdown'] },
-      views: ['tree', 'raw', 'cards'],
+      views: ['tree', 'raw'],
       themes: 6,
     },
     environment: ctx.environment,

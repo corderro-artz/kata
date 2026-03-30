@@ -69,7 +69,7 @@ const FALLBACK_SAMPLE_DOCUMENT = `{
     "bundler": "Vite 7",
     "language": "TypeScript 5.9",
     "workers": ["parse", "export"],
-    "views": ["tree", "raw", "cards"],
+    "views": ["tree", "raw"],
     "themes": 6
   }
 }`
@@ -708,7 +708,7 @@ export function App() {
           {documentState ? (
             <div class="editor-area__chrome">
               <div class="tab-strip">
-                {(['tree', 'raw', 'cards'] as ViewMode[]).map((view) => (
+                {(['tree', 'raw'] as ViewMode[]).map((view) => (
                   <button
                     key={view}
                     type="button"
@@ -719,7 +719,7 @@ export function App() {
                       viewSignal.value = view
                     }}
                   >
-                    {view === 'cards' ? 'Cards' : view[0].toUpperCase() + view.slice(1)}
+                    {view[0].toUpperCase() + view.slice(1)}
                   </button>
                 ))}
                 {diffBase ? (
@@ -792,10 +792,6 @@ export function App() {
                 format={documentState?.format}
                 matchedLineNumbers={rawSearchMatchedLines}
               />
-            ) : null}
-
-            {activeView === 'cards' && documentState ? (
-              <CardView documentState={documentState} expandedNodes={expandedNodes} onToggle={toggleNode} matchedNodeIds={matchedNodeIds} />
             ) : null}
 
             {activeView === 'diff' && diffEntries.length > 0 ? (
@@ -1037,62 +1033,6 @@ function searchRawText(text: string, query: string): { count: number; matchedLin
   }
 
   return { count, matchedLines }
-}
-
-function CardView({
-  documentState,
-  expandedNodes,
-  onToggle,
-  matchedNodeIds,
-}: {
-  documentState: ParsedDocument
-  expandedNodes: Set<number>
-  onToggle: (nodeId: number) => void
-  matchedNodeIds: Set<number>
-}) {
-  const rows = useMemo(
-    () => buildVisibleRows(documentState, expandedNodes),
-    [documentState, expandedNodes],
-  )
-  const virtual = useVirtualWindow(rows.length, 42)
-  const windowRows = rows.slice(virtual.start, virtual.end)
-
-  return (
-    <div ref={virtual.containerRef} class="viewport viewport--cards" onScroll={virtual.onScroll}>
-      <div style={{ height: `${virtual.totalHeight}px` }}>
-        <div style={{ transform: `translateY(${virtual.offsetTop}px)` }}>
-          {windowRows.map((row) => {
-            const node = documentState.nodes[row.nodeId]
-            const childCount = node.childEnd - node.childStart
-            const isExpanded = expandedNodes.has(node.id)
-
-            return (
-              <div
-                key={node.id}
-                class={`card-row ${childCount > 0 ? 'card-row--parent' : ''} ${matchedNodeIds.has(node.id) ? 'card-row--match' : ''}`}
-                style={{ paddingInlineStart: `${row.depth * 20 + 12}px` }}
-              >
-                <button
-                  type="button"
-                  class={`card-toggle ${childCount === 0 ? 'is-empty' : ''}`}
-                  onClick={() => { if (childCount > 0) { onToggle(node.id) } }}
-                >
-                  {childCount > 0 ? (isExpanded ? '−' : '+') : '·'}
-                </button>
-                <span class="card-row__label">{node.label}</span>
-                <span class={`tree-kind tree-kind--${node.kind}`}>{node.kind}</span>
-                {childCount > 0 ? (
-                  <span class="card-row__count">{node.value}</span>
-                ) : (
-                  <span class="card-row__value">{node.value}</span>
-                )}
-              </div>
-            )
-          })}
-        </div>
-      </div>
-    </div>
-  )
 }
 
 function DiffView({ entries }: { entries: DiffEntry[] }) {
