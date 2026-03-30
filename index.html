@@ -2,11 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/kata-favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%kata-favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#07080b" />
-    <link rel="preload" as="image" href="/kata-icon.svg" fetchpriority="high" />
-    <link rel="preload" as="fetch" href="/samples/latest-profile.json" crossorigin />
+    <link rel="preload" as="image" href="%BASE_URL%kata-icon.svg" fetchpriority="high" />
+    <link rel="preload" as="fetch" href="%BASE_URL%samples/latest-profile.json" crossorigin />
     <meta
       name="description"
       content="Kata parses, visualizes, and transforms structured text with a worker-first local runtime."
@@ -15,6 +15,6 @@
   </head>
   <body>
     <div id="app"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="%BASE_URL%src/main.tsx"></script>
   </body>
 </html>
