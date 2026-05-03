@@ -1,5 +1,5 @@
-﻿[![Vaporsoft](https://raw.githubusercontent.com/corderro-artz/corderro-artz.github.io/main/public/vaporsoft-logo.svg)](https://www.vaporsoft.dev)
-[![Kata](https://raw.githubusercontent.com/corderro-artz/corderro-artz.github.io/main/public/kata-icon.svg)](https://corderro-artz.github.io/kata/)
+﻿[![Vaporsoft](https://raw.githubusercontent.com/corderro-artz/corderro-artz.github.io/ddb761c320225187ead71568b1c3f460e15bbd4a/public/vaporsoft/vaporsoft-logo.svg)](https://www.vaporsoft.dev)
+[![Kata](https://raw.githubusercontent.com/corderro-artz/corderro-artz.github.io/ddb761c320225187ead71568b1c3f460e15bbd4a/public/kata/kata-icon.svg)](https://corderro-artz.github.io/kata)
 
 # Kata
 
