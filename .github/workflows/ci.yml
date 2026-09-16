@@ -5,6 +5,8 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  # Lets a dropped push trigger be re-run without an empty commit.
+  workflow_dispatch:
 
 permissions:
   contents: read
