@@ -10,9 +10,12 @@ permissions:
   pages: write
   id-token: write
 
+# Allow one concurrent deployment. Queued runs collapse to the newest commit,
+# but an in-progress production deploy is never cancelled — cancelling it can
+# leave Pages serving an older commit than main.
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
