@@ -106,16 +106,30 @@ npm run perf:report
 
 Kata follows a worker-first architecture with a thin Preact UI layer, virtualized rendering, and base-aware PWA configuration for local and GitHub Pages deployments.
 
-```text
-Browser UI (Preact + Signals)
- |
- +-- Parse Worker   -> source detection, chunked parsing, document model
- +-- Export Worker  -> format conversion and export output
- |
- +-- Virtualized views (tree, raw, diff)
- +-- Search, indexing, and reference analysis
- +-- Local file + workspace adapters
- +-- PWA shell, cache, and install flow
+```mermaid
+flowchart LR
+    UI["Browser UI<br/>Preact + Signals"]
+
+    subgraph WORKERS ["Off the main thread"]
+        direction TB
+        PW["Parse Worker<br/>source detection, chunked parsing,<br/>document model"]
+        EW["Export Worker<br/>format conversion and export output"]
+    end
+
+    subgraph SHELL ["In the shell"]
+        direction TB
+        V["Virtualized views — tree, raw, diff"]
+        S["Search, indexing, and reference analysis"]
+        F["Local file + workspace adapters"]
+        P["PWA shell, cache, and install flow"]
+    end
+
+    UI --> PW
+    UI --> EW
+    UI --> V
+    UI --> S
+    UI --> F
+    UI --> P
 ```
 
 ### Design Principles
