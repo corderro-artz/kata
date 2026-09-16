@@ -229,21 +229,41 @@ async function runLighthouseAudit(url, port, preset) {
   const html = reports.find((report) => typeof report === 'string' && report.startsWith('<!doctype html>')) ?? ''
   const lhr = runnerResult.lhr
 
-  return {
-    html,
-    lhr,
-    summary: {
-      preset,
-      performanceScore: round((lhr.categories.performance.score ?? 0) * 100),
-      firstContentfulPaintMs: round(lhr.audits['first-contentful-paint'].numericValue ?? 0),
-      speedIndexMs: round(lhr.audits['speed-index'].numericValue ?? 0),
-      largestContentfulPaintMs: round(lhr.audits['largest-contentful-paint'].numericValue ?? 0),
-      totalBlockingTimeMs: round(lhr.audits['total-blocking-time'].numericValue ?? 0),
-      cumulativeLayoutShift: round(lhr.audits['cumulative-layout-shift'].numericValue ?? 0),
-      mainThreadWorkBreakdownMs: round(lhr.audits['mainthread-work-breakdown'].numericValue ?? 0),
-      scriptBootupTimeMs: round(lhr.audits['bootup-time'].numericValue ?? 0),
-    },
+  // Lighthouse renames and retires audit ids across majors. Reporting a
+  // missing audit as 0 would quietly turn a broken metric into a perfect
+  // score, so an absent audit becomes null (rendered "n/a") and is named on
+  // stderr.
+  const missing = []
+  const metric = (id) => {
+    const audit = lhr.audits[id]
+    if (!audit || audit.numericValue === undefined || audit.numericValue === null) {
+      missing.push(id)
+      return null
+    }
+    return round(audit.numericValue)
   }
+
+  const summary = {
+    preset,
+    performanceScore: lhr.categories.performance?.score === undefined
+      ? null
+      : round((lhr.categories.performance.score ?? 0) * 100),
+    firstContentfulPaintMs: metric('first-contentful-paint'),
+    speedIndexMs: metric('speed-index'),
+    largestContentfulPaintMs: metric('largest-contentful-paint'),
+    totalBlockingTimeMs: metric('total-blocking-time'),
+    cumulativeLayoutShift: metric('cumulative-layout-shift'),
+    mainThreadWorkBreakdownMs: metric('mainthread-work-breakdown'),
+    scriptBootupTimeMs: metric('bootup-time'),
+  }
+
+  if (missing.length > 0) {
+    console.warn(
+      `[perf] lighthouse ${lhr.lighthouseVersion} (${preset}) did not report: ${missing.join(', ')}`,
+    )
+  }
+
+  return { html, lhr, summary }
 }
 
 async function collectAppMetrics(url, port) {
