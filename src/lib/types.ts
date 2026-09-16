@@ -1,8 +1,26 @@
-export type SourceFormat = 'json' | 'markdown' | 'yaml' | 'toml' | 'ini' | 'text'
+/**
+ * Every format Kata knows about, in or out. `SourceFormat` and `ExportFormat`
+ * are the same set by design: the registry in `lib/registry.ts` decides which
+ * direction each one actually supports, so the two can never drift apart.
+ */
+export type FormatId =
+  | 'json'
+  | 'jsonc'
+  | 'yaml'
+  | 'toml'
+  | 'ini'
+  | 'markdown'
+  | 'xml'
+  | 'xaml'
+  | 'csv'
+  | 'tsv'
+  | 'text'
+
+export type SourceFormat = FormatId
+
+export type ExportFormat = FormatId
 
 export type ViewMode = 'tree' | 'raw' | 'diff' | 'graph'
-
-export type ExportFormat = 'json' | 'yaml' | 'toml' | 'markdown' | 'xaml' | 'ini' | 'text'
 
 export type NodeKind = 'object' | 'array' | 'value'
 
@@ -101,6 +119,8 @@ export interface ExportCompleteMessage {
   type: 'exported'
   format: ExportFormat
   text: string
+  /** Fidelity warnings raised while serializing, e.g. keys a format cannot hold. */
+  notes: string[]
 }
 
 export interface ExportErrorMessage {

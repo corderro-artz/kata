@@ -312,6 +312,23 @@
   padding: 4px 10px 8px;
 }
 
+.export-panel__notes {
+  padding: 0 10px 8px;
+}
+
+.export-panel__note {
+  margin: 0 0 4px;
+  font-size: 10px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.export-panel__note--warn {
+  color: var(--text);
+  border-left: 2px solid var(--accent);
+  padding-left: 6px;
+}
+
 /* -- Editor area -- */
 
 .editor-area {
@@ -340,6 +357,15 @@
   background: var(--surface);
   color: var(--muted);
   flex-shrink: 0;
+}
+
+.badge--lossless {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.badge--lossy {
+  border-style: dashed;
 }
 
 /* -- Search bar -- */

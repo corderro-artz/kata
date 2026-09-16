@@ -51,8 +51,8 @@ Kata parses, visualizes, diffs, and exports structured text entirely in-browser.
 
 | Capability | Details |
 | --- | --- |
-| Input formats | JSON, YAML, TOML, Markdown, INI, and plain text |
-| Export formats | JSON, YAML, TOML, Markdown, INI, XAML, and plain text |
+| Input formats | JSON, JSONC/JSON5, YAML, TOML, INI, Markdown, XML, XAML, CSV, TSV, and plain text |
+| Export formats | Every input format except JSONC, which exports as JSON |
 | Views | Tree, Raw, and Diff |
 | Local file workflows | Manual file mode and workspace folder mode |
 | Search and analysis | Indexed search, node references, and diff inspection |
@@ -74,7 +74,7 @@ Use the project with the runtime and platform expectations below.
 | Category | Packages |
 | --- | --- |
 | UI | `preact`, `@preact/signals` |
-| Parsing and formats | `yaml`, `smol-toml`, `ini`, `micromark` |
+| Parsing and formats | `yaml`, `smol-toml`, `ini`, `micromark`, `fast-xml-parser` |
 | Build | `vite`, `@preact/preset-vite`, `typescript` |
 | PWA | `vite-plugin-pwa` |
 | Performance tooling | `lighthouse`, `chrome-launcher`, `chrome-remote-interface` |

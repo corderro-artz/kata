@@ -1,3 +1,4 @@
+import { parseFormat } from '../lib/convert'
 import { inferFormat } from '../lib/formats'
 import type {
   FlatNode,
@@ -98,45 +99,7 @@ async function parseDocument(
     sourceName,
   })
 
-  const diagnostics: string[] = []
-  let structuredData: unknown | null = null
-
-  switch (format) {
-    case 'json': {
-      structuredData = parseJson(text, diagnostics)
-      break
-    }
-    case 'yaml': {
-      const yaml = await import('yaml')
-      structuredData = yaml.parse(text)
-      diagnostics.push('YAML parser lazy-loaded in worker.')
-      break
-    }
-    case 'toml': {
-      const toml = await import('smol-toml')
-      structuredData = toml.parse(text)
-      diagnostics.push('TOML parser lazy-loaded in worker.')
-      break
-    }
-    case 'ini': {
-      const ini = await import('ini')
-      structuredData = ini.parse(text)
-      diagnostics.push('INI parser lazy-loaded in worker.')
-      break
-    }
-    case 'markdown': {
-      const { micromark } = await import('micromark')
-      structuredData = buildMarkdownOutline(text, sourceName)
-      micromark(text)
-      diagnostics.push('Markdown tokenized through micromark in worker.')
-      break
-    }
-    default: {
-      structuredData = buildTextFallback(text)
-      diagnostics.push('Plain text fallback model generated.')
-      break
-    }
-  }
+  const { data: structuredData, diagnostics } = await parseFormat(text, format, sourceName)
 
   const flat = buildFlatModel(structuredData, sourceName)
   const lineCount = text.length === 0 ? 0 : text.split(/\r?\n/).length
@@ -160,83 +123,6 @@ async function parseDocument(
     },
     diagnostics,
     structuredData,
-  }
-}
-
-function parseJson(text: string, diagnostics: string[]): unknown {
-  try {
-    const parsed = JSON.parse(text)
-    diagnostics.push('JSON fast path via JSON.parse succeeded.')
-    return parsed
-  } catch (error) {
-    diagnostics.push('Fast-path JSON parse failed. Falling back to tolerant cleanup.')
-    const recovered = JSON.parse(
-      text
-        .replace(/\/\*[\s\S]*?\*\//g, '')
-        .replace(/^\s*\/\/.*$/gm, '')
-        .replace(/,\s*([}\]])/g, '$1'),
-    )
-    if (error instanceof Error) {
-      diagnostics.push(error.message)
-    }
-    diagnostics.push('Tolerant JSON fallback recovered the document.')
-    return recovered
-  }
-}
-
-function buildMarkdownOutline(text: string, sourceName: string): Record<string, unknown> {
-  const lines = text.split(/\r?\n/)
-  const sections: Array<Record<string, unknown>> = []
-  let current = {
-    heading: 'Preamble',
-    level: 1,
-    lines: [] as string[],
-  }
-
-  for (const line of lines) {
-    const headingMatch = /^(#{1,6})\s+(.*)$/.exec(line)
-    if (headingMatch) {
-      if (current.lines.length > 0 || sections.length === 0) {
-        sections.push({
-          heading: current.heading,
-          level: current.level,
-          body: current.lines.join('\n').trim(),
-          lineCount: current.lines.length,
-        })
-      }
-
-      current = {
-        heading: headingMatch[2],
-        level: headingMatch[1].length,
-        lines: [],
-      }
-      continue
-    }
-
-    current.lines.push(line)
-  }
-
-  sections.push({
-    heading: current.heading,
-    level: current.level,
-    body: current.lines.join('\n').trim(),
-    lineCount: current.lines.length,
-  })
-
-  return {
-    title: sourceName,
-    format: 'markdown',
-    lineCount: lines.length,
-    sections,
-  }
-}
-
-function buildTextFallback(text: string): Record<string, unknown> {
-  const lines = text.split(/\r?\n/)
-  return {
-    format: 'text',
-    lineCount: lines.length,
-    sample: lines.slice(0, 24),
   }
 }
 

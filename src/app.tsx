@@ -12,7 +12,17 @@ import {
   readWorkspaceFile,
   saveTextToHandle,
 } from './lib/fs'
-import { exportMime, formatLabel, recommendedExportFormat, suggestExportName } from './lib/formats'
+import {
+  IMPORT_ACCEPT_ATTRIBUTE,
+  SERIALIZABLE_FORMATS,
+  SUPPORTED_INPUT_SUMMARY,
+  exportMime,
+  formatLabel,
+  getFormatSpec,
+  inferFormat,
+  recommendedExportFormat,
+  suggestExportName,
+} from './lib/formats'
 import {
   beginTreeToggle,
   beginViewSwitch,
@@ -93,6 +103,7 @@ export function App() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [exportFormat, setExportFormat] = useState<ExportFormat>('json')
   const [exportText, setExportText] = useState('')
+  const [exportNotes, setExportNotes] = useState<string[]>([])
   const [dragActive, setDragActive] = useState(false)
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number; nodeId?: number } | null>(null)
   const [nodeIndex, setNodeIndex] = useState<NodeIndex | null>(null)
@@ -162,8 +173,11 @@ export function App() {
   function handleExportMessage(event: MessageEvent<ExportResponse>) {
       if (event.data.type === 'exported') {
         setExportText(event.data.text)
+        setExportNotes(event.data.notes)
         return
       }
+
+      setExportNotes([])
 
       setErrorMessage(event.data.message)
   }
@@ -598,7 +612,7 @@ export function App() {
                   onClick={() => void handleWorkspaceSelect(entry)}
                 >
                   <span class="file-item__name">{entry.path}</span>
-                  <span class="file-item__type">{formatLabel(documentState?.sourceName === entry.path ? documentState.format : 'text')}</span>
+                  <span class="file-item__type">{formatLabel(documentState?.sourceName === entry.path ? documentState.format : inferFormat(entry.path))}</span>
                 </button>
               ))}
             </div>
@@ -658,6 +672,12 @@ export function App() {
           <div class="export-panel">
             <div class="export-panel__header">
               <span class="label-sm">Export</span>
+              <span
+                class={`badge badge--${getFormatSpec(exportFormat).fidelity}`}
+                title={getFormatSpec(exportFormat).lossNotes ?? 'This format round-trips without loss.'}
+              >
+                {getFormatSpec(exportFormat).fidelity === 'lossless' ? 'Lossless' : 'Lossy'}
+              </span>
             </div>
             <label class="export-panel__format">
               <select
@@ -667,13 +687,9 @@ export function App() {
                   setExportFormat(event.currentTarget.value as ExportFormat)
                 }}
               >
-                <option value="json">JSON</option>
-                <option value="yaml">YAML</option>
-                <option value="toml">TOML</option>
-                <option value="markdown">Markdown</option>
-                <option value="ini">INI</option>
-                <option value="xaml">XAML</option>
-                <option value="text">Text</option>
+                {SERIALIZABLE_FORMATS.map((spec) => (
+                  <option key={spec.id} value={spec.id}>{spec.menuLabel}</option>
+                ))}
               </select>
             </label>
             <div class="export-panel__actions">
@@ -707,6 +723,16 @@ export function App() {
                 </button>
               ) : null}
             </div>
+            {documentState ? (
+              <div class="export-panel__notes">
+                {getFormatSpec(exportFormat).lossNotes ? (
+                  <p class="export-panel__note">{getFormatSpec(exportFormat).lossNotes}</p>
+                ) : null}
+                {exportNotes.map((note) => (
+                  <p key={note} class="export-panel__note export-panel__note--warn">{note}</p>
+                ))}
+              </div>
+            ) : null}
           </div>
         </aside>
 
@@ -836,7 +862,7 @@ export function App() {
                   fetchpriority="high"
                 />
                 <p class="welcome__hint">Drop a file here, or use <strong>Open file</strong> to get started.</p>
-                <p class="welcome__formats">Supports JSON, YAML, TOML, and Markdown.</p>
+                <p class="welcome__formats">Reads and writes {SUPPORTED_INPUT_SUMMARY}.</p>
                 <button type="button" class="welcome__sample" onClick={() => void handleLoadSample()}>Load sample file</button>
                 <p class="welcome__copy">&copy; 2026 Vaporsoft</p>
               </div>
@@ -905,7 +931,7 @@ export function App() {
         ref={fileInputRef}
         type="file"
         hidden
-        accept=".json,.md,.markdown,.yaml,.yml,.toml,.ini,.cfg,.conf,.txt,.log"
+        accept={IMPORT_ACCEPT_ATTRIBUTE}
         onChange={(event) => {
           const file = event.currentTarget.files?.[0]
           if (file) { void loadFile(file) }
@@ -1314,7 +1340,7 @@ function highlightLine(line: string, format?: SourceFormat | ExportFormat): stri
     })
   }
 
-  if (format === 'xaml') {
+  if (format === 'xaml' || format === 'xml') {
     if (/^\s*&lt;!--/.test(escaped)) {
       return `<span class="token token--comment">${escaped}</span>`
     }
@@ -1322,6 +1348,10 @@ function highlightLine(line: string, format?: SourceFormat | ExportFormat): stri
       .replace(/([\w:.-]+)(=)(&quot;.*?&quot;)/g, '<span class="token token--key">$1</span>$2<span class="token token--string">$3</span>')
       .replace(/(&lt;\/?)([\w:.-]+)/g, '$1<span class="token token--tag">$2</span>')
       .replace(/(&lt;\/?|\/?&gt;)/g, '<span class="token token--accent">$1</span>')
+  }
+
+  if (format === 'csv' || format === 'tsv') {
+    return highlightDelimitedLine(escaped, format === 'csv' ? ',' : '	')
   }
 
   if (format === 'text') {
@@ -1463,6 +1493,40 @@ function highlightJsonLine(escaped: string): string {
     .replace(/(:\s*)("(?:\\.|[^"\\])*")/g, '$1<span class="token token--string">$2</span>')
     .replace(/\b(-?\d+(?:\.\d+)?)\b/g, '<span class="token token--number">$1</span>')
     .replace(/\b(true|false|null)\b/g, '<span class="token token--accent">$1</span>')
+}
+
+/**
+ * Tints alternating cells so a wide table stays readable. Quoted fields are
+ * left intact — splitting on the raw delimiter would break them apart.
+ */
+function highlightDelimitedLine(escaped: string, delimiter: string): string {
+  const cells: string[] = []
+  let cell = ''
+  let quoted = false
+
+  for (let index = 0; index < escaped.length; index += 1) {
+    const char = escaped[index]
+
+    if (char === '"') {
+      quoted = !quoted
+      cell += char
+      continue
+    }
+
+    if (char === delimiter && !quoted) {
+      cells.push(cell)
+      cell = ''
+      continue
+    }
+
+    cell += char
+  }
+
+  cells.push(cell)
+
+  return cells
+    .map((value, index) => `<span class="token ${index % 2 === 0 ? 'token--key' : 'token--string'}">${value}</span>`)
+    .join(`<span class="token token--accent">${delimiter === '\t' ? '→' : delimiter}</span>`)
 }
 
 function highlightScalarText(value: string): string {

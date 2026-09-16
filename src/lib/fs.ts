@@ -1,4 +1,4 @@
-import { inferFormat, isSupportedTextFile } from './formats'
+import { importPickerAccept, inferFormat, isSupportedTextFile } from './formats'
 import type { SourceFormat, WorkspaceFileEntry } from './types'
 
 const MAX_WORKSPACE_FILES = 400
@@ -15,13 +15,9 @@ export async function openManualFile(): Promise<File | null> {
     types: [
       {
         description: 'Structured text',
-        accept: {
-          'application/json': ['.json'],
-          'text/markdown': ['.md', '.markdown'],
-          'application/yaml': ['.yaml', '.yml'],
-          'application/toml': ['.toml'],
-          'text/plain': ['.ini', '.cfg', '.conf', '.txt', '.log'],
-        },
+        // Derived from the format registry so the picker can never fall behind
+        // the parsers.
+        accept: importPickerAccept(),
       },
     ],
   })
