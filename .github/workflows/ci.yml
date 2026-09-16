@@ -28,6 +28,12 @@ jobs:
       - run: npm ci
       - run: npm run check
       - run: npm run build
+
+      # The rendered diagrams are generated from docs/diagrams/*.mmd. This fails
+      # if an SVG has stopped carrying a word its source declares, if it was
+      # rendered without the brand theme, or if it is malformed. It imports only
+      # node builtins, so it needs nothing installed.
+      - run: node docs/diagrams/check.mjs
       - uses: actions/upload-artifact@v4
         with:
           name: dist
