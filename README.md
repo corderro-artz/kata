@@ -1,5 +1,5 @@
 ﻿[![Vaporsoft](https://raw.githubusercontent.com/corderro-artz/corderro-artz.github.io/main/public/brand/vaporsoft/vaporsoft-logo.svg)](https://www.vaporsoft.dev)
-[![Kata](https://raw.githubusercontent.com/corderro-artz/corderro-artz.github.io/main/public/brand/kata/kata-icon.svg)](https://corderro-artz.github.io/kata)
+[![Kata](https://raw.githubusercontent.com/corderro-artz/corderro-artz.github.io/main/public/brand/kata/kata-icon.svg)](https://github.com/corderro-artz/kata)
 
 # Kata
 
