@@ -32,7 +32,11 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          VITE_APP_BASE: ${{ github.event.repository.name }}
+          # The site is served at the root of kata.vaporsoft.dev, not under a
+          # /<repo>/ path on the parent Pages site, so the base is /. Deriving
+          # it from the repository name built every asset URL as /kata/... and
+          # every one of them 404d at the new domain.
+          VITE_APP_BASE: /
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist/
