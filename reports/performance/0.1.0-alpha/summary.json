@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-09-16T19:53:37.450Z",
+  "generatedAt": "2026-09-17T00:29:21.029Z",
   "version": "0.1.0-alpha",
   "git": {
-    "commit": "a4fbb3ea084deec3873619d7428c595fcf4d66c2",
+    "commit": "7c5747dcfb470c194247f07ecb8b152dc716f14a",
     "branch": "main"
   },
   "environment": {
@@ -12,7 +12,7 @@
     "chromePath": "unknown"
   },
   "build": {
-    "durationMs": 6316.16
+    "durationMs": 5858.65
   },
   "bundle": {
     "initial": {
@@ -32,8 +32,8 @@
       ]
     },
     "total": {
-      "rawBytes": 470508,
-      "gzipBytes": 197719,
+      "rawBytes": 470504,
+      "gzipBytes": 197713,
       "files": [
         {
           "path": "assets/export.worker-BY7qUjYF.js",
@@ -147,8 +147,8 @@
         },
         {
           "path": "samples/latest-profile.json",
-          "rawBytes": 2037,
-          "gzipBytes": 839
+          "rawBytes": 2033,
+          "gzipBytes": 833
         },
         {
           "path": "sw.js",
@@ -275,8 +275,8 @@
       },
       {
         "path": "samples/latest-profile.json",
-        "rawBytes": 2037,
-        "gzipBytes": 839
+        "rawBytes": 2033,
+        "gzipBytes": 833
       },
       {
         "path": "sw.js",
@@ -293,9 +293,9 @@
   "app": {
     "startup": {
       "ready": true,
-      "initialReadyMs": 58.13,
+      "initialReadyMs": 54.5,
       "currentView": "tree",
-      "parseMs": 0.57,
+      "parseMs": 0.43,
       "parseNodeCount": 82,
       "latestViewSwitchMs": null,
       "latestTreeToggleMs": null,
@@ -306,28 +306,28 @@
         "maxDuration": 0,
         "totalDuration": 0
       },
-      "lastUpdatedAt": 1789588442588
+      "lastUpdatedAt": 1789604980906
     },
     "navigation": {
-      "domContentLoadedMs": 40.2,
-      "loadEventMs": 57.83
+      "domContentLoadedMs": 38.47,
+      "loadEventMs": 52.77
     },
     "memory": {
-      "usedJSHeapSize": 1778520,
-      "totalJSHeapSize": 2966940,
+      "usedJSHeapSize": 1974251,
+      "totalJSHeapSize": 3229495,
       "jsHeapSizeLimit": 4395630592
     },
     "interactions": {
       "rawView": {
         "ready": true,
-        "initialReadyMs": 58.13,
+        "initialReadyMs": 54.5,
         "currentView": "raw",
-        "parseMs": 1.1,
+        "parseMs": 0.7,
         "parseNodeCount": 82,
-        "latestViewSwitchMs": 5.07,
+        "latestViewSwitchMs": 4.37,
         "latestTreeToggleMs": null,
         "viewSwitchSamples": [
-          6.7
+          5.9
         ],
         "treeToggleSamples": [],
         "longTasks": {
@@ -335,19 +335,19 @@
           "maxDuration": 0,
           "totalDuration": 0
         },
-        "lastUpdatedAt": 1789588442619
+        "lastUpdatedAt": 1789604980944
       },
       "treeView": {
         "ready": true,
-        "initialReadyMs": 58.13,
+        "initialReadyMs": 54.5,
         "currentView": "tree",
-        "parseMs": 1.1,
+        "parseMs": 0.7,
         "parseNodeCount": 82,
-        "latestViewSwitchMs": 4.13,
+        "latestViewSwitchMs": 2.2,
         "latestTreeToggleMs": null,
         "viewSwitchSamples": [
-          6.7,
-          8.1
+          5.9,
+          2.4
         ],
         "treeToggleSamples": [],
         "longTasks": {
@@ -355,77 +355,77 @@
           "maxDuration": 0,
           "totalDuration": 0
         },
-        "lastUpdatedAt": 1789588442656
+        "lastUpdatedAt": 1789604980977
       },
       "collapseToggle": {
         "ready": true,
-        "initialReadyMs": 58.13,
+        "initialReadyMs": 54.5,
         "currentView": "tree",
-        "parseMs": 1.1,
+        "parseMs": 0.7,
         "parseNodeCount": 82,
-        "latestViewSwitchMs": 4.13,
-        "latestTreeToggleMs": 0.87,
+        "latestViewSwitchMs": 2.2,
+        "latestTreeToggleMs": 0.63,
         "viewSwitchSamples": [
-          6.7,
-          8.1
+          5.9,
+          2.4
         ],
         "treeToggleSamples": [
-          1.1
+          0.6
         ],
         "longTasks": {
           "count": 0,
           "maxDuration": 0,
           "totalDuration": 0
         },
-        "lastUpdatedAt": 1789588442665
+        "lastUpdatedAt": 1789604980998
       },
       "expandToggle": {
         "ready": true,
-        "initialReadyMs": 58.13,
+        "initialReadyMs": 54.5,
         "currentView": "tree",
-        "parseMs": 1.1,
+        "parseMs": 0.7,
         "parseNodeCount": 82,
-        "latestViewSwitchMs": 4.13,
-        "latestTreeToggleMs": 1.03,
+        "latestViewSwitchMs": 2.2,
+        "latestTreeToggleMs": 0.83,
         "viewSwitchSamples": [
-          6.7,
-          8.1
+          5.9,
+          2.4
         ],
         "treeToggleSamples": [
-          1.1,
-          1.3
+          0.6,
+          0.9
         ],
         "longTasks": {
           "count": 0,
           "maxDuration": 0,
           "totalDuration": 0
         },
-        "lastUpdatedAt": 1789588442698
+        "lastUpdatedAt": 1789604981031
       }
     }
   },
   "lighthouse": {
     "mobile": {
       "preset": "mobile",
-      "performanceScore": 99,
-      "firstContentfulPaintMs": 1366.3,
-      "speedIndexMs": 1366.3,
-      "largestContentfulPaintMs": 1630.23,
-      "totalBlockingTimeMs": 21,
+      "performanceScore": 99.67,
+      "firstContentfulPaintMs": 1359.21,
+      "speedIndexMs": 1359.21,
+      "largestContentfulPaintMs": 1621.53,
+      "totalBlockingTimeMs": 22.33,
       "cumulativeLayoutShift": 0,
-      "mainThreadWorkBreakdownMs": 2064.57,
-      "scriptBootupTimeMs": 1343.89
+      "mainThreadWorkBreakdownMs": 1997.76,
+      "scriptBootupTimeMs": 1338.95
     },
     "desktop": {
       "preset": "desktop",
       "performanceScore": 89,
-      "firstContentfulPaintMs": 1368.72,
-      "speedIndexMs": 1368.72,
-      "largestContentfulPaintMs": 1635.67,
-      "totalBlockingTimeMs": 31.67,
+      "firstContentfulPaintMs": 1376.86,
+      "speedIndexMs": 1376.86,
+      "largestContentfulPaintMs": 1615.63,
+      "totalBlockingTimeMs": 21.67,
       "cumulativeLayoutShift": 0,
-      "mainThreadWorkBreakdownMs": 2066.55,
-      "scriptBootupTimeMs": 1356.2
+      "mainThreadWorkBreakdownMs": 2009.92,
+      "scriptBootupTimeMs": 1339.51
     }
   },
   "runCount": 3,
@@ -434,78 +434,31 @@
       "mobileAudit": {
         "preset": "mobile",
         "performanceScore": 99,
-        "firstContentfulPaintMs": 1364.6,
-        "speedIndexMs": 1364.6,
-        "largestContentfulPaintMs": 1631.33,
-        "totalBlockingTimeMs": 31,
-        "cumulativeLayoutShift": 0,
-        "mainThreadWorkBreakdownMs": 662.7,
-        "scriptBootupTimeMs": 79.54
-      },
-      "desktopAudit": {
-        "preset": "desktop",
-        "performanceScore": 89,
-        "firstContentfulPaintMs": 1372.5,
-        "speedIndexMs": 1372.5,
-        "largestContentfulPaintMs": 1644.6,
-        "totalBlockingTimeMs": 42,
-        "cumulativeLayoutShift": 0,
-        "mainThreadWorkBreakdownMs": 4951.75,
-        "scriptBootupTimeMs": 3895.05
-      },
-      "appMetrics": {
-        "startup": {
-          "ready": true,
-          "initialReadyMs": 66.2,
-          "currentView": "tree",
-          "parseMs": 1.1,
-          "parseNodeCount": 82,
-          "latestViewSwitchMs": null,
-          "latestTreeToggleMs": null,
-          "viewSwitchSamples": [],
-          "treeToggleSamples": [],
-          "longTasks": {
-            "count": 0,
-            "maxDuration": 0,
-            "totalDuration": 0
-          },
-          "lastUpdatedAt": 1789588442588
-        },
-        "navigation": {
-          "domContentLoadedMs": 53.20000000001164,
-          "loadEventMs": 84.5
-        }
-      }
-    },
-    {
-      "mobileAudit": {
-        "preset": "mobile",
-        "performanceScore": 99,
-        "firstContentfulPaintMs": 1368.54,
-        "speedIndexMs": 1368.54,
-        "largestContentfulPaintMs": 1631.05,
-        "totalBlockingTimeMs": 11,
-        "cumulativeLayoutShift": 0,
-        "mainThreadWorkBreakdownMs": 623.84,
-        "scriptBootupTimeMs": 82
-      },
-      "desktopAudit": {
-        "preset": "desktop",
-        "performanceScore": 89,
-        "firstContentfulPaintMs": 1363.76,
-        "speedIndexMs": 1363.76,
-        "largestContentfulPaintMs": 1627.72,
+        "firstContentfulPaintMs": 1362.54,
+        "speedIndexMs": 1362.54,
+        "largestContentfulPaintMs": 1626.85,
         "totalBlockingTimeMs": 26,
         "cumulativeLayoutShift": 0,
-        "mainThreadWorkBreakdownMs": 607.06,
-        "scriptBootupTimeMs": 85.19
+        "mainThreadWorkBreakdownMs": 626.36,
+        "scriptBootupTimeMs": 73.97
+      },
+      "desktopAudit": {
+        "preset": "desktop",
+        "performanceScore": 89,
+        "firstContentfulPaintMs": 1373.51,
+        "speedIndexMs": 1373.51,
+        "largestContentfulPaintMs": 1639.41,
+        "totalBlockingTimeMs": 29,
+        "cumulativeLayoutShift": 0,
+        "mainThreadWorkBreakdownMs": 4883.47,
+        "scriptBootupTimeMs": 3856.29
       },
       "appMetrics": {
         "startup": {
           "ready": true,
-          "initialReadyMs": 54.6,
+          "initialReadyMs": 58,
           "currentView": "tree",
-          "parseMs": 0.3,
+          "parseMs": 0.7,
           "parseNodeCount": 82,
           "latestViewSwitchMs": null,
           "latestTreeToggleMs": null,
@@ -516,43 +469,43 @@
             "maxDuration": 0,
             "totalDuration": 0
           },
-          "lastUpdatedAt": 1789588454528
+          "lastUpdatedAt": 1789604980906
         },
         "navigation": {
-          "domContentLoadedMs": 32.79999999998836,
-          "loadEventMs": 46
+          "domContentLoadedMs": 53.5,
+          "loadEventMs": 75.5
         }
       }
     },
     {
       "mobileAudit": {
         "preset": "mobile",
-        "performanceScore": 99,
-        "firstContentfulPaintMs": 1365.77,
-        "speedIndexMs": 1365.77,
-        "largestContentfulPaintMs": 1628.32,
-        "totalBlockingTimeMs": 21,
+        "performanceScore": 100,
+        "firstContentfulPaintMs": 1358.1,
+        "speedIndexMs": 1358.1,
+        "largestContentfulPaintMs": 1619.12,
+        "totalBlockingTimeMs": 20,
         "cumulativeLayoutShift": 0,
-        "mainThreadWorkBreakdownMs": 4907.16,
-        "scriptBootupTimeMs": 3870.12
+        "mainThreadWorkBreakdownMs": 556.1,
+        "scriptBootupTimeMs": 78.88
       },
       "desktopAudit": {
         "preset": "desktop",
         "performanceScore": 89,
-        "firstContentfulPaintMs": 1369.91,
-        "speedIndexMs": 1369.91,
-        "largestContentfulPaintMs": 1634.69,
-        "totalBlockingTimeMs": 27,
+        "firstContentfulPaintMs": 1363.12,
+        "speedIndexMs": 1363.12,
+        "largestContentfulPaintMs": 1625.54,
+        "totalBlockingTimeMs": 23,
         "cumulativeLayoutShift": 0,
-        "mainThreadWorkBreakdownMs": 640.85,
-        "scriptBootupTimeMs": 88.36
+        "mainThreadWorkBreakdownMs": 570.58,
+        "scriptBootupTimeMs": 78.96
       },
       "appMetrics": {
         "startup": {
           "ready": true,
-          "initialReadyMs": 53.6,
+          "initialReadyMs": 53.3,
           "currentView": "tree",
-          "parseMs": 0.3,
+          "parseMs": 0.2,
           "parseNodeCount": 82,
           "latestViewSwitchMs": null,
           "latestTreeToggleMs": null,
@@ -563,11 +516,58 @@
             "maxDuration": 0,
             "totalDuration": 0
           },
-          "lastUpdatedAt": 1789588466202
+          "lastUpdatedAt": 1789604992454
         },
         "navigation": {
-          "domContentLoadedMs": 34.59999999997672,
-          "loadEventMs": 43
+          "domContentLoadedMs": 29.80000000000291,
+          "loadEventMs": 42
+        }
+      }
+    },
+    {
+      "mobileAudit": {
+        "preset": "mobile",
+        "performanceScore": 100,
+        "firstContentfulPaintMs": 1357,
+        "speedIndexMs": 1357,
+        "largestContentfulPaintMs": 1618.61,
+        "totalBlockingTimeMs": 21,
+        "cumulativeLayoutShift": 0,
+        "mainThreadWorkBreakdownMs": 4810.83,
+        "scriptBootupTimeMs": 3863.99
+      },
+      "desktopAudit": {
+        "preset": "desktop",
+        "performanceScore": 89,
+        "firstContentfulPaintMs": 1393.94,
+        "speedIndexMs": 1393.94,
+        "largestContentfulPaintMs": 1581.94,
+        "totalBlockingTimeMs": 13,
+        "cumulativeLayoutShift": 0,
+        "mainThreadWorkBreakdownMs": 575.71,
+        "scriptBootupTimeMs": 83.29
+      },
+      "appMetrics": {
+        "startup": {
+          "ready": true,
+          "initialReadyMs": 52.2,
+          "currentView": "tree",
+          "parseMs": 0.4,
+          "parseNodeCount": 82,
+          "latestViewSwitchMs": null,
+          "latestTreeToggleMs": null,
+          "viewSwitchSamples": [],
+          "treeToggleSamples": [],
+          "longTasks": {
+            "count": 0,
+            "maxDuration": 0,
+            "totalDuration": 0
+          },
+          "lastUpdatedAt": 1789605004020
+        },
+        "navigation": {
+          "domContentLoadedMs": 32.09999999999127,
+          "loadEventMs": 40.79999999998836
         }
       }
     }
@@ -582,7 +582,7 @@
         "target": 100,
         "unit": "ms",
         "sourceSection": "6.1 Hard Constraints",
-        "actual": 58.13,
+        "actual": 54.5,
         "status": "pass"
       },
       {
@@ -593,7 +593,7 @@
         "target": 50,
         "unit": "ms",
         "sourceSection": "6.1 Hard Constraints",
-        "actual": 5.07,
+        "actual": 4.37,
         "status": "pass"
       },
       {
@@ -604,7 +604,7 @@
         "target": 16,
         "unit": "ms",
         "sourceSection": "6.1 Hard Constraints",
-        "actual": 1.03,
+        "actual": 0.83,
         "status": "pass"
       },
       {
@@ -670,7 +670,7 @@
             "target": 2500,
             "unit": "ms",
             "note": "web.dev defines good LCP as 2.5s or less at the 75th percentile.",
-            "actual": 1630.23,
+            "actual": 1621.53,
             "status": "pass"
           },
           {
@@ -724,7 +724,7 @@
             "target": 90,
             "unit": "score",
             "note": "Chrome Docs classifies 90-100 as Good.",
-            "actual": 99,
+            "actual": 99.67,
             "status": "pass"
           },
           {
