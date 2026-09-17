@@ -67,14 +67,14 @@ jobs:
           echo "::error::Could not push performance reports after 3 attempts."
           exit 1
 
-      # A push authenticated with GITHUB_TOKEN deliberately does not trigger
-      # workflows, so the commit above can never reach Pages on its own. The
-      # app fetches public/samples/latest-profile.json at runtime, so without
-      # this the deployed sample stays one report behind indefinitely.
-      # `[skip ci]` used to sit on that commit message implying it was the
-      # thing holding deploys back; it was a no-op, and is gone.
-      - name: Deploy the refreshed reports
-        if: steps.commit.outputs.pushed == 'true'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh workflow run deploy-pages.yml --ref main
+      # No explicit deploy step. The app fetches
+      # public/samples/latest-profile.json at runtime, so the refreshed report
+      # does have to reach the published site — but Cloudflare Pages builds
+      # this repository from the push webhook, and the commit above is enough.
+      #
+      # This used to dispatch deploy-pages.yml, because a push authenticated
+      # with GITHUB_TOKEN deliberately does not start a GitHub Actions run.
+      # That restriction is specific to Actions: GitHub still delivers the push
+      # webhook to installed GitHub Apps, so Cloudflare sees it. Verified on
+      # commit 8f7823d, which this workflow pushed and Cloudflare built
+      # unprompted as a github:push deployment.
