@@ -1,18 +1,18 @@
 # Kata Performance Report
 
 - Version: 0.1.0-alpha
-- Generated: 2026-09-21T09:46:59.839Z
-- Commit: 0fc01120390166da7fb31350ee424b38a51bf02a
+- Generated: 2026-09-28T10:43:36.249Z
+- Commit: a3db1f8a6365e34d2521f2fe0d13e44b12b69fad
 - Branch: main
 - Runs: 3 (3-run average)
 
 ## Environment
 
-- Node: v24.20.0
+- Node: v24.21.0
 - Platform: linux x64
-- CPU: INTEL(R) XEON(R) PLATINUM 8573C
+- CPU: Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz
 - Chrome: unknown
-- Build duration: 4497.9 ms
+- Build duration: 6059.37 ms
 
 ## Kata Spec Budgets
 
@@ -20,9 +20,9 @@ Source: internal
 
 | Budget | Status | Actual | Target | Source |
 | --- | --- | --- | --- | --- |
-| First render | PASS | 52.73 ms | 100 ms | 6.1 Hard Constraints |
-| View switch | PASS | 3.8 ms | 50 ms | 6.1 Hard Constraints |
-| Expand/collapse | PASS | 0.6 ms | 16 ms | 6.1 Hard Constraints |
+| First render | PASS | 59.13 ms | 100 ms | 6.1 Hard Constraints |
+| View switch | PASS | 4.63 ms | 50 ms | 6.1 Hard Constraints |
+| Expand/collapse | PASS | 0.93 ms | 16 ms | 6.1 Hard Constraints |
 | Initial bundle gzip | PASS | 27.74 KB (28402 B) | 50.00 KB (51200 B) | 7. Bundle Strategy |
 | Long tasks over 50ms | PASS | 0 count | 0 count | 6.1 Hard Constraints |
 
@@ -30,45 +30,45 @@ Source: internal
 
 - Initial raw: 85.59 KB (87643 B)
 - Initial gzip: 27.74 KB (28402 B)
-- Total raw: 459.47 KB (470498 B)
-- Total gzip: 193.09 KB (197721 B)
+- Total raw: 459.48 KB (470507 B)
+- Total gzip: 193.09 KB (197722 B)
 
 ## Lighthouse
 
 ### Mobile
 
 - Score: 99.33
-- FCP: 1356.82 ms
-- Speed Index: 1356.82 ms
-- LCP: 1557.48 ms
-- TBT: 1.33 ms
+- FCP: 1368.36 ms
+- Speed Index: 1368.36 ms
+- LCP: 1599.81 ms
+- TBT: 9.5 ms
 - CLS: 0
-- Main-thread work: 448.24 ms
-- Script bootup: 56.35 ms
+- Main-thread work: 1971.01 ms
+- Script bootup: 1336.07 ms
 
 ### Desktop
 
-- Score: 90
-- FCP: 1362.02 ms
-- Speed Index: 1362.02 ms
-- LCP: 1591.16 ms
-- TBT: 3.5 ms
+- Score: 89
+- FCP: 1366.23 ms
+- Speed Index: 1366.23 ms
+- LCP: 1624.61 ms
+- TBT: 18.67 ms
 - CLS: 0
-- Main-thread work: 1906.02 ms
-- Script bootup: 1326.87 ms
+- Main-thread work: 1982 ms
+- Script bootup: 1347.08 ms
 
 ## App Interaction Metrics
 
-- First render: 52.73 ms
-- Parse worker time: 0.33 ms
+- First render: 59.13 ms
+- Parse worker time: 0.43 ms
 - Parse node count: 82
-- Max view switch: 3.8 ms
-- Max tree toggle: 0.6 ms
+- Max view switch: 4.63 ms
+- Max tree toggle: 0.93 ms
 - Long tasks: 0
 - Max long task: 0 ms
-- DOMContentLoaded: 29.6 ms
-- Load event: 41.83 ms
-- JS heap used: 1875.18 KB (1920181 B)
+- DOMContentLoaded: 37.23 ms
+- Load event: 55.03 ms
+- JS heap used: 2607.94 KB (2670528 B)
 
 ## Google Core Web Vitals
 
@@ -76,7 +76,7 @@ Source: https://web.dev/articles/vitals
 
 | Metric | Status | Actual | Target | Note |
 | --- | --- | --- | --- | --- |
-| Largest Contentful Paint | PASS | 1557.48 ms | 2500 ms | web.dev defines good LCP as 2.5s or less at the 75th percentile. |
+| Largest Contentful Paint | PASS | 1599.81 ms | 2500 ms | web.dev defines good LCP as 2.5s or less at the 75th percentile. |
 | Cumulative Layout Shift | PASS | 0 | 0.1 | web.dev defines good CLS as 0.1 or less at the 75th percentile. |
 
 - web.dev defines good INP as 200ms or less at the 75th percentile.
@@ -89,7 +89,7 @@ Source: https://developer.chrome.com/docs/lighthouse/performance/performance-sco
 | Metric | Status | Actual | Target | Note |
 | --- | --- | --- | --- | --- |
 | Mobile Lighthouse score | PASS | 99.33 | 90 | Chrome Docs classifies 90-100 as Good. |
-| Desktop Lighthouse score | PASS | 90 | 90 | Chrome Docs classifies 90-100 as Good. |
+| Desktop Lighthouse score | FAIL | 89 | 90 | Chrome Docs classifies 90-100 as Good. |
 
 - Lighthouse 10 weights: FCP 10%, Speed Index 10%, LCP 25%, TBT 30%, CLS 25%.
 - Scores fluctuate with device conditions and test variability; use repeated runs for trend analysis.
