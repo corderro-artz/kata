@@ -8,10 +8,10 @@
     "repository": "https://github.com/corderro-artz/kata"
   },
   "build": {
-    "generatedAt": "2026-10-19T09:44:38.480Z",
-    "commit": "39d897383447e8b87e9b1b3f22e13b118901e606",
+    "generatedAt": "2026-10-26T09:56:15.376Z",
+    "commit": "f422638c09036a55adf217539096158e8e3a252f",
     "branch": "main",
-    "durationMs": 6042.28,
+    "durationMs": 4445.69,
     "bundle": {
       "initialGzipKB": 27.74,
       "totalGzipKB": 193.08
@@ -20,16 +20,16 @@
   "performance": {
     "budgets": {
       "firstRenderMs": {
-        "actual": 58.63,
+        "actual": 56.9,
         "target": 100,
         "pass": true
       },
       "viewSwitchMs": {
-        "actual": 4.8,
+        "actual": 4.6,
         "target": 50
       },
       "expandCollapseMs": {
-        "actual": 1,
+        "actual": 1.2,
         "target": 16
       },
       "longTasks": {
@@ -39,23 +39,23 @@
     },
     "lighthouse": {
       "mobile": {
-        "score": 99,
-        "fcp": 1381.69,
-        "lcp": 1589.68,
-        "tbt": 11.17,
+        "score": 99.33,
+        "fcp": 1355.49,
+        "lcp": 1555.82,
+        "tbt": 1.33,
         "cls": 0
       },
       "desktop": {
-        "score": 89,
-        "fcp": 1362.65,
-        "lcp": 1623.18,
-        "tbt": 15.5,
+        "score": 89.67,
+        "fcp": 1386.97,
+        "lcp": 1567.3,
+        "tbt": 5.33,
         "cls": 0
       }
     },
     "coreWebVitals": {
       "lcp": {
-        "actual": 1589.68,
+        "actual": 1555.82,
         "target": 2500,
         "unit": "ms"
       },
@@ -99,7 +99,7 @@
   "environment": {
     "node": "v24.21.0",
     "platform": "linux x64",
-    "cpu": "AMD EPYC 7763 64-Core Processor",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
     "chromePath": "unknown"
   }
 }
