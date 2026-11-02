@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-10-26T09:56:15.376Z",
+  "generatedAt": "2026-11-02T04:13:04.749Z",
   "version": "0.1.0-alpha",
   "git": {
-    "commit": "f422638c09036a55adf217539096158e8e3a252f",
+    "commit": "4bf18d5310e4cdaa70f538a2d4b0cbcc7e6f5e67",
     "branch": "main"
   },
   "environment": {
-    "node": "v24.21.0",
+    "node": "v24.22.1",
     "platform": "linux x64",
-    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "cpu": "AMD EPYC 7763 64-Core Processor",
     "chromePath": "unknown"
   },
   "build": {
-    "durationMs": 4445.69
+    "durationMs": 5672.85
   },
   "bundle": {
     "initial": {
@@ -32,8 +32,8 @@
       ]
     },
     "total": {
-      "rawBytes": 470505,
-      "gzipBytes": 197716,
+      "rawBytes": 470510,
+      "gzipBytes": 197717,
       "files": [
         {
           "path": "assets/export.worker-BY7qUjYF.js",
@@ -147,8 +147,8 @@
         },
         {
           "path": "samples/latest-profile.json",
-          "rawBytes": 2034,
-          "gzipBytes": 836
+          "rawBytes": 2039,
+          "gzipBytes": 837
         },
         {
           "path": "sw.js",
@@ -275,8 +275,8 @@
       },
       {
         "path": "samples/latest-profile.json",
-        "rawBytes": 2034,
-        "gzipBytes": 836
+        "rawBytes": 2039,
+        "gzipBytes": 837
       },
       {
         "path": "sw.js",
@@ -293,9 +293,9 @@
   "app": {
     "startup": {
       "ready": true,
-      "initialReadyMs": 56.9,
+      "initialReadyMs": 55.1,
       "currentView": "tree",
-      "parseMs": 0.43,
+      "parseMs": 0.5,
       "parseNodeCount": 82,
       "latestViewSwitchMs": null,
       "latestTreeToggleMs": null,
@@ -306,28 +306,28 @@
         "maxDuration": 0,
         "totalDuration": 0
       },
-      "lastUpdatedAt": 1793008592563
+      "lastUpdatedAt": 1793592803722
     },
     "navigation": {
-      "domContentLoadedMs": 29.7,
-      "loadEventMs": 42.13
+      "domContentLoadedMs": 35.1,
+      "loadEventMs": 48.53
     },
     "memory": {
-      "usedJSHeapSize": 1866790,
-      "totalJSHeapSize": 3229170,
+      "usedJSHeapSize": 2050616,
+      "totalJSHeapSize": 3753788,
       "jsHeapSizeLimit": 4395630592
     },
     "interactions": {
       "rawView": {
         "ready": true,
-        "initialReadyMs": 56.9,
+        "initialReadyMs": 55.1,
         "currentView": "raw",
-        "parseMs": 0.7,
+        "parseMs": 1,
         "parseNodeCount": 82,
-        "latestViewSwitchMs": 3.37,
+        "latestViewSwitchMs": 4.4,
         "latestTreeToggleMs": null,
         "viewSwitchSamples": [
-          4.6
+          6.3
         ],
         "treeToggleSamples": [],
         "longTasks": {
@@ -335,19 +335,19 @@
           "maxDuration": 0,
           "totalDuration": 0
         },
-        "lastUpdatedAt": 1793008592580
+        "lastUpdatedAt": 1793592803759
       },
       "treeView": {
         "ready": true,
-        "initialReadyMs": 56.9,
+        "initialReadyMs": 55.1,
         "currentView": "tree",
-        "parseMs": 0.7,
+        "parseMs": 1,
         "parseNodeCount": 82,
-        "latestViewSwitchMs": 1.6,
+        "latestViewSwitchMs": 2,
         "latestTreeToggleMs": null,
         "viewSwitchSamples": [
-          4.6,
-          1.6
+          6.3,
+          2.4
         ],
         "treeToggleSamples": [],
         "longTasks": {
@@ -355,77 +355,77 @@
           "maxDuration": 0,
           "totalDuration": 0
         },
-        "lastUpdatedAt": 1793008592613
+        "lastUpdatedAt": 1793592803789
       },
       "collapseToggle": {
         "ready": true,
-        "initialReadyMs": 56.9,
+        "initialReadyMs": 55.1,
         "currentView": "tree",
-        "parseMs": 0.7,
+        "parseMs": 1,
         "parseNodeCount": 82,
-        "latestViewSwitchMs": 1.6,
-        "latestTreeToggleMs": 0.83,
+        "latestViewSwitchMs": 2,
+        "latestTreeToggleMs": 0.67,
         "viewSwitchSamples": [
-          4.6,
-          1.6
+          6.3,
+          2.4
         ],
         "treeToggleSamples": [
-          1.2
+          0.7
         ],
         "longTasks": {
           "count": 0,
           "maxDuration": 0,
           "totalDuration": 0
         },
-        "lastUpdatedAt": 1793008592642
+        "lastUpdatedAt": 1793592803810
       },
       "expandToggle": {
         "ready": true,
-        "initialReadyMs": 56.9,
+        "initialReadyMs": 55.1,
         "currentView": "tree",
-        "parseMs": 0.7,
+        "parseMs": 1,
         "parseNodeCount": 82,
-        "latestViewSwitchMs": 1.6,
-        "latestTreeToggleMs": 0.77,
+        "latestViewSwitchMs": 2,
+        "latestTreeToggleMs": 0.83,
         "viewSwitchSamples": [
-          4.6,
-          1.6
+          6.3,
+          2.4
         ],
         "treeToggleSamples": [
-          1.2,
-          0.8
+          0.7,
+          1
         ],
         "longTasks": {
           "count": 0,
           "maxDuration": 0,
           "totalDuration": 0
         },
-        "lastUpdatedAt": 1793008592675
+        "lastUpdatedAt": 1793592803843
       }
     }
   },
   "lighthouse": {
     "mobile": {
       "preset": "mobile",
-      "performanceScore": 99.33,
-      "firstContentfulPaintMs": 1355.49,
-      "speedIndexMs": 1355.49,
-      "largestContentfulPaintMs": 1555.82,
-      "totalBlockingTimeMs": 1.33,
+      "performanceScore": 99.67,
+      "firstContentfulPaintMs": 1363.86,
+      "speedIndexMs": 1363.86,
+      "largestContentfulPaintMs": 1621.76,
+      "totalBlockingTimeMs": 13.33,
       "cumulativeLayoutShift": 0,
-      "mainThreadWorkBreakdownMs": 423.45,
-      "scriptBootupTimeMs": 61.01
+      "mainThreadWorkBreakdownMs": 1974.05,
+      "scriptBootupTimeMs": 1350.55
     },
     "desktop": {
       "preset": "desktop",
-      "performanceScore": 89.67,
-      "firstContentfulPaintMs": 1386.97,
-      "speedIndexMs": 1386.97,
-      "largestContentfulPaintMs": 1567.3,
-      "totalBlockingTimeMs": 5.33,
+      "performanceScore": 89,
+      "firstContentfulPaintMs": 1363.26,
+      "speedIndexMs": 1363.26,
+      "largestContentfulPaintMs": 1622.65,
+      "totalBlockingTimeMs": 13.17,
       "cumulativeLayoutShift": 0,
-      "mainThreadWorkBreakdownMs": 1902.94,
-      "scriptBootupTimeMs": 1345.51
+      "mainThreadWorkBreakdownMs": 1992.26,
+      "scriptBootupTimeMs": 1360.61
     }
   },
   "runCount": 3,
@@ -433,32 +433,32 @@
     {
       "mobileAudit": {
         "preset": "mobile",
-        "performanceScore": 100,
-        "firstContentfulPaintMs": 1309.69,
-        "speedIndexMs": 1309.69,
-        "largestContentfulPaintMs": 1563.69,
-        "totalBlockingTimeMs": 4,
+        "performanceScore": 99,
+        "firstContentfulPaintMs": 1377.59,
+        "speedIndexMs": 1377.59,
+        "largestContentfulPaintMs": 1638.51,
+        "totalBlockingTimeMs": 20,
         "cumulativeLayoutShift": 0,
-        "mainThreadWorkBreakdownMs": 473.52,
-        "scriptBootupTimeMs": 61.02
+        "mainThreadWorkBreakdownMs": 608.82,
+        "scriptBootupTimeMs": 82.48
       },
       "desktopAudit": {
         "preset": "desktop",
-        "performanceScore": 90,
-        "firstContentfulPaintMs": 1386.45,
-        "speedIndexMs": 1386.45,
-        "largestContentfulPaintMs": 1564.45,
-        "totalBlockingTimeMs": 3,
+        "performanceScore": 89,
+        "firstContentfulPaintMs": 1369.69,
+        "speedIndexMs": 1369.69,
+        "largestContentfulPaintMs": 1629.63,
+        "totalBlockingTimeMs": 17,
         "cumulativeLayoutShift": 0,
-        "mainThreadWorkBreakdownMs": 4754.35,
-        "scriptBootupTimeMs": 3868.99
+        "mainThreadWorkBreakdownMs": 4825.9,
+        "scriptBootupTimeMs": 3912.24
       },
       "appMetrics": {
         "startup": {
           "ready": true,
-          "initialReadyMs": 60.1,
+          "initialReadyMs": 58.7,
           "currentView": "tree",
-          "parseMs": 0.7,
+          "parseMs": 1,
           "parseNodeCount": 82,
           "latestViewSwitchMs": null,
           "latestTreeToggleMs": null,
@@ -469,41 +469,88 @@
             "maxDuration": 0,
             "totalDuration": 0
           },
-          "lastUpdatedAt": 1793008592563
+          "lastUpdatedAt": 1793592803722
         },
         "navigation": {
-          "domContentLoadedMs": 39.20000000001164,
-          "loadEventMs": 59.80000000000291
+          "domContentLoadedMs": 46.30000000000291,
+          "loadEventMs": 64.39999999999418
         }
       }
     },
     {
       "mobileAudit": {
         "preset": "mobile",
-        "performanceScore": 99,
-        "firstContentfulPaintMs": 1379.35,
-        "speedIndexMs": 1379.35,
-        "largestContentfulPaintMs": 1553.85,
-        "totalBlockingTimeMs": 0,
+        "performanceScore": 100,
+        "firstContentfulPaintMs": 1360.25,
+        "speedIndexMs": 1360.25,
+        "largestContentfulPaintMs": 1617.69,
+        "totalBlockingTimeMs": 11,
         "cumulativeLayoutShift": 0,
-        "mainThreadWorkBreakdownMs": 417.13,
-        "scriptBootupTimeMs": 62.5
+        "mainThreadWorkBreakdownMs": 571.55,
+        "scriptBootupTimeMs": 83.72
       },
       "desktopAudit": {
         "preset": "desktop",
-        "performanceScore": 90,
-        "firstContentfulPaintMs": 1381.17,
-        "speedIndexMs": 1381.17,
-        "largestContentfulPaintMs": 1556.67,
-        "totalBlockingTimeMs": 0.5,
+        "performanceScore": 89,
+        "firstContentfulPaintMs": 1358.4,
+        "speedIndexMs": 1358.4,
+        "largestContentfulPaintMs": 1617.28,
+        "totalBlockingTimeMs": 14,
         "cumulativeLayoutShift": 0,
-        "mainThreadWorkBreakdownMs": 479.88,
-        "scriptBootupTimeMs": 63.19
+        "mainThreadWorkBreakdownMs": 575.96,
+        "scriptBootupTimeMs": 77.86
       },
       "appMetrics": {
         "startup": {
           "ready": true,
-          "initialReadyMs": 56.7,
+          "initialReadyMs": 55.5,
+          "currentView": "tree",
+          "parseMs": 0.3,
+          "parseNodeCount": 82,
+          "latestViewSwitchMs": null,
+          "latestTreeToggleMs": null,
+          "viewSwitchSamples": [],
+          "treeToggleSamples": [],
+          "longTasks": {
+            "count": 0,
+            "maxDuration": 0,
+            "totalDuration": 0
+          },
+          "lastUpdatedAt": 1793592815210
+        },
+        "navigation": {
+          "domContentLoadedMs": 28.19999999999709,
+          "loadEventMs": 40.30000000000291
+        }
+      }
+    },
+    {
+      "mobileAudit": {
+        "preset": "mobile",
+        "performanceScore": 100,
+        "firstContentfulPaintMs": 1353.73,
+        "speedIndexMs": 1353.73,
+        "largestContentfulPaintMs": 1609.08,
+        "totalBlockingTimeMs": 9,
+        "cumulativeLayoutShift": 0,
+        "mainThreadWorkBreakdownMs": 4741.78,
+        "scriptBootupTimeMs": 3885.44
+      },
+      "desktopAudit": {
+        "preset": "desktop",
+        "performanceScore": 89,
+        "firstContentfulPaintMs": 1361.69,
+        "speedIndexMs": 1361.69,
+        "largestContentfulPaintMs": 1621.03,
+        "totalBlockingTimeMs": 8.5,
+        "cumulativeLayoutShift": 0,
+        "mainThreadWorkBreakdownMs": 574.93,
+        "scriptBootupTimeMs": 91.73
+      },
+      "appMetrics": {
+        "startup": {
+          "ready": true,
+          "initialReadyMs": 51.1,
           "currentView": "tree",
           "parseMs": 0.2,
           "parseNodeCount": 82,
@@ -516,58 +563,11 @@
             "maxDuration": 0,
             "totalDuration": 0
           },
-          "lastUpdatedAt": 1793008603690
+          "lastUpdatedAt": 1793592826781
         },
         "navigation": {
-          "domContentLoadedMs": 24.60000000000582,
-          "loadEventMs": 33
-        }
-      }
-    },
-    {
-      "mobileAudit": {
-        "preset": "mobile",
-        "performanceScore": 99,
-        "firstContentfulPaintMs": 1377.43,
-        "speedIndexMs": 1377.43,
-        "largestContentfulPaintMs": 1549.93,
-        "totalBlockingTimeMs": 0,
-        "cumulativeLayoutShift": 0,
-        "mainThreadWorkBreakdownMs": 379.71,
-        "scriptBootupTimeMs": 59.52
-      },
-      "desktopAudit": {
-        "preset": "desktop",
-        "performanceScore": 89,
-        "firstContentfulPaintMs": 1393.28,
-        "speedIndexMs": 1393.28,
-        "largestContentfulPaintMs": 1580.78,
-        "totalBlockingTimeMs": 12.5,
-        "cumulativeLayoutShift": 0,
-        "mainThreadWorkBreakdownMs": 474.58,
-        "scriptBootupTimeMs": 104.35
-      },
-      "appMetrics": {
-        "startup": {
-          "ready": true,
-          "initialReadyMs": 53.9,
-          "currentView": "tree",
-          "parseMs": 0.4,
-          "parseNodeCount": 82,
-          "latestViewSwitchMs": null,
-          "latestTreeToggleMs": null,
-          "viewSwitchSamples": [],
-          "treeToggleSamples": [],
-          "longTasks": {
-            "count": 0,
-            "maxDuration": 0,
-            "totalDuration": 0
-          },
-          "lastUpdatedAt": 1793008615192
-        },
-        "navigation": {
-          "domContentLoadedMs": 25.29999999998836,
-          "loadEventMs": 33.59999999999127
+          "domContentLoadedMs": 30.80000000000291,
+          "loadEventMs": 40.90000000000873
         }
       }
     }
@@ -582,7 +582,7 @@
         "target": 100,
         "unit": "ms",
         "sourceSection": "6.1 Hard Constraints",
-        "actual": 56.9,
+        "actual": 55.1,
         "status": "pass"
       },
       {
@@ -593,7 +593,7 @@
         "target": 50,
         "unit": "ms",
         "sourceSection": "6.1 Hard Constraints",
-        "actual": 3.37,
+        "actual": 4.4,
         "status": "pass"
       },
       {
@@ -670,7 +670,7 @@
             "target": 2500,
             "unit": "ms",
             "note": "web.dev defines good LCP as 2.5s or less at the 75th percentile.",
-            "actual": 1555.82,
+            "actual": 1621.76,
             "status": "pass"
           },
           {
@@ -724,7 +724,7 @@
             "target": 90,
             "unit": "score",
             "note": "Chrome Docs classifies 90-100 as Good.",
-            "actual": 99.33,
+            "actual": 99.67,
             "status": "pass"
           },
           {
@@ -735,7 +735,7 @@
             "target": 90,
             "unit": "score",
             "note": "Chrome Docs classifies 90-100 as Good.",
-            "actual": 89.67,
+            "actual": 89,
             "status": "fail"
           }
         ]
